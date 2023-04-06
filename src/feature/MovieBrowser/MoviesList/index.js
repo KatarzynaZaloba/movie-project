@@ -6,7 +6,7 @@ const MoviesList = () => {
     return (
         <Wrapper>
             <Header>Popular movies</Header>
-            <List/>
+            <List />
         </Wrapper>
     )
 }
