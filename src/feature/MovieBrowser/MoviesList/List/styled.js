@@ -1,33 +1,48 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    
-`;
-
-export const MovieList = styled.ul`
-    padding: 0;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
     gap: 24px;
-    flex-wrap: wrap;
 `;
 
-export const Item = styled.li`
-    list-style: none;
+export const Item = styled.div`
+    width: 100%;
+    height: 100%;
+    
 `;
 
 export const Tile = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     padding: 16px;
-    max-width: 324px;
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
     border-radius: 5px;
+
+    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
+        display: flex;
+        flex-direction: row;
+    }
 `;
 
 export const Poster = styled.img`
-    max-width: 292px;
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 2 / 3;
     border-radius: 5px;
     margin-bottom: 16px;
+
+    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        width: 200px;
+        height: auto;
+        margin-bottom: 0;
+        margin-right: 16px;
+    }
+`;
+
+export const Details = styled.div`
+
 `;
 
 export const Title = styled.h2`
