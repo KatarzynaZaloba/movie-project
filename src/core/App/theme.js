@@ -1,5 +1,6 @@
 export const theme = {
     colors: {
+        white: "#FFFFFF",
         mystic: "#E4E6F0",
         scienceBlue: "#0044CC",
         waterloo: "#7E839A",
@@ -7,6 +8,7 @@ export const theme = {
         mercury: "#E5E5E5",
         whisper: "#F5F5FA",
         black: "#18181B",
+        white: "#FFFFFF",
     },
 
     breakpoints: {
