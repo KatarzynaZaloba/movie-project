@@ -17,6 +17,11 @@ export const Score = styled.p`
     font-weight: 600;
     font-size: 16px;
     line-height: 1.5;
+
+    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
+        font-size: 13px;
+        line-height: 1.3;
+    }
 `;
 
 export const Votes = styled.p`
@@ -25,4 +30,9 @@ export const Votes = styled.p`
     font-size: 16px;
     line-height: 1.5;
     color: ${({ theme }) => theme.colors.waterloo};
+
+    @media (max-width: ${({theme})=> theme.breakpoints.mobileMax}px) {
+        font-size: 13px;
+        line-height: 1.3;
+    }
 `;
