@@ -1,19 +1,32 @@
-import { ThemeProvider } from "styled-components";
-import MovieBrowser from "../../feature/MovieBrowser";
-import { GlobalStyle } from "./GlobalStyles";
-import { theme } from "./theme";
-import { Pagination } from "./Pagination/index";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
+
+
 
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <MovieBrowser />
+    <HashRouter>
+      <Header />
+      <Switch>
+        <Route path={toMovie()}>
+          <MoviePage />
+        </Route>
+        <Route path={toMovies()}>
+          <MoviesList />
+        </Route>
+        <Route path={toPerson()}>
+          <ProfilePersonPage />
+        </Route>
+        <Route path={toPeople()}>
+          <PeopleList />
+        </Route>
+        <Route>
+          <Redirect to={toMovies()} />
+        </Route>
+      </Switch>
       <Pagination />
-    </ThemeProvider>
-
+    </HashRouter>
   );
-}
+};
 
 export default App;
