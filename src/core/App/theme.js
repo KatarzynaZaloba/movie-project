@@ -7,7 +7,6 @@ export const theme = {
         pattensBlue: "#D6E4FF",
         mercury: "#E5E5E5",
         black: "#18181B",
-        white: "#FFFFFF",
     },
 
     breakpoints: {
