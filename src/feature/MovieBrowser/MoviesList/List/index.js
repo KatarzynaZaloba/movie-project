@@ -1,5 +1,5 @@
 import React from 'react'
-import { Details, Genre, Genres, Item, Poster, Tile, Title, Wrapper, Year } from './styled'
+import { Genre, Genres, Item, Poster, Tile, Title, Wrapper, Year } from './styled'
 import { data } from "./data"
 import Rating from './Rating'
 
