@@ -8,13 +8,12 @@ export const theme = {
         mercury: "#E5E5E5",
         whisper: "#F5F5FA",
         black: "#18181B",
-        white: "#FFFFFF",
     },
 
     breakpoints: {
-        mobileMax: 767,
         max: 1250,
         large: 992,
+        mobileMax: 767,
         medium: 555,
         mobileMin: 470,
     },
