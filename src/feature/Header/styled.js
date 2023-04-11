@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as VideoIcon } from "./images/cameraIcon.svg";
 import { ReactComponent as SearchIcon } from "./images/searchIcon.svg";
 
-
 export const StyledHeader = styled.header`
   background: ${({ theme }) => theme.colors.black};
   padding: 24px 16px;
@@ -19,24 +18,24 @@ export const PositionHeader = styled.div`
   display: grid;
   grid-gap: 16px;
   grid-template-columns: auto minmax(205px, 432px);
-     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     grid-template-columns: 1fr;
     gap: 24px;
      }
   `;
 
 export const WrapperHeader = styled.div`
-  display: flex;
-  gap: 80px;
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-   justify-content: space-between;
+    display: flex;
+    gap: 80px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+     justify-content: space-between;
     gap: 20px;
     }
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     grid-template-columns: 1fr;
     gap: 24px;
   }
@@ -48,7 +47,7 @@ export const TitleHeaderLink = styled(Link)`
   display: flex;
   gap: 12px;
   align-items: center;
-      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
     gap: 8px;
       }
 `;
@@ -58,7 +57,7 @@ export const StyledVideoIcon = styled(VideoIcon)`
    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 30px;
      }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
      width: 20px;
   }
 `;
@@ -67,13 +66,13 @@ export const TitleHeaderStyled = styled.div`
   font-size: 24px;
   font-weight: 500;
   flex-shrink: 0;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+@media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
    font-size: 14px;
   }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+@media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
    font-size: 16px;
   }
-   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
    font-size: 16px;
   }
  `;
@@ -89,13 +88,12 @@ export const Navigation = styled.nav`
    grid-gap: 20px;
    margin-left: 30px;
     }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+ @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
    grid-template-columns: 1fr;
    grid-gap: 20px;
    margin-left: 30px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-
    grid-gap: 20px;
   }
 `;
@@ -128,8 +126,8 @@ export const SearchBar = styled.div`
 export const StyledSearchIcon = styled(SearchIcon)`
  color: ${({ theme }) => theme.colors.waterloo};
 @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-   height: 44px;
-    width: 35px;
+  height: 44px;
+  width: 35px;
 }
 `;
 
