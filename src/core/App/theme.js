@@ -6,6 +6,7 @@ export const theme = {
         waterloo: "#7E839A",
         pattensBlue: "#D6E4FF",
         mercury: "#E5E5E5",
+        whisper: "#F5F5FA",
         black: "#18181B",
         white: "#FFFFFF",
     },
