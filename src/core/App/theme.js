@@ -10,9 +10,9 @@ export const theme = {
     },
 
     breakpoints: {
-        mobileMax: 767,
         max: 1250,
         large: 992,
+        mobileMax: 767,
         medium: 555,
         mobileMin: 470,
     },
