@@ -1,6 +1,6 @@
 
-import Header from "../../feature/Header";
-import { Pagination } from "./Pagination";
+import Header from "../common/Header";
+import { Pagination } from "../common/Pagination";
 import MovieBrowser from "../feature/MovieBrowser"
 
 
@@ -15,22 +15,3 @@ function App() {
 }
 
 export default App;
-
-
-
-//function App() {
-// return (
-//<>
-//<Header />
-//<Routes>
-//<Route path="/" element={<MoviesList />} />
-//<Route path="/movies" element={<MoviesList />} />
-//<Route path="/people" element={<PeopleList />} />
-//<Route path="/people/:id" element={<MoviePage />} />
-//<Route path="/movies/:id" element={<PersonPage />} />
-//</Routes>
-//<Pagination />
-    //</>
-  //);
-//}
-
