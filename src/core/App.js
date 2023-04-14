@@ -1,3 +1,4 @@
+
 import Header from "../common/Header";
 import { Pagination } from "../common/Pagination";
 import MovieBrowser from "../feature/MovieBrowser"
