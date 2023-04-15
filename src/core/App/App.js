@@ -1,7 +1,9 @@
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
-
-
-
+import Header from "../../feature/Header";
+import { toMovie, toMovies, toPeople, toPerson } from "../routes";
+import MoviesList from "../../feature/MovieBrowser/Movies";
+import { Pagination } from "./Pagination";
+import MovieDescription from "../../feature/MovieBrowser/Movies/MovieDescription";
 
 function App() {
   return (
@@ -9,16 +11,16 @@ function App() {
       <Header />
       <Switch>
         <Route path={toMovie()}>
-          <MoviePage />
+          <MovieDescription />
         </Route>
         <Route path={toMovies()}>
           <MoviesList />
         </Route>
         <Route path={toPerson()}>
-          <ProfilePersonPage />
+
         </Route>
         <Route path={toPeople()}>
-          <PeopleList />
+
         </Route>
         <Route>
           <Redirect to={toMovies()} />
