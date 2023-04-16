@@ -44,12 +44,15 @@ export const WrapperHeader = styled.div`
 export const TitleHeaderLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 21px;
   display: flex;
   gap: 12px;
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
     gap: 8px;
-      }
+  }
 `;
 
 export const StyledVideoIcon = styled(VideoIcon)`
@@ -81,6 +84,10 @@ export const Navigation = styled.nav`
  list-style: none;
  margin: 0;
  padding: 0;
+ font-weight: 600;
+ font-size: 14px;
+ line-height: 21px;
+ text-transform: uppercase;
  display: flex;
  grid-gap: 16px;  
  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {

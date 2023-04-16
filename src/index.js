@@ -1,5 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import App from "./core/App";
+import reportWebVitals from "./reportWebVitals";
+import { GlobalStyle } from "./common/GlobalStyles";
+import { theme } from "./common/theme";
 import { ThemeProvider } from "styled-components";
 import App from "./core/App/App";
 import reportWebVitals from "./reportWebVitals";
@@ -10,14 +14,18 @@ import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
+  <HashRouter>
+
+    <ThemeProvider theme={theme}>
+
+      <React.StrictMode>
         <GlobalStyle />
+        <Normalize />
         <App />
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>
+      </React.StrictMode>
+    </ThemeProvider>
+
+  </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

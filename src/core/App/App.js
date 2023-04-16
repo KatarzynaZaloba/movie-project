@@ -7,7 +7,7 @@ import MovieDescription from "../../feature/MovieBrowser/Movies/MovieDescription
 
 function App() {
   return (
-    <HashRouter>
+    <>
       <Header />
       <Switch>
         <Route path={toMovie()}>
@@ -27,8 +27,8 @@ function App() {
         </Route>
       </Switch>
       <Pagination />
-    </HashRouter>
+    </>
   );
-};
+}
 
 export default App;
