@@ -13,7 +13,9 @@ const MovieTile = ({ title, poster, year, genresId, rating, votes }) => {
             <div>
                 <Title>{title}</Title>
                 <Year>{year}</Year>
-                <Genres />
+                <Genres 
+                    genresId={genresId}
+                />
                 <Rating
                     rating={rating}
                     votes={votes}
