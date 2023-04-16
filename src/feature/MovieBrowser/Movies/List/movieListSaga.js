@@ -4,17 +4,17 @@ import { fetchMovie, fetchMovieError, fetchMovieSuccess } from "./movieListSlice
 
 const loadingDelay = 1000;
 
-function* fetchMoviesHandler() {
-    try{
+function* fetchMovieHandler() {
+    try {
         yield delay(loadingDelay);
-        const movies = yield call(getPopularMovies)
+        const movies = yield call(getPopularMovies);
         yield put(fetchMovieSuccess(movies))
-        console.log(movies)
-    }catch(error){
+    } catch (error) {
         yield put(fetchMovieError());
     }
 };
 
-export function* movieListSaga() {
-    yield takeLatest(fetchMovie.type, fetchMoviesHandler);
+export function* movieListSaga() 
+{
+    yield takeLatest(fetchMovie.type, fetchMovieHandler);
 }
