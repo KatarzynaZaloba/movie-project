@@ -1,29 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./core/App";
 import reportWebVitals from "./reportWebVitals";
 import { GlobalStyle } from "./common/GlobalStyles";
 import { theme } from "./common/theme";
 import { ThemeProvider } from "styled-components";
 import App from "./core/App/App";
-import reportWebVitals from "./reportWebVitals";
-import { theme } from "./core/App/theme";
-import { GlobalStyle } from "./core/App/GlobalStyles";
 import { Provider } from "react-redux";
 import store from "./store";
+import { HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <HashRouter>
-
-    <ThemeProvider theme={theme}>
-
-      <React.StrictMode>
-        <GlobalStyle />
-        <Normalize />
-        <App />
-      </React.StrictMode>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <React.StrictMode>
+          <GlobalStyle />
+          <App />
+        </React.StrictMode>
+      </ThemeProvider>
+    </Provider>
 
   </HashRouter>
 );
