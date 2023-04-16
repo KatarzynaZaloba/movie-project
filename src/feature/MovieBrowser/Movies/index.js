@@ -2,7 +2,7 @@ import React from 'react'
 import { Header, Wrapper } from './styled'
 import List from './List'
 
-const MoviesList = () => {
+const Movies = () => {
     return (
         <Wrapper>
             <Header>Popular movies</Header>
@@ -11,4 +11,4 @@ const MoviesList = () => {
     )
 }
 
-export default MoviesList
+export default Movies
