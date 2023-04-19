@@ -7,7 +7,10 @@ export const theme = {
         pattensBlue: "#D6E4FF",
         mercury: "#E5E5E5",
         whisper: "#F5F5FA",
-        black: "#18181B",
+        lynch: "#627489",
+        woodSmoke: "#18181B",
+        stormGrey: "#74788B",
+        black: "#000000",
     },
 
     breakpoints: {
@@ -16,5 +19,6 @@ export const theme = {
         mobileMax: 767,
         medium: 555,
         mobileMin: 470,
+        small: 350,
     },
 };
