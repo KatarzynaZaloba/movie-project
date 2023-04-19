@@ -1,45 +1,38 @@
 import {
     StyledHeader,
+    TitleLink,
     PositionHeader,
-    WrapperHeader,
-    TitleHeaderLink,
+    Wrapper,
     StyledVideoIcon,
-    TitleHeaderStyled,
-    Navigation,
+    TittleText,
+    NavigationList,
     StyledNavLink,
-    SearchBar,
-    StyledSearchBarIcon,
-    StyledSearchIcon,
-    SearchBarInput,
 } from "./styled";
+import { Search } from "./Search";
 
-const Header = () => {
+export const Header = () => {
+
     return (
         <StyledHeader>
             <PositionHeader>
-                <WrapperHeader>
-                    <TitleHeaderLink to="/movies">
+                <Wrapper>
+                    <TitleLink to="/movies">
                         <StyledVideoIcon />
-                        <TitleHeaderStyled>Movies Browser</TitleHeaderStyled>
-                    </TitleHeaderLink>
-                    <Navigation>
-                        <li>
-                            <StyledNavLink to="/movies">MOVIES</StyledNavLink>
-                        </li>
-                        <li>
-                            <StyledNavLink to="/people">PEOPLE</StyledNavLink>
-                        </li>
-                    </Navigation>
-                </WrapperHeader>
-                <SearchBar>
-                    <StyledSearchBarIcon>
-                        <StyledSearchIcon />
-                    </StyledSearchBarIcon>
-                    <SearchBarInput placeholder="Search for movies..." />
-                </SearchBar>
+                        <TittleText>Movies Browser</TittleText>
+                    </TitleLink>
+                    <nav>
+                        <NavigationList>
+                            <li>
+                                <StyledNavLink to="/movies">MOVIES</StyledNavLink>
+                            </li>
+                            <li>
+                                <StyledNavLink to="/people">PEOPLE</StyledNavLink>
+                            </li>
+                        </NavigationList>
+                    </nav>
+                </Wrapper>
+                <Search />
             </PositionHeader>
         </StyledHeader>
     );
 };
-
-export default Header;
