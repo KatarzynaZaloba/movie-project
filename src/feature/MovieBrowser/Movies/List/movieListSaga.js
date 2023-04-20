@@ -14,19 +14,27 @@ function* fetchMovieHandler() {
     }
 };
 
+const arrayToObject = (genres) =>
+    genres.reduce(
+        (accumulator, { id, name }) => ({
+            ...accumulator,
+            [id]: name,
+        }),
+        {}
+    );
+
 function* fetchGenresHandler() {
     try {
         yield delay(loadingDelay);
-        const genres = yield call(getGenres);
-        yield put(fetchGenresSuccess(genres))
+        const response = yield call(getGenres);
+        yield put(fetchGenresSuccess(arrayToObject(response.genres)))
     } catch (error) {
         yield put(fetchGenresError(
         ));
     }
 }
 
-export function* movieListSaga() 
-{
+export function* movieListSaga() {
     yield takeLatest(fetchMovie.type, fetchMovieHandler);
     yield takeLatest(fetchGenres.type, fetchGenresHandler);
 }
