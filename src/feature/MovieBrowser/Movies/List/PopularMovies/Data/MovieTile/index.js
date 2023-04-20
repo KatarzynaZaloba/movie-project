@@ -1,34 +1,34 @@
 import React from 'react'
-import { Genre, GenresList, Poster, Tile, Title, Year } from './styled'
+import { Details, Genre, GenresList, Name, Poster, Tile, Title, Year } from './styled'
 import Rating from '../Rating'
-import { useSelector } from 'react-redux'
-import { selectGenres } from '../../../movieListSlice'
 
-
-const MovieTile = ({ title, poster, year, movieGenres, rating, votes }) => {
-    const genres = useSelector(selectGenres)
+const MovieTile = ({ movie, genres }) => {
 
     return (
         <Tile>
             <Poster
-                src={`https://image.tmdb.org/t/p/w500${poster}`}
-                alt={title}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
             />
-            <div>
-                <Title>{title}</Title>
-                <Year>{year}</Year>
-                <GenresList>
-                    {/* {movieGenres.genre_ids.map((genreId) => (
-                        <Genre key={genreId}>
-                            {genres[genreId]}
-                        </Genre>
-                    ))} */}
-                </GenresList>
-                <Rating
-                    rating={rating}
-                    votes={votes}
-                />
-            </div>
+            <Details>
+                <Title>{movie.title}</Title>
+                <Year>{movie.release_date.slice(0, 4)}</Year>
+                {movie.genre_ids && genres ? (
+                    <GenresList>
+                        {movie.genre_ids.map((genre_id) => (
+                            <Genre key={genre_id}>
+                                <Name>{genres[genre_id]}</Name>
+                            </Genre>
+                        ))}
+                    </GenresList>
+                ) : (
+                    ""
+                )}
+            </Details>
+            <Rating 
+            rating={movie.vote_average}
+            votes={movie.vote_count}
+            />
         </Tile>
     )
 }
