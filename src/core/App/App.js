@@ -1,6 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { toMovie, toMovies, toPeople, toPerson } from "../routes";
 import MoviesList from "../../feature/MovieBrowser/Movies";
+import PeopleList from "../../feature/People";
 import { Pagination } from "../../common/Pagination";
 import { Header } from "../../common/Header";
 
@@ -21,7 +22,7 @@ function App() {
 
         </Route>
         <Route path={toPeople()}>
-
+        <PeopleList />
         </Route>
         <Route>
           <Redirect to={toMovies()} />
