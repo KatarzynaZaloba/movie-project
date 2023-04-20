@@ -5,7 +5,9 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 0px;
     gap: 12px;
+    margin: 8px 0;
 `;
 
 export const Star = styled(star)`
