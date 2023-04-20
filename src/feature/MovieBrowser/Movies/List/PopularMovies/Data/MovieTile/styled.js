@@ -1,20 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
-    gap: 24px;
-`;
-
-export const Item = styled.div`
-    width: 100%;
-    height: 100%;
-
-    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
-        max-width: 288px;
-    }
-`;
-
 export const Tile = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     padding: 16px;
@@ -44,10 +29,6 @@ export const Poster = styled.img`
     }
 `;
 
-export const Details = styled.div`
-
-`;
-
 export const Title = styled.h2`
     line-height: 1.3;
     font-weight: 500;
@@ -71,28 +52,3 @@ export const Year = styled.p`
     }
 `;
 
-export const Genres = styled.div`
-    margin-bottom: 10px;
-
-    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}) {
-        margin-bottom: 12px;
-    }
-`;
-
-export const Genre = styled.div`
-    list-style: none;
-    text-align: center;
-    max-width: 78px;
-    max-height: 36px;
-    padding: 8px 16px;
-    background-color: ${({theme}) => theme.colors.mystic};
-    border-radius: 5px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.4;
-
-    @media (max-width: ${({theme})=> theme.breakpoints.mobileMax}px) {
-        font-size: 10px;
-        line-height: 1.1;
-    }
-`;
