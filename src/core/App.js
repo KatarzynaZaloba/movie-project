@@ -1,8 +1,8 @@
 import { Redirect, Route, Switch } from "react-router-dom";
-import Header from "../../common/Header";
-import { toMovie, toMovies, toPeople, toPerson } from "../routes";
-import MoviesList from "../../feature/MovieBrowser/Movies";
-import { Pagination } from "../../common/Pagination";
+import Header from "../common/Header";
+import { toMovie, toMovies, toPeople, toPerson } from "./routes";
+import MoviesList from "../feature/MovieBrowser/Movies";
+import { Pagination } from "../common/Pagination";
 
 function App() {
   return (
