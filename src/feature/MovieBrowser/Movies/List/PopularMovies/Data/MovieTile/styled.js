@@ -29,7 +29,7 @@ export const Poster = styled.img`
 `;
 
 export const Details = styled.div`
-    height: 200px;
+    height: 240px;
 `;
 
 export const Title = styled.h2`
