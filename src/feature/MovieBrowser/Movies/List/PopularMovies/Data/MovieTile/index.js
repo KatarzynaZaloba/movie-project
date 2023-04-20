@@ -18,11 +18,11 @@ const MovieTile = ({ title, poster, year, movieGenres, rating, votes }) => {
                 <Title>{title}</Title>
                 <Year>{year}</Year>
                 <GenresList>
-                    {movieGenres.genre_ids.map((genreId) => (
+                    {/* {movieGenres.genre_ids.map((genreId) => (
                         <Genre key={genreId}>
                             {genres[genreId]}
                         </Genre>
-                    ))}
+                    ))} */}
                 </GenresList>
                 <Rating
                     rating={rating}
