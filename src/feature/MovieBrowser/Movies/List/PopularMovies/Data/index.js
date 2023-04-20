@@ -11,7 +11,7 @@ const Data = ({ movies }) => {
                         title={movie.title}
                         poster={movie.poster_path}
                         year={movie.release_date}
-                        genresId={movie.genres_ids}
+                        movieGenres={movie}
                         rating={movie.vote_average}
                         votes={movie.vote_count}
                     />

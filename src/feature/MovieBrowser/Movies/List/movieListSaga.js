@@ -1,20 +1,32 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
-import { getPopularMovies } from "../moviesAPI";
-import { fetchMovie, fetchMovieError, fetchMovieSuccess } from "./movieListSlice";
+import { getGenres, getPopularMovies } from "../moviesAPI";
+import { fetchGenres, fetchGenresError, fetchGenresSuccess, fetchMovie, fetchMovieError, fetchMovieSuccess } from "./movieListSlice";
 
 const loadingDelay = 1000;
 
-function* fetchMoviesHandler() {
-    try{
+function* fetchMovieHandler() {
+    try {
         yield delay(loadingDelay);
-        const movies = yield call(getPopularMovies)
+        const movies = yield call(getPopularMovies);
         yield put(fetchMovieSuccess(movies))
-        console.log(movies)
-    }catch(error){
+    } catch (error) {
         yield put(fetchMovieError());
     }
 };
 
-export function* movieListSaga() {
-    yield takeLatest(fetchMovie.type, fetchMoviesHandler);
+function* fetchGenresHandler() {
+    try {
+        yield delay(loadingDelay);
+        const genres = yield call(getGenres);
+        yield put(fetchGenresSuccess(genres))
+    } catch (error) {
+        yield put(fetchGenresError(
+        ));
+    }
+}
+
+export function* movieListSaga() 
+{
+    yield takeLatest(fetchMovie.type, fetchMovieHandler);
+    yield takeLatest(fetchGenres.type, fetchGenresHandler);
 }

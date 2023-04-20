@@ -1,9 +1,13 @@
 import React from 'react'
-import { Poster, Tile, Title, Year } from './styled'
+import { Genre, GenresList, Poster, Tile, Title, Year } from './styled'
 import Rating from '../Rating'
-import Genres from './Genres'
+import { useSelector } from 'react-redux'
+import { selectGenres } from '../../../movieListSlice'
 
-const MovieTile = ({ title, poster, year, genresId, rating, votes }) => {
+
+const MovieTile = ({ title, poster, year, movieGenres, rating, votes }) => {
+    const genres = useSelector(selectGenres)
+
     return (
         <Tile>
             <Poster
@@ -13,7 +17,13 @@ const MovieTile = ({ title, poster, year, genresId, rating, votes }) => {
             <div>
                 <Title>{title}</Title>
                 <Year>{year}</Year>
-                <Genres />
+                <GenresList>
+                    {movieGenres.genre_ids.map((genreId) => (
+                        <Genre key={genreId}>
+                            {genres[genreId]}
+                        </Genre>
+                    ))}
+                </GenresList>
                 <Rating
                     rating={rating}
                     votes={votes}
