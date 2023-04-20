@@ -1,19 +1,19 @@
-
+import { useSelector } from "react-redux"
 import MovieTile from "./MovieTile"
 import { Item, Wrapper } from "./styled"
+import { selectGenres } from "../../movieListSlice"
+import Rating from "./Rating"
 
 const Data = ({ movies }) => {
+    const genres = useSelector(selectGenres)
+    
     return (
         <Wrapper>
             {movies.map((movie) =>
                 <Item key={movie.id}>
                     <MovieTile
-                        title={movie.title}
-                        poster={movie.poster_path}
-                        year={movie.release_date}
-                        movieGenres={movie}
-                        rating={movie.vote_average}
-                        votes={movie.vote_count}
+                        movie={movie}
+                        genres={genres}
                     />
                 </Item>
             )}
