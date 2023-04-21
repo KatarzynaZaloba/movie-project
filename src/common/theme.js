@@ -11,6 +11,7 @@ export const theme = {
         woodSmoke: "#18181B",
         stormGrey: "#74788B",
         black: "#000000",
+        silver: "#C4C4C4",
     },
 
     breakpoints: {
