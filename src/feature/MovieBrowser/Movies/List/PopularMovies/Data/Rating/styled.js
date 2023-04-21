@@ -3,38 +3,35 @@ import { ReactComponent as star } from "./vector.svg"
 
 export const Wrapper = styled.div`
     display: flex;
-    flex-direction: row;
     align-items: center;
-    padding: 0px;
-    gap: 12px;
-    margin: 8px 0;
+    margin-top: 8px;
 `;
 
 export const Star = styled(star)`
+    width: 24px;
+    height: auto;
 
-`;
-
-export const Score = styled.p`
-    margin: 0;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.5;
-
-    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
-        font-size: 13px;
-        line-height: 1.3;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        width: 20px;
     }
 `;
 
-export const Votes = styled.p`
-    margin: 0;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: ${({ theme }) => theme.colors.waterloo};
+export const Score = styled.span`
+    color: ${({ theme }) => theme.colors.woodSmoke};
+    margin: 0 12px;
+    font-weight: 600;
 
-    @media (max-width: ${({theme})=> theme.breakpoints.mobileMax}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         font-size: 13px;
-        line-height: 1.3;
+        margin: 0 12px 0 10px;
+    }
+`;
+
+export const Votes = styled.span`
+    color: ${({ theme }) => theme.colors.waterloo};
+    font-weight: 400;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 13px;
     }
 `;
