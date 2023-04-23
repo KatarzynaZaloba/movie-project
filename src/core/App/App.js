@@ -22,7 +22,7 @@ function App() {
 
         </Route>
         <Route path={toPeople()}>
-        <PeopleList />
+          <PeopleList />
         </Route>
         <Route>
           <Redirect to={toMovies()} />
