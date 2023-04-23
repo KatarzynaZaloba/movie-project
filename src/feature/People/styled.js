@@ -7,4 +7,7 @@ export const Wrapper = styled.div`
 
 export const Header = styled.h1`
     margin-bottom: 24px;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 36px;
 `;

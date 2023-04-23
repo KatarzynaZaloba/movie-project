@@ -10,6 +10,7 @@ export const PeopleList = styled.ul`
     flex-direction: row;
     gap: 24px;
     flex-wrap: wrap;
+    justify-content: center;
 `;
 
 export const Item = styled.li`
@@ -40,3 +41,6 @@ export const Title = styled.h2`
     font-size: 22px;
     margin: 0;
 `;
+
+export const Button = styled.button`
+    justify-content: center;`
