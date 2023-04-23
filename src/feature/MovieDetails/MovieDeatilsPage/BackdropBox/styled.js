@@ -3,6 +3,21 @@ import { ReactComponent as Star } from "../Rating/star.svg";
 
 export const BackdropContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.black};
+        @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
+       margin-right: -70px;
+    }
+        @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+       margin-right: -220px;
+    }
+        @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+       margin-right: -180px;
+    }
+        @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+       margin-right: -80px;
+    }
+      @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+       margin-right: -210px;
+    }
 `;
 
 export const BackdropWrapper = styled.div`
@@ -11,9 +26,6 @@ export const BackdropWrapper = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: flex-end;
-    @media (max-width: ${({ theme }) => theme.breakpoints.large}) {
-        margin: 0 6px;
-    }
 `;
 
 export const Pleksa = styled.div`
