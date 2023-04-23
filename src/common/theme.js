@@ -20,6 +20,6 @@ export const theme = {
         mobileMax: 767,
         medium: 555,
         mobileMin: 470,
-        small: 350,
+        small: 360,
     },
 };
