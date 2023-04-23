@@ -20,15 +20,21 @@ export const Pleksa = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    box-shadow: inset 0 0 4vw 3.7vw ${({ theme }) => theme.colors.black};
-    @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
-        box-shadow: inset 0 0 6vw 5.5vw ${({ theme }) => theme.colors.black};
+    box-shadow: inset 0px 0px 45px 45px rgba(0, 0, 0, 1);
+     @media (max-width: ${({ theme }) => theme.breakpoints.max}px) {
+        box-shadow: inset 0px 0px 40px 40px rgba(0, 0, 0, 1);
     }
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-        box-shadow: inset 0 0 7vw 6.5vw ${({ theme }) => theme.colors.black};
+     @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
+        box-shadow: inset 0px 0px 35px 30px rgba(0, 0, 0, 1);
     }
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-        box-shadow: inset 0 0 7vw 2.5vw ${({ theme }) => theme.colors.black};
+     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        box-shadow: inset 0px 0px 30px 30px rgba(0, 0, 0, 1);
+    }
+      @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+        box-shadow: inset 0px 0px 25px 20px rgba(0, 0, 0, 1);
+    }
+    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+        box-shadow: inset 0px 0px 25px 15px rgba(0, 0, 0, 1);
     }
 `;
 
