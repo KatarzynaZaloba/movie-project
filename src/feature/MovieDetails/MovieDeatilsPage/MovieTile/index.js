@@ -1,21 +1,21 @@
 import {
-    BlackText,
-    ContentTile,
     ContainerTile,
-    MovieTitle,
-    ImageTile,
-    Rate,
-    Rating,
-    Year,
-    Description,
-    Tags,
-    Votes,
-    StyledStarIcon,
     WrapperTile,
-    Tag,
-    GreyText,
-    Production,
+    ImageTile,
+    ContentTile,
     DetailsMovie,
+    MovieTitle,
+    Year,
+    Production,
+    GreyText,
+    BlackText,
+    Tags,
+    Tag,
+    Rating,
+    StyledStarIcon,
+    Rate,
+    Votes,
+    Description,
 } from "./styled";
 import poster from "./poster.png"
 
@@ -54,7 +54,7 @@ const MovieTile = () => {
                         </div>
                     </Description>
                 </WrapperTile>
-            </ContainerTile>
+            </ContainerTile >
         </>
     );
 };

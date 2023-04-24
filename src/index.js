@@ -6,10 +6,8 @@ import { theme } from "./common/theme";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import { Provider } from "react-redux";
-import store from "./store";
 import App from "./core/App";
-import { HashRouter } from "react-router-dom";
-
+import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,24 +1,40 @@
 import React from 'react'
-import { Poster, Tile, Title, Year } from './styled'
+import { Details, Genre, GenresList, Poster, PosterWrapper, Tile, Title, Year } from './styled'
 import Rating from '../Rating'
-import Genres from './Genres'
 
-const MovieTile = ({ title, poster, year, genresId, rating, votes }) => {
+const MovieTile = ({ movie, genres }) => {
+
     return (
         <Tile>
-            <Poster
-                src={`https://image.tmdb.org/t/p/w500${poster}`}
-                alt={title}
-            />
-            <div>
-                <Title>{title}</Title>
-                <Year>{year}</Year>
-                <Genres />
+            <PosterWrapper>
+                {movie.poster_path ? (
+                    <Poster
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                    />
+                ) : (
+                    "123"
+                )}
+            </PosterWrapper>
+            <Details>
+                <Title>{movie.title}</Title>
+                <Year>{movie.release_date.slice(0, 4)}</Year>
+                {movie.genre_ids && genres ? (
+                    <GenresList>
+                        {movie.genre_ids.map((genre_id) => (
+                            <Genre key={genre_id}>
+                                {genres[genre_id]}
+                            </Genre>
+                        ))}
+                    </GenresList>
+                ) : (
+                    ""
+                )}
                 <Rating
-                    rating={rating}
-                    votes={votes}
+                    rating={movie.vote_average}
+                    votes={movie.vote_count}
                 />
-            </div>
+            </Details>
         </Tile>
     )
 }
