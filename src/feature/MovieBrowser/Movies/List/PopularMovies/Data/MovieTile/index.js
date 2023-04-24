@@ -1,34 +1,40 @@
 import React from 'react'
-import { Genre, GenresList, Poster, Tile, Title, Year } from './styled'
+import { Details, Genre, GenresList, Poster, PosterWrapper, Tile, Title, Year } from './styled'
 import Rating from '../Rating'
-import { useSelector } from 'react-redux'
-import { selectGenres } from '../../../movieListSlice'
 
-
-const MovieTile = ({ title, poster, year, movieGenres, rating, votes }) => {
-    const genres = useSelector(selectGenres)
+const MovieTile = ({ movie, genres }) => {
 
     return (
         <Tile>
-            <Poster
-                src={`https://image.tmdb.org/t/p/w500${poster}`}
-                alt={title}
-            />
-            <div>
-                <Title>{title}</Title>
-                <Year>{year}</Year>
-                <GenresList>
-                    {/* {movieGenres.genre_ids.map((genreId) => (
-                        <Genre key={genreId}>
-                            {genres[genreId]}
-                        </Genre>
-                    ))} */}
-                </GenresList>
+            <PosterWrapper>
+                {movie.poster_path ? (
+                    <Poster
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                    />
+                ) : (
+                    "123"
+                )}
+            </PosterWrapper>
+            <Details>
+                <Title>{movie.title}</Title>
+                <Year>{movie.release_date.slice(0, 4)}</Year>
+                {movie.genre_ids && genres ? (
+                    <GenresList>
+                        {movie.genre_ids.map((genre_id) => (
+                            <Genre key={genre_id}>
+                                {genres[genre_id]}
+                            </Genre>
+                        ))}
+                    </GenresList>
+                ) : (
+                    ""
+                )}
                 <Rating
-                    rating={rating}
-                    votes={votes}
+                    rating={movie.vote_average}
+                    votes={movie.vote_count}
                 />
-            </div>
+            </Details>
         </Tile>
     )
 }
