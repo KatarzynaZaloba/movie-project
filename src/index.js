@@ -11,17 +11,16 @@ import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <HashRouter>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <React.StrictMode>
-          <GlobalStyle />
-          <Normalize />
-          <App />
-        </React.StrictMode>
-      </ThemeProvider>
-    </Provider>
-  </HashRouter>
+
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <React.StrictMode>
+        <GlobalStyle />
+        <Normalize />
+        <App />
+      </React.StrictMode>
+    </ThemeProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

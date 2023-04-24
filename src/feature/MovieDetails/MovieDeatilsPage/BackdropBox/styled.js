@@ -3,21 +3,6 @@ import { ReactComponent as Star } from "../Rating/star.svg";
 
 export const BackdropContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.black};
-        @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
-       margin-right: -70px;
-    }
-        @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-       margin-right: -220px;
-    }
-        @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-       margin-right: -180px;
-    }
-        @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-       margin-right: -80px;
-    }
-      @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-       margin-right: -210px;
-    }
 `;
 
 export const BackdropWrapper = styled.div`
@@ -26,27 +11,24 @@ export const BackdropWrapper = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: flex-end;
+    @media (max-width: ${({ theme }) => theme.breakpoints.large}) {
+        margin: 0 6px;
+    }
 `;
 
 export const Pleksa = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    box-shadow: inset 0px 0px 45px 45px rgba(0, 0, 0, 1);
-     @media (max-width: ${({ theme }) => theme.breakpoints.max}px) {
-        box-shadow: inset 0px 0px 40px 40px rgba(0, 0, 0, 1);
+    box-shadow: inset 0 0 4vw 3.7vw ${({ theme }) => theme.colors.black};
+    @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
+        box-shadow: inset 0 0 6vw 5.5vw ${({ theme }) => theme.colors.black};
     }
-     @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
-        box-shadow: inset 0px 0px 35px 30px rgba(0, 0, 0, 1);
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        box-shadow: inset 0 0 7vw 6.5vw ${({ theme }) => theme.colors.black};
     }
-     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-        box-shadow: inset 0px 0px 30px 30px rgba(0, 0, 0, 1);
-    }
-      @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-        box-shadow: inset 0px 0px 25px 20px rgba(0, 0, 0, 1);
-    }
-    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-        box-shadow: inset 0px 0px 25px 15px rgba(0, 0, 0, 1);
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        box-shadow: inset 0 0 7vw 2.5vw ${({ theme }) => theme.colors.black};
     }
 `;
 
