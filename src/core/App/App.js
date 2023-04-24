@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import { toMovie, toMovies, toPeople, toPerson } from "../routes";
 import MoviesList from "../../feature/MovieBrowser/Movies";
 import PeopleList from "../../feature/People";
@@ -8,7 +8,7 @@ import { Header } from "../../common/Header";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
 
       <Switch>
@@ -29,7 +29,7 @@ function App() {
         </Route>
       </Switch>
       <Pagination />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
