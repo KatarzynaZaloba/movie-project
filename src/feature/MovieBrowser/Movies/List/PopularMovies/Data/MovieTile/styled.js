@@ -12,6 +12,15 @@ export const Tile = styled.div`
     border-radius: 5px;
     padding: 16px;
 
+    &:hover{
+        transform: scale(1.05);
+        box-shadow: ${({ theme }) => theme.hoverShadow};
+    }
+
+    &:active{
+        box-shadow: ${({ theme }) => theme.activeShadow};
+    }
+    
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         grid-template-columns: auto 1fr; 
     }
