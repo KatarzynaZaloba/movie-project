@@ -29,22 +29,6 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
     onPageChange(1);
   };
 
-  const handleLoadMoreClick = () => {
-    setIsLoading(true);
-    axios
-      .get(
-        `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage + 1}`
-      )
-      .then((response) => {
-        onPageChange(currentPage + 1);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(false);
-      });
-  };
-
   return (
     <Wrapper>
       <Button disabled={currentPage === 1} onClick={handleFirstPageClick}>
@@ -75,11 +59,6 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
         <NextVectorIcon />
         <NextVectorIcon mobile="true" />
       </Button>
-      {currentPage !== 1 && currentPage !== totalPages && (
-        <Button disabled={isLoading} onClick={handleLoadMoreClick}>
-          {isLoading ? "Loading..." : "Load More"}
-        </Button>
-      )}
     </Wrapper>
   );
 };
