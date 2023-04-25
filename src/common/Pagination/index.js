@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   PageCounter,
   ButtonText,
@@ -7,40 +8,78 @@ import {
   Button,
   NextVectorIcon,
 } from "./styled";
+import axios from "axios";
 
-export const Pagination = ({ totalPages, page, setPage}) => {
+export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleNextPageClick = () => {
+    onPageChange(currentPage + 1);
+  };
+
+  const handlePrevPageClick = () => {
+    onPageChange(currentPage - 1);
+  };
+
+  const handleLastPageClick = () => {
+    onPageChange(totalPages);
+  };
+
+  const handleFirstPageClick = () => {
+    onPageChange(1);
+  };
+
+  const handleLoadMoreClick = () => {
+    setIsLoading(true);
+    axios
+      .get(
+        `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage + 1}`
+      )
+      .then((response) => {
+        onPageChange(currentPage + 1);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  };
+
   return (
     <Wrapper>
-      <Button 
-      disabled={page === 1} onClick={() => setPage(1)}>
+      <Button disabled={currentPage === 1} onClick={handleFirstPageClick}>
         <PrevVectorIcon />
-        <PrevVectorIcon mobile ="true" />
+        <PrevVectorIcon mobile="true" />
         <ButtonText>First</ButtonText>
       </Button>
-      <Button disabled={page === 1} onClick={() => setPage(page - 1)}>
+      <Button disabled={currentPage === 1} onClick={handlePrevPageClick}>
         <PrevVectorIcon />
         <ButtonText>Previous</ButtonText>
       </Button>
       <PageCounter>
-        Page
-        <PageNumbers>{page}</PageNumbers>
-        of
-        <PageNumbers>{totalPages > 500 ? 500 : totalPages}
-        </PageNumbers>
+        Page <PageNumbers>{currentPage}</PageNumbers> of{" "}
+        <PageNumbers>{totalPages}</PageNumbers>
       </PageCounter>
       <Button
-      nextdisabled={page === (totalPages > 500 ? 500 : totalPages)}
-      onClick={() => setPage(page + 1)}>
+        disabled={currentPage === totalPages || isLoading}
+        onClick={handleNextPageClick}
+      >
         <ButtonText>Next</ButtonText>
         <NextVectorIcon />
       </Button>
       <Button
-      next={page === (totalPages > 500 ? 500 : totalPages)}
-      onClick={() => setPage(totalPages > 500 ? 500 : totalPages)}>
+        disabled={currentPage === totalPages || isLoading}
+        onClick={handleLastPageClick}
+      >
         <ButtonText>Last</ButtonText>
         <NextVectorIcon />
-        <NextVectorIcon mobile="true"/>
+        <NextVectorIcon mobile="true" />
       </Button>
+      {currentPage !== 1 && currentPage !== totalPages && (
+        <Button disabled={isLoading} onClick={handleLoadMoreClick}>
+          {isLoading ? "Loading..." : "Load More"}
+        </Button>
+      )}
     </Wrapper>
-  )
-}
+  );
+};
