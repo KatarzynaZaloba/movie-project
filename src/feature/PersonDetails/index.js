@@ -1,6 +1,5 @@
 
 import { Wrapper, SectionTitle, DetailsWrapper } from './styled'
-import Backdrop from './PersonDeatilsPage/BackdropBox'
 import PersonTile from './PersonDeatilsPage/PersonTile'
 import Cast from './PersonDeatilsPage/Cast'
 import Crew from './PersonDeatilsPage/Crew'
@@ -8,7 +7,6 @@ import Crew from './PersonDeatilsPage/Crew'
 const PersonDetails = () => {
     return (
         <>
-            <Backdrop />
             <Wrapper>
                 <DetailsWrapper>
                     <PersonTile />
