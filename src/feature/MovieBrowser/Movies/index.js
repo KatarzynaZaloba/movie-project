@@ -32,7 +32,8 @@ const Movies = () => {
     };
     return (
         <Wrapper>
-            <List />
+            <List
+            movies={movie} />
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
