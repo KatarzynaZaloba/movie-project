@@ -1,8 +1,8 @@
 
-import { Wrapper, SectionTitle, DetailsWrapper } from './styled'
-import PersonTile from './PersonDeatilsPage/PersonTile'
-import Cast from './PersonDeatilsPage/Cast'
-import Crew from './PersonDeatilsPage/Crew'
+import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
+import PersonTile from './PersonDeatilsPage/PersonTile';
+import Cast from './PersonDeatilsPage/Cast';
+import Crew from './PersonDeatilsPage/Crew';
 
 const PersonDetails = () => {
     return (
