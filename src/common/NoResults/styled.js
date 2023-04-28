@@ -12,7 +12,7 @@ export const Disclaimer = styled.div`
   font-size: 36px;
   line-height: 120%;
   margin-left: 20px;
-  color: ${({ theme }) => theme.color.woodsmoke};
+  color: ${({ theme }) => theme.colors.woodsmoke};
   @media (max-width: ${({ theme }) => theme.breakpoints.desktopHorizontalMax}px) {
     font-size: 30px;
   }
