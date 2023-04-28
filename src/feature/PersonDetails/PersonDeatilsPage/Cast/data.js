@@ -1,5 +1,5 @@
 export const data = {
-    people: [
+    movies: [
         {
             poster: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/hTMEa1eaSLBr9VJcoiXuU89MK81.jpg',
             name: 'Liu Yifei',

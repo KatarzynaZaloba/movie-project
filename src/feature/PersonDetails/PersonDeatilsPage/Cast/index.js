@@ -5,12 +5,12 @@ import { Wrapper, List } from "./styled";
 
 const Cast = () => {
 
-    const cast = data.people
+    const cast = data.movies
 
     return (
         <Wrapper>
-            {cast.map((people) =>
-                <List key={people}>
+            {cast.map((movies) =>
+                <List key={movies}>
                     <MovieTile />
                 </List>
             )}
