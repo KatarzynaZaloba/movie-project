@@ -1,5 +1,6 @@
+import MovieTile from "../../../MovieBrowser/Movies/List/PopularMovies/Data/MovieTile";
 import { data } from "../Cast/data";
-import { Wrapper, Poster, Tile, ActorName, List, ActorRole } from "../Cast/styled"
+import { Wrapper, List } from "../Cast/styled";
 
 const Crew = () => {
 
@@ -9,11 +10,7 @@ const Crew = () => {
         <Wrapper>
             {crew.map((people) =>
                 <List key={people}>
-                    <Tile>
-                        <Poster src={people.poster} alt={people.name} />
-                        <ActorName>{people.name}</ActorName>
-                        <ActorRole>{people.role}</ActorRole>
-                    </Tile>
+                    <MovieTile />
                 </List>
             )}
         </Wrapper>
