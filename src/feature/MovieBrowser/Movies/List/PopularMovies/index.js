@@ -1,6 +1,6 @@
+import Loading from "../../../../../common/States/Loading";
 import Data from "./Data";
 import ErrorBox from "./ErrorBox";
-import Loading from "./Loading";
 
 const PopularMovies = ({ status, movies }) => {
     switch (status) {
@@ -17,7 +17,7 @@ const PopularMovies = ({ status, movies }) => {
             return <Data movies={movies} />;
 
         default:
-            throw new Error (`incorrect status: ${status}`);
+            throw new Error(`incorrect status: ${status}`);
     }
 };
 
