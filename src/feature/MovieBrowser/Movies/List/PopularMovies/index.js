@@ -1,6 +1,6 @@
 import Data from "./Data";
 import ErrorBox from "./ErrorBox";
-import Loading from "./Loading";
+import Loading from "../../../../../common/States/Loading";
 
 const PopularMovies = ({ status, movies }) => {
     switch (status) {
