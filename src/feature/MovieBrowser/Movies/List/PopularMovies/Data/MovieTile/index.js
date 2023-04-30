@@ -18,7 +18,7 @@ const MovieTile = ({ movie, genres }) => {
             </PosterWrapper>
             <Details>
                 <Title>{movie.title}</Title>
-                <Year>{movie.release_date.slice(0, 4)}</Year>
+                {movie.release_date ? <Year>{movie.release_date.slice(0, 4)}</Year> : "" }
                 {movie.genre_ids && genres ? (
                     <GenresList>
                         {movie.genre_ids.map((genre_id) => (
