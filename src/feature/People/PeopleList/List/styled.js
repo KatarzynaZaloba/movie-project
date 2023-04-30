@@ -21,9 +21,19 @@ export const Tile = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     padding: 16px;
     width: 208px;
-    height: 339px;
+    height: 100%;
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
     border-radius: 5px;
+    transition: 0.5s;
+
+    &:hover{
+        transform: scale(1.05);
+        box-shadow: ${({ theme }) => theme.hoverShadow};
+    }
+
+    &:active{
+        box-shadow: ${({ theme }) => theme.activeShadow};
+    }
 `;
 
 export const Poster = styled.img`
