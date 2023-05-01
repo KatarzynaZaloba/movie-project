@@ -14,7 +14,7 @@ const Crew = () => {
         <Wrapper>
             {crew.map(({ poster_path, name, crew_id, department, id }) => (
                 <List key={crew_id}>
-                    <Link to={toPerson({ personId: id })}>
+                    <Link /*to={toPerson({ personId: id })}*/>
                         <Tile>
                             {poster_path ? (
                                 <Poster src={`${imgBaseUrl}/original/${poster_path}`} alt={name} />

@@ -3,7 +3,6 @@ import { Header } from "../common/Header";
 import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import MoviesList from "../feature/MovieBrowser/Movies";
 import MovieDetails from "../feature/MovieDetails";
-import { Pagination } from "../common/Pagination";
 
 function App() {
   const id = "movieId";
@@ -24,7 +23,6 @@ function App() {
           <Redirect to={toMovies()} />
         </Route>
       </Switch>
-      <Pagination />
     </>
   );
 }
