@@ -5,8 +5,9 @@ import MoviesList from "../feature/MovieBrowser/Movies";
 import MovieDetails from "../feature/MovieDetails";
 import { Pagination } from "../common/Pagination";
 
-
 function App() {
+  const id = "movieId";
+
   return (
     <>
       <Header />
@@ -14,14 +15,11 @@ function App() {
         <Route path={toMovies()}>
           <MoviesList />
         </Route>
-        <Route path={toMovie({ movieId: "movieId" })}>
+        <Route path={toMovie({ movieId: id })}>
           <MovieDetails />
         </Route>
-        <Route path={toPeople()}>
-        </Route>
-        <Route path={toPerson({ personId: "personId" })}>
-
-        </Route>
+        <Route path={toPeople()}></Route>
+        <Route path={toPerson({ personId: "personId" })}></Route>
         <Route>
           <Redirect to={toMovies()} />
         </Route>
@@ -32,6 +30,3 @@ function App() {
 }
 
 export default App;
-
-
-
