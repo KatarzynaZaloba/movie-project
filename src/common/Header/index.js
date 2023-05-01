@@ -10,7 +10,7 @@ import {
 } from "./styled";
 import { Search } from "./Search";
 
-const Header = () => {
+export const Header = () => {
 
     return (
         <StyledHeader>
@@ -36,5 +36,3 @@ const Header = () => {
         </StyledHeader>
     );
 };
-
-export default Header;
