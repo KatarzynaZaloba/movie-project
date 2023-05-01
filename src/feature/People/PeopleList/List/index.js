@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Wrapper, PeopleList, Item, Tile, Poster, Title } from "./styled";
 import { Pagination } from "../../../../common/Pagination";
 import Loading from "../../../../common/States/Loading";
+import noPicture from "../../../../common/Images/noPicture.svg";
 
 const PopularPeopleList = () => {
   const [people, setPeople] = useState([]);
@@ -44,7 +45,12 @@ const PopularPeopleList = () => {
                 <Poster
                   src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
                   alt={person.name}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = noPicture;
+                  }}
                 />
+
                 <Title>{person.name}</Title>
               </Tile>
             </Item>
