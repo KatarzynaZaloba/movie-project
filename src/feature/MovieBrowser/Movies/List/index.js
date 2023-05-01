@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchGenres, fetchMovie, selectMovies, selectMovieStatus } from './movieListSlice'
 import PopularMovies from './PopularMovies';
 
-const List = () => {
+const List = ({movies}) => {
 
     const dispatch = useDispatch();
 
-    const movies = useSelector(selectMovies);
+    // const movies = useSelector(selectMovies);
     const movieStatus = useSelector(selectMovieStatus);
 
     useEffect(() => {
