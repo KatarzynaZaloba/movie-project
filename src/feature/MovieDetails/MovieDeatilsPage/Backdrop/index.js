@@ -1,3 +1,4 @@
+import { imgBackdrop } from "../../../../core/APIBox/apiSource";
 import {
     BackdropContainer,
     Pleksa,
@@ -11,23 +12,24 @@ import {
     Votes,
     LongTitle,
 } from "./styled";
+import star from "../image/star.svg";
 
-const Backdrop = () => {
+const Backdrop = ({ backdrop_path, title, vote_count, vote_average }) => {
     return (
         <>
             <BackdropContainer>
                 <BackdropWrapper >
                     <Pleksa />
                     <BackdropImage
-                        src="https://www.themoviedb.org/t/p/original/5Hjp9BxalM0eDviMcD8gdHplGbT.jpg"
-                        alt="Mulan" />
+                        src={`${imgBackdrop}${backdrop_path}`}
+                        alt="" />
                     <BackdropInfoContainer>
-                        <LongTitle>Mulan long title</LongTitle>
+                        <LongTitle>{title}</LongTitle>
                         <Rating>
-                            <StarIcon />
-                            <RateBig>7,8</RateBig>
+                            <StarIcon src={star} />
+                            <RateBig>{vote_average.toFixed(1)}</RateBig>
                             <RateSmall>/ 10</RateSmall>
-                            <Votes>335 votes</Votes>
+                            <Votes>{vote_count} votes</Votes>
                         </Rating>
                     </BackdropInfoContainer>
                 </BackdropWrapper>

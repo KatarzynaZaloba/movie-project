@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as StarIcon } from "../Rating/star.svg";
+import { ReactComponent as StarIcon } from "../image/star.svg";
 
 export const ContainerTile = styled.div`
  max-width: 1368px;

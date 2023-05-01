@@ -25,16 +25,29 @@ export const List = styled.div`
 `;
 
 export const Tile = styled.div`
-    background-color: ${({ theme }) => theme.colors.white};
-    padding: 16px;
-    width: 208px;
-    height: auto;
-    box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
-    border-radius: 5px;
-    font-size: 22px;
+  background-color: ${({ theme }) => theme.colors.white};
+  padding: 16px;
+  width: 208px;
+  height: auto;
+  box-shadow: ${({ theme }) => theme.hoverShadow};
+  border-radius: 5px;
+  font-size: 22px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: ${({ theme }) => theme.activeShadow};
+    transform: scale(1.05);
+  }
 `;
 
 export const Poster = styled.img`
+    max-width: 177px;
+    height: 264px;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    `;
+
+export const NoPoster = styled.img`
     max-width: 177px;
     height: 264px;
     border-radius: 5px;

@@ -9,7 +9,14 @@ export const StyledHeader = styled.header`
   padding: 22px 16px;
   color: ${({ theme }) => theme.colors.white};
    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    margin: 0;
     width: 100%;
+    padding: 12px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    margin: 0;
+    width: 100%;
+     background: ${({ theme }) => theme.colors.black};
     padding: 12px;
   }
   `;
@@ -21,11 +28,12 @@ export const PositionHeader = styled.div`
   gap: 16px;
   grid-template-columns: auto minmax(205px, 432px);
    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    width: 100%;
     grid-template-columns: 1fr;
     gap: 24px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    max-width: 320px;
+    width: 100%;
     grid-template-columns: 1fr;
     gap: 24px;
   }

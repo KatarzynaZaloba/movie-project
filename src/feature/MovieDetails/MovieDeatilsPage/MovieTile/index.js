@@ -17,45 +17,66 @@ import {
     Votes,
     Description,
 } from "./styled";
-import poster from "./poster.png"
 
-const MovieTile = () => {
+const MovieTile = ({
+    poster_path,
+    original_title,
+    release_date,
+    production_countries,
+    overview,
+    vote_average,
+    vote_count,
+    genres,
+    release_year,
+}) => {
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("pl-PL", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
+    };
+
     return (
-        <>
-            <ContainerTile>
-                <WrapperTile>
-                    <ImageTile src={poster} alt="" />
-                    <ContentTile>
-                        <DetailsMovie>
-                            <MovieTitle>Mulan</MovieTitle>
-                            <Year>2020</Year>
+        <ContainerTile>
+            <WrapperTile>
+                {poster_path && (
+                    <ImageTile src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="Poster" />
+                )}
+                <ContentTile>
+                    <DetailsMovie>
+                        <MovieTitle>{original_title}</MovieTitle>
+                        <Year>{release_year.slice(0, 4)}</Year>
+                        {production_countries.length !== 0 && (
                             <Production>
                                 <GreyText>Production:</GreyText>
-                                <BlackText>China, USA</BlackText>
-                            </Production >
+                                <BlackText>{production_countries.map((country) => country.name).join(", ")}</BlackText>
+                            </Production>
+                        )}
+                        {release_date && (
                             <Production>
                                 <GreyText>Release date: </GreyText>
-                                <BlackText>24.10.2020</BlackText>
+                                <BlackText>{formatDate(release_date)}</BlackText>
                             </Production>
-                            <Tags>
-                                <Tag>Action</Tag>
-                                <Tag>Adventure</Tag>
-                                <Tag>Drama</Tag>
-                            </Tags>
-                            <Rating>
-                                <StyledStarIcon /> <Rate>7,8</Rate>
-                                <Votes>/ 10</Votes> <Votes>335 votes</Votes>
-                            </Rating>
-                        </DetailsMovie>
-                    </ContentTile>
-                    <Description>
-                        <div>
-                            A young Chinese maiden disguises herself as a male warrior in order to save her father. Disguises herself as a male warrior in order to save her father. A young Chinese maiden disguises herself as a male warrior in order to save her father.
-                        </div>
-                    </Description>
-                </WrapperTile>
-            </ContainerTile >
-        </>
+                        )}
+                        <Tags>
+                            {genres.map((genre) => (
+                                <Tag key={genre.id}>{genre.name}</Tag>
+                            ))}
+                        </Tags>
+                        <Rating>
+                            <StyledStarIcon /> <Rate>{vote_average}</Rate>
+                            <Votes>/ 10</Votes> <Votes>{vote_count} votes</Votes>
+                        </Rating>
+                    </DetailsMovie>
+                </ContentTile>
+                <Description>
+                    <div>{overview}</div>
+                </Description>
+            </WrapperTile>
+        </ContainerTile>
     );
 };
-export default MovieTile
+
+export default MovieTile;
