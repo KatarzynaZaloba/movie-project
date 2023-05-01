@@ -15,7 +15,7 @@ const Cast = () => {
             {cast.map(({ poster_path, name, cast_id, character, id }) => (
                 <List key={cast_id}>
                     <Tile>
-                        <Link to={toPerson({ personId: id })}>
+                        <Link /*</Tile>to={toPerson({ personId: id })}*/>
                             {poster_path ? (
                                 <Poster src={`${imgBaseUrl}/original/${poster_path}`} alt={name} />
                             ) : (
