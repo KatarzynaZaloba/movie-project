@@ -1,0 +1,251 @@
+[33mcommit 3cc34d24bea939768de6232d45ebc14ac4f8bd2c[m[33m ([m[1;36mHEAD -> [m[1;32mmovieDetailss[m[33m)[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 20:51:46 2023 +0200
+
+    code correction, syntax errors removed
+
+[33mcommit 0903f30d7dd4d7a00cc7ec7b8a5b15e0fc9cc041[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 20:51:12 2023 +0200
+
+    fixed path for App.js
+
+[33mcommit 963d64232a4c2b0a6c920e12eb7974c9f2dfbbdd[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 20:50:31 2023 +0200
+
+    removed duplicate App.js
+
+[33mcommit 27b2460f9d996865f808b30a489c492ceecdb52a[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 17:11:15 2023 +0200
+
+    rebuilt the code in terms of search functionality
+
+[33mcommit 7ef1e9ceca2ccfe07663f31f541ea0e120ade2ae[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 13:55:38 2023 +0200
+
+    movieID is declared
+
+[33mcommit 70bc85a421c0ef2382e180ba26e79263f7b51083[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 13:38:29 2023 +0200
+
+    <Hash
+    Router> added
+
+[33mcommit 1ade62a280d87c26b8e5ea4e2d67f6b29082abc9[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 13:31:44 2023 +0200
+
+    removed Loading double import
+
+[33mcommit b59e8f79c86154b1d42035151adcb2e4fa80d94b[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 13:21:08 2023 +0200
+
+    updated export Header
+
+[33mcommit faecc8f2dd6a54704ceaed37db8b03ed9adf1981[m
+Merge: 6ddf692 58d3da2
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Mon May 1 12:57:14 2023 +0200
+
+    Merge branch 'master' of https://github.com/AdrianJar/movie-project into movieDetailss
+
+[33mcommit 58d3da240da72163c3e66f065128b0acf1bea9a8[m
+Merge: dda5535 d1f465c
+Author: Katarzyna Zaloba <123471023+KatarzynaZaloba@users.noreply.github.com>
+Date:   Sun Apr 30 18:45:53 2023 +0200
+
+    Merge pull request #26 from AdrianJar/feature/pagination-with-api
+    
+    Feature/pagination with api
+
+[33mcommit 6ddf69204f56e20fe8f46a1790f86f501ac3adcd[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 17:27:20 2023 +0200
+
+    removed duplicate App.js
+
+[33mcommit 50b39a6e74000f12960c09732510300440d826bb[m
+Merge: 2d8613e dda5535
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 17:08:50 2023 +0200
+
+    Merge branches 'movieDetailss' and 'master' of https://github.com/AdrianJar/movie-project into movieDetailss
+
+[33mcommit 2d8613e7ed9f156241bb2e9ae2fe82503f9b28c4[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:25:56 2023 +0200
+
+    duplicated Backdrop component removed
+
+[33mcommit 815e5654842574bf20d88fd67a5dca0565634e56[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:25:15 2023 +0200
+
+    removed image and data which have now been replaced with the functionality of downloading data from the API
+
+[33mcommit 3bf70383cfcb1a0d5a06606afa9d019616f3d095[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:25:02 2023 +0200
+
+    updated Tile
+
+[33mcommit d2e9ef2b9bb49f9da9ea83ba39e984bac7c04980[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:24:17 2023 +0200
+
+    removed image and data which have now been replaced with the functionality of downloading data from the API
+
+[33mcommit 70e9c40570012d2d7b73962f218c93683231cd66[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:23:23 2023 +0200
+
+    Rating moved to MovieDetails component
+
+[33mcommit 5b0a143be3ce8849d0208632f81906cbb0d7e16a[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:22:13 2023 +0200
+
+    added logic for Cast functionality
+
+[33mcommit 756e438dbaa079d41447f9674e5f813aab1c0a88[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:20:33 2023 +0200
+
+    star.svg added
+
+[33mcommit 7cd7ec7a781e0244780dfad6eb5ed4f3b557915f[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:20:02 2023 +0200
+
+    noPoster icon added
+
+[33mcommit dc4da4e15440073ac5432ae3edbbc441dd5b8cc8[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:19:49 2023 +0200
+
+    added logic for MovieTile functionality
+
+[33mcommit bd342b003ddea4e4a15ebd3b0ce98c1d3a6ab595[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:19:17 2023 +0200
+
+    fixed path for star.svg
+
+[33mcommit 157f477c9e3e5e75e6726ea9a33233197ecbdc54[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:18:33 2023 +0200
+
+    added logic for Crew  functionality
+
+[33mcommit 3b27f2afe1832cad827fbbc37cffe6afbda0bcdc[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:18:00 2023 +0200
+
+    updated styled for Backdrop
+
+[33mcommit 8cc0f9125aff1334681d7bf042fbb84dc4a62122[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:17:43 2023 +0200
+
+    added logic for Backdrop functionality
+
+[33mcommit 86065dd959d6ac78933501e1b40ce5897270fd52[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:17:22 2023 +0200
+
+    movieDetailsSlice created
+
+[33mcommit cd4b4fddcf39a089e1e9a64e15e71e23dabb7d57[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:17:09 2023 +0200
+
+    movieDetailsSaga created
+
+[33mcommit ccfb9cf1ac8a55ebe0d011b0954a524791609be3[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:16:50 2023 +0200
+
+    added logic for MovieDetails functionality
+
+[33mcommit e8822e3166a84928d7237dbdaf0d4715e109b075[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:16:12 2023 +0200
+
+    API for MovieDetails created
+
+[33mcommit 4aa2a5d2176881e64c017b62067fd9656b374f4b[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:15:43 2023 +0200
+
+    removed redundant fetchAPI component
+
+[33mcommit 43285ae7184dac3212e1a24e8217f950b0ecffa4[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:15:03 2023 +0200
+
+    updated apiSources
+
+[33mcommit 6cedfcbccaca1a3c5224a92bbb2d6212086d1ba4[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:14:43 2023 +0200
+
+    rebuilt routes for MovieDetails and Search action
+
+[33mcommit c4f116360b48e23106b4ca7f7833ed73b8a14697[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:14:14 2023 +0200
+
+    rebuilt App.jd for MovieDetails action
+
+[33mcommit 627a7c87ffa225acfa1b6416a321178c613714d2[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:13:36 2023 +0200
+
+    built searchSaga to Search
+
+[33mcommit e1c1a28d351de5ac878ba0633ec27ce15b1adbe5[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:13:25 2023 +0200
+
+    built searchSlice to Search
+
+[33mcommit eed2c5a9b2f74d7cefdde4cbb55b40459bf3e4a5[m
+Merge: e553940 099b115
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:12:59 2023 +0200
+
+    Merge branch 'movieDetailss' of https://github.com/AdrianJar/movie-project into movieDetailss
+
+[33mcommit e553940ce9e3b0660fe7dcc8416fb46fd8b2aecc[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:12:11 2023 +0200
+
+    seacrhAPI added to Search
+
+[33mcommit b7a9f862a845a9b758b075a832455ca7b0bae3f9[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:11:36 2023 +0200
+
+    adding logic to the Search component
+
+[33mcommit 4030b3452bf786837767673ebdb541ab18cf419f[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:11:00 2023 +0200
+
+       search: searchReducer and movieDetails: movieDetailsReducer added
+
+[33mcommit fbc022bfb8d6269c7482bef155917df7fc887edc[m
+Author: Marianna Weychan <mariannaweychan@gmail.com>
+Date:   Sun Apr 30 16:10:03 2023 +0200
+
+     watchSearch() and
+    movieDetailsSaga() added
+
+[33mcommit 099b1157350744f152d338375b1f0162c1dcc6e5[m
+Author: KatarzynaZaloba <kzalobafrontend@gmail.com>
+Date:   Sat Apr 29 19:36:

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, /*useEffect*/ } from "react";
 import {
   PageCounter,
   ButtonText,
@@ -8,10 +8,10 @@ import {
   Button,
   NextVectorIcon,
 } from "./styled";
-import axios from "axios";
+//import axios from "axios";
 
 export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, /*setIsLoading*/] = useState(false);
 
   const handleNextPageClick = () => {
     onPageChange(currentPage + 1);

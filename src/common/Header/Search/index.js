@@ -22,53 +22,62 @@ export const Search = () => {
         inputRef.current.select();
     };
 
-    const onInputChange = () => {
-        const inputValue = inputRef.current.value.trim() !== "" ? inputRef.current.value : undefined;
+    const searchEndpoint = location.pathname.includes("/people")
+        ? searchPeople
+        : searchMovies;
 
-        if (inputValue) {
-            const searchEndpoint = location.pathname.includes("/people")
-                ? searchPeople
-                : searchMovies;
-
+    const performSearch = (value) => {
+        if (value) {
             if (timerRef.current) {
                 clearTimeout(timerRef.current);
             }
 
             timerRef.current = setTimeout(() => {
-                searchEndpoint(inputValue).then((results) => {
+                searchEndpoint(value).then((results) => {
+                    setSearchQuery(value);
+                    setSearchResults(results);
+                    setSearchLoading(false);
+
+                    const path = location.pathname;
+                    history.push({
+                        pathname: path,
+                        search: `?${searchQueryParamName}=${value}`,
+                    });
+
                     if (results.length > 0) {
-                        const firstResult = results[0];
+                        const movieId = results[0].id;
                         if (location.pathname.includes("/people")) {
-                            const personId = firstResult.id;
-                            history.push(toPerson({ personId }));
-                        } else if (location.pathname.includes("/movie")) {
-                            const movieId = firstResult.id;
+                            history.push(toPerson({ personId: movieId }));
+                        } else {
                             history.push(toMovie({ movieId }));
                         }
                     }
+                }).catch((error) => {
+                    setSearchError(error);
+                    setSearchLoading(false);
                 });
+                setSearchLoading(true);
             }, 1000);
+        } else {
+            setSearchQuery('');
+            setSearchResults([]);
         }
+    };
+    const onInputChange = () => {
+        const inputValue = inputRef.current.value.trim() !== "" ? inputRef.current.value : undefined;
 
         replaceQueryParameter(searchQueryParamName, inputValue);
+
+        performSearch(inputValue);
     };
 
-    const onInputEnter = (event) => {
+    const onKeyPress = (event) => {
         if (event.key === 'Enter') {
-            const searchEndpoint = location.pathname.includes("people")
-                ? searchPeople
-                : searchMovies;
+            const inputValue = inputRef.current.value.trim() !== "" ? inputRef.current.value : undefined;
 
-            searchEndpoint(inputRef.current.value).then((results) => {
-                if (results.length > 0) {
-                    const movieId = results[0].id;
-                    if (location.pathname.includes("/people")) {
-                        history.push(toPerson({ personId: results[0].id }));
-                    } else {
-                        history.push(toMovie({ movieId }));
-                    }
-                }
-            });
+            replaceQueryParameter(searchQueryParamName, inputValue);
+
+            performSearch(inputValue);
         }
     };
 
@@ -86,8 +95,8 @@ export const Search = () => {
                 defaultValue={query || ''}
                 ref={inputRef}
                 onFocus={selectInputText}
-                onKeyDown={onInputEnter}
                 onChange={onInputChange}
+                onKeyPress={onKeyPress}
             />
         </SearchWrapper>
     );
