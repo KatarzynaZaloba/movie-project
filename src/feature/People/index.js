@@ -11,4 +11,4 @@ const PeopleList = () => {
     );
 };
 
-export default PeopleList
+export default PeopleList;
