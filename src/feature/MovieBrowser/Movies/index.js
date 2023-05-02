@@ -29,6 +29,9 @@ const Movies = () => {
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+        //adding function which can show the number of page in the URL:
+    const url = `${window.location.origin}${window.location.pathname}?page=${pageNumber}`;
+    window.history.pushState({ path: url }, '', url);
 
     };
     return (
