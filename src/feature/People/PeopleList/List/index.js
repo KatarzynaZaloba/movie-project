@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, PeopleList, Item, Tile, Poster, Title } from './styled';
+import { Wrapper, PeopleList, Item, Tile, Poster, Title } from "./styled";
 import { Pagination } from "../../../../common/Pagination";
-import { Link } from 'react-router-dom';
-import Loading from '../../../../common/States/Loading';
-import noPicture from '../../../../common/Images/noPicture.svg';
+import Loading from "../../../../common/States/Loading";
 
-const /*PeopleListPage*/ PopularPeopleList = () => {
+const PopularPeopleList = () => {
   const [people, setPeople] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -32,45 +30,34 @@ const /*PeopleListPage*/ PopularPeopleList = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setLoading(true);
-    //adding function which can show the number of page in the URL:
-    const url = `${window.location.origin}${window.location.pathname}?page=${pageNumber}`;
-    window.history.pushState({ path: url }, '', url);
   };
 
   return (
     <Wrapper>
-      <PeopleList>
-        {people.map((person) => (
-          <Link to={`/person/${person.id}`}>
-          <Item key={person.id}>
-            <Tile>
-                <Poster
-                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                  alt={person.name
-                  onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = noPicture;
-                />
-                <Title>{person.name}</Title>
-            </Tile>
-          </Item>
-          </Link>
-        ))}
-      </PeopleList>
       {loading ? (
         <Loading />
       ) : (
-        <PopularPeopleList people={people} loading={loading} />
+        <PeopleList>
+          {people.map((person) => (
+            <Item key={person.id}>
+              <Tile>
+                <Poster
+                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                  alt={person.name}
+                />
+                <Title>{person.name}</Title>
+              </Tile>
+            </Item>
+          ))}
+        </PeopleList>
       )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
-        loading={loading}
       />
     </Wrapper>
   );
 };
 
-export default  /*PeopleListPage*/ PopularPeopleList;
+export default PopularPeopleList;
