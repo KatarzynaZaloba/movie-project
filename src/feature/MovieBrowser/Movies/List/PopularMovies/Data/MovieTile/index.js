@@ -40,4 +40,4 @@ const MovieTile = ({ movie, genres }) => {
     )
 }
 
-export default MovieTile
+export default MovieTile;

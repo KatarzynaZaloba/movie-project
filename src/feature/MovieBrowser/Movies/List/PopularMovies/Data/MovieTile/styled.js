@@ -11,12 +11,10 @@ export const Tile = styled.div`
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 1);
     border-radius: 5px;
     padding: 16px;
-
     &:hover{
         transform: scale(1.05);
         box-shadow: ${({ theme }) => theme.hoverShadow};
     }
-
     &:active{
         box-shadow: ${({ theme }) => theme.activeShadow};
     }
@@ -38,7 +36,6 @@ export const PosterWrapper = styled.div`
     background-size: 80%;
     background-color: ${({ theme }) => theme.colors.silver};
     color: ${({ theme }) => theme.colors.white};
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         height: fit-content;
     }
@@ -49,7 +46,6 @@ export const Poster = styled.img`
     height: auto;
     border-radius: 5px;
     aspect-ratio: 2/3;
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -65,7 +61,6 @@ export const Details = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     gap: 8px;
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         margin-left: 8px;
         gap: 4px;
@@ -78,13 +73,11 @@ export const Title = styled.h2`
     line-height: 1.3;
     color: ${({ theme }) => theme.colors.woodSmoke};
     margin: 16px 0 0;
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         margin: 0 0 0 8px;
         font-size: 18px;
         line-height: 1.1;
     }
-
     @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
         font-size: 14px;
     }
@@ -96,12 +89,10 @@ export const Year = styled.p`
     line-height: 1.5;
     margin: 0;
     color: ${({ theme }) => theme.colors.waterloo};
-
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         margin: 0 0 0 8px;
         font-size: 14px;
     }
-
     @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
         font-size: 12px;
     }
@@ -122,7 +113,6 @@ export const Genre = styled.div`
     background-color: rgb(228, 230, 240);
     text-align: center;
     color: ${({ theme }) => theme.colors.woodSmoke};
-
     @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
         margin: 0 0 0 8px;
         font-size: 8px;
