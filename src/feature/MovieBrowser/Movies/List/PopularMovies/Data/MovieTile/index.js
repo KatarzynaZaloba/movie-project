@@ -1,6 +1,7 @@
 import React from 'react'
 import { Details, Genre, GenresList, Poster, PosterWrapper, Tile, Title, Year } from './styled'
 import Rating from '../Rating'
+import noPoster from '../../../../../../../common/Images/noPoster.svg'
 
 const MovieTile = ({ movie, genres }) => {
 
@@ -13,7 +14,7 @@ const MovieTile = ({ movie, genres }) => {
                         alt={movie.title}
                     />
                 ) : (
-                    "123"
+                    {noPoster}
                 )}
             </PosterWrapper>
             <Details>
