@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useQueryParameter } from "../../core/QueryBox/useQueryParameter";
 import {
     selectMovieDetails,
     selectCast,
@@ -11,11 +12,11 @@ import Backdrop from "./MovieDeatilsPage/Backdrop";
 import Cast from "./MovieDeatilsPage/Cast";
 import Crew from "./MovieDeatilsPage/Crew";
 import MovieTile from "./MovieDeatilsPage/MovieTile";
-import Loading from "../../common/States/Loading";
+import LoadingSearchResults from "../../common/States/Loading/LoadingSearchResult";
 import ErrorBox from "../MovieBrowser/Movies/List/PopularMovies/ErrorBox";
 import NoResult from "../../common/NoResults";
 import { Wrapper, DetailsWrapper, SectionTitle } from "./styled";
-import { useQueryParameter } from "../../core/QueryBox/useQueryParameter";
+
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const MovieDetails = () => {
     const status = useSelector(selectStatus);
 
     if (status === "loading") {
-        return <Loading />;
+        return <LoadingSearchResults />;
     }
 
     if (status === "failed") {
