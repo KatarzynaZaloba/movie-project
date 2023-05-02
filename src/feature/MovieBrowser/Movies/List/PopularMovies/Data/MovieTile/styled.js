@@ -84,6 +84,10 @@ export const Title = styled.h2`
         font-size: 18px;
         line-height: 1.1;
     }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+        font-size: 14px;
+    }
 `;
 
 export const Year = styled.p`
@@ -96,6 +100,10 @@ export const Year = styled.p`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         margin: 0 0 0 8px;
         font-size: 14px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+        font-size: 12px;
     }
 `;
 
@@ -114,4 +122,9 @@ export const Genre = styled.div`
     background-color: rgb(228, 230, 240);
     text-align: center;
     color: ${({ theme }) => theme.colors.woodSmoke};
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+        margin: 0 0 0 8px;
+        font-size: 8px;
+    }
 `;
