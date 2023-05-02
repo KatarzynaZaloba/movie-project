@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Wrapper, PeopleList, Item, Tile, Poster, Title } from './styled';
-import { Pagination } from '../../../../common/Pagination';
+import { Pagination } from "../../../../common/Pagination";
+import { Link } from 'react-router-dom';
 import Loading from '../../../../common/States/Loading';
 import noPicture from '../../../../common/Images/noPicture.svg';
 
@@ -40,7 +41,7 @@ const PeopleListPage = () => {
 
   return (
     <Wrapper>
-      {loading ? (
+       {loading ? (
         <Loading />
       ) : (
         <PopularPeopleList people={people} loading={loading} />
@@ -57,24 +58,25 @@ const PeopleListPage = () => {
 
 const PopularPeopleList = ({ people, loading }) => {
   return (
-    <PeopleList>
-      {people.map((person) => (
-        <Item key={person.id}>
-          <Tile>
-            <Poster
-              src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-              alt={person.name}
-              onError={(e) => {
+      <PeopleList>
+        {people.map((person) => (
+          <Link to={`/person/${person.id}`}>
+          <Item key={person.id}>
+            <Tile>
+                <Poster
+                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                  alt={person.name}
+                  onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = noPicture;
-              }}
-            />
-
-            <Title>{person.name}</Title>
-          </Tile>
-        </Item>
-      ))}
-    </PeopleList>
+                  }}
+                />
+                <Title>{person.name}</Title>
+            </Tile>
+          </Item>
+          </Link>
+        ))}
+      </PeopleList>
   );
 };
 
