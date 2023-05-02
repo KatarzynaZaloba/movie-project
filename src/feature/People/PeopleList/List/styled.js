@@ -15,11 +15,13 @@ export const PeopleList = styled.ul`
     }
     @media (max-width: ${({theme})=>theme.breakpoints.small}px) {
         grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+        height: 100%;
     }
 `;
 
 export const Item = styled.li`
     list-style: none;
+    height: 100%;
 `;
 
 export const Tile = styled.div`
