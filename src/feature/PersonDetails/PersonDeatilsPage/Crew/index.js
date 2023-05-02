@@ -10,7 +10,7 @@ const Crew = () => {
         <Wrapper>
             {crew.map((people) =>
                 <List key={people}>
-                    {/* <MovieTile /> */}
+                    { <MovieTile /> }
                 </List>
             )}
         </Wrapper>
