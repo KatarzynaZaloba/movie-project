@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Wrapper, PeopleList, Item, Tile, Poster, Title } from "./styled";
 import { Pagination } from "../../../../common/Pagination";
+import { Link } from 'react-router-dom';
 
 const PopularPeopleList = () => {
   const [people, setPeople] = useState([]);
@@ -33,11 +34,13 @@ const PopularPeopleList = () => {
         {people.map((person) => (
           <Item key={person.id}>
             <Tile>
-              <Poster
-                src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                alt={person.name}
-              />
-              <Title>{person.name}</Title>
+              <Link to={`/person/${person.id}`}>
+                <Poster
+                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                  alt={person.name}
+                />
+                <Title>{person.name}</Title>
+              </Link>
             </Tile>
           </Item>
         ))}

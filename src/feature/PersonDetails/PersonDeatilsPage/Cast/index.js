@@ -11,7 +11,7 @@ const Cast = () => {
         <Wrapper>
             {cast.map((movies) =>
                 <List key={movies}>
-                    <MovieTile />
+                    {/* <MovieTile /> */}
                 </List>
             )}
         </Wrapper>
