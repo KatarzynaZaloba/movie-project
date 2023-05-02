@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, PeopleList, Item, Tile, Poster, Title } from "./styled";
-import { Pagination } from "../../../../common/Pagination";
-import Loading from "../../../../common/States/Loading";
-import noPicture from "../../../../common/Images/noPicture.svg";
+import { Wrapper, PeopleList, Item, Tile, Poster, Title } from './styled';
+import { Pagination } from '../../../../common/Pagination';
+import Loading from '../../../../common/States/Loading';
+import noPicture from '../../../../common/Images/noPicture.svg';
 
-const PopularPeopleList = () => {
+const PeopleListPage = () => {
   const [people, setPeople] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -31,6 +31,7 @@ const PopularPeopleList = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    setLoading(true);
   };
 
   return (
@@ -38,32 +39,39 @@ const PopularPeopleList = () => {
       {loading ? (
         <Loading />
       ) : (
-        <PeopleList>
-          {people.map((person) => (
-            <Item key={person.id}>
-              <Tile>
-                <Poster
-                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                  alt={person.name}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = noPicture;
-                  }}
-                />
-
-                <Title>{person.name}</Title>
-              </Tile>
-            </Item>
-          ))}
-        </PeopleList>
+        <PopularPeopleList people={people} loading={loading} />
       )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
+        loading={loading}
       />
     </Wrapper>
   );
 };
 
-export default PopularPeopleList;
+const PopularPeopleList = ({ people, loading }) => {
+  return (
+    <PeopleList>
+      {people.map((person) => (
+        <Item key={person.id}>
+          <Tile>
+            <Poster
+              src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+              alt={person.name}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = noPicture;
+              }}
+            />
+
+            <Title>{person.name}</Title>
+          </Tile>
+        </Item>
+      ))}
+    </PeopleList>
+  );
+};
+
+export default PeopleListPage;
