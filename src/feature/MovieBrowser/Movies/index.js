@@ -16,9 +16,8 @@ const Movies = () => {
                     `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage}`
                 );
                 const data = await response.json();
-                const lastPage = (data.total_pages > 500 ? 500 : data.totalPages )
                 setMovie(data.results);
-                setTotalPages(lastPage);
+                setTotalPages(data.total_pages);
             } catch (error) {
                 console.error(error);
             }
@@ -46,4 +45,4 @@ const Movies = () => {
     )
 }
 
-export default Movies
+export default Movies;
