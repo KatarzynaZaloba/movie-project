@@ -32,17 +32,17 @@ const PopularPeopleList = () => {
     <Wrapper>
       <PeopleList>
         {people.map((person) => (
+          <Link to={`/person/${person.id}`}>
           <Item key={person.id}>
             <Tile>
-              <Link to={`/person/${person.id}`}>
                 <Poster
                   src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
                   alt={person.name}
                 />
                 <Title>{person.name}</Title>
-              </Link>
             </Tile>
           </Item>
+          </Link>
         ))}
       </PeopleList>
       <Pagination
