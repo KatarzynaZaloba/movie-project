@@ -1,4 +1,4 @@
-import { /*HashRouter*/ Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import { Header } from "../common/Header";
 import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import MoviesList from "../feature/MovieBrowser/Movies";
@@ -10,30 +10,31 @@ import PeopleList from "../feature/People";
 function App() {
   const id = "movieId";
   return (
-
-    /*<HashRouter>*/
     <>
-      <Header />
+      <HashRouter>
 
-      <Switch>
-        <Route path={toMovie({ movieId: id})}>
-        <MovieDetails />
-        </Route>
-        <Route path={toMovies()}>
-          <MoviesList />
-        </Route>
-        <Route path={toPerson({ personId: "personId"})}>
+        <Header />
 
-        </Route>
-        <Route path={toPeople()}>
-          <PeopleList />
-        </Route>
-        <Route>
-          <Redirect to={toMovies()} />
-        </Route>
-      </Switch>
-      </>
-    /*</HashRouter>*/
+        <Switch>
+          <Route path={toMovie({ movieId: id })}>
+            <MovieDetails />
+          </Route>
+          <Route path={toMovies()}>
+            <MoviesList />
+          </Route>
+          <Route path={toPerson({ personId: "personId" })}>
+
+          </Route>
+          <Route path={toPeople()}>
+            <PeopleList />
+          </Route>
+          <Route>
+            <Redirect to={toMovies()} />
+          </Route>
+        </Switch>
+      </HashRouter>
+    </>
+
   );
 }
 
