@@ -1,4 +1,3 @@
-//import { data } from "./data";
 import  MovieTile from "../../MovieTile";
 import { Wrapper, List } from "./styled";
 

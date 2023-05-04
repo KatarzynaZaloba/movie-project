@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
 import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
-//import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
+import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
 import Loading from "../../common/States/Loading";
 
 const PersonDetails = () => {
@@ -39,7 +39,7 @@ const PersonDetails = () => {
         <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
         <Cast cast={personDetails.movie_credits.cast} />
         <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
-        {/* <Crew crew={personDetails.movie_credits.crew} /> */}
+        <Crew crew={personDetails.movie_credits.crew} />
       </DetailsWrapper>
     </Wrapper>
   );
