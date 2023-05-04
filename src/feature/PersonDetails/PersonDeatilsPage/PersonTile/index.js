@@ -16,33 +16,36 @@ import {
 } from "./styled";
 import poster from "./poster.png"
 
-const PersonTile = () => {
+const PersonTile = ({ person }) => {
+    const { name, profile_path, birthday, place_of_birth, biography } = person;
+
     return (
         <>
             <ContainerTile>
                 <WrapperTile>
-                    <ImageTile src={poster} alt="" />
+                    <ImageTile src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt="" />
                     <ContentTile>
                         <DetailsMovie>
-                            <MovieTitle>Liu Yifei</MovieTitle>
+                            <MovieTitle>{name}</MovieTitle>
                             <Production>
                                 <GreyText>Date of birth:</GreyText>
-                                <BlackText>25.08.1987</BlackText>
-                            </Production >
+                                <BlackText>{birthday}</BlackText>
+                            </Production>
                             <Production>
                                 <GreyText>Place of birth: </GreyText>
-                                <BlackText>Wuhan, Hubei, China</BlackText>
+                                <BlackText>{place_of_birth}</BlackText>
                             </Production>
                         </DetailsMovie>
                     </ContentTile>
                     <Description>
                         <div>
-                        Liu Yifei was born in Wuhan, Hubei, Province of China on August 25th, 1987. She began modeling at the age of 8 and was trained in singing, dancing and the piano. Moving to the United States at 10 with her mother, Liu lived there for four years.
+                            {biography}
                         </div>
                     </Description>
                 </WrapperTile>
-            </ContainerTile >
+            </ContainerTile>
         </>
     );
 };
+
 export default PersonTile;
