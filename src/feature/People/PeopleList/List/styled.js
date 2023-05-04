@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     max-width: 1368px;
@@ -61,4 +62,13 @@ export const Title = styled.h2`
 `;
 
 export const Button = styled.button`
-    justify-content: center;`
+    justify-content: center;
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.black};
+    &:hover {
+        text-decoration: none;
+    }
+`;
