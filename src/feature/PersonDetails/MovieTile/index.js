@@ -13,7 +13,7 @@ const MovieTile = ({ movie, genres }) => {
                         alt={movie.title}
                     />
                 ) : (
-                    <img src={noPoster} alt="no poster available" />
+                    <Poster src={noPoster} alt="no poster available" />
                 )}
             </PosterWrapper>
             <Details>
