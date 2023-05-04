@@ -6,8 +6,13 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.h1`
-    margin-bottom: 24px;
-    padding-left: 10px;
     font-weight: 600;
     font-size: 36px;
-`;
+    line-height: 1.2;
+    color: ${({ theme }) => theme.colors.woodSmoke};
+    margin-left: 10px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 20px;
+    }
+    `;

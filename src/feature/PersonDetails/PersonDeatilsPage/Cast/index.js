@@ -1,5 +1,5 @@
 import { data } from "./data";
-import  MovieTile from "../../../MovieBrowser/Movies/List/PopularMovies/Data/MovieTile";
+//import  MovieTile from "../../MovieTile";
 import { Wrapper, List } from "./styled";
 
 
@@ -11,7 +11,7 @@ const Cast = () => {
         <Wrapper>
             {cast.map((movies) =>
                 <List key={movies}>
-                    { <MovieTile /> }
+                    {/* { <MovieTile /> } */}
                 </List>
             )}
         </Wrapper>

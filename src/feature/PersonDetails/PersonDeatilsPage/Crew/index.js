@@ -1,4 +1,4 @@
-import MovieTile from "../../../MovieBrowser/Movies/List/PopularMovies/Data/MovieTile";
+//import MovieTile from "../../MovieTile";
 import { data } from "../Cast/data";
 import { Wrapper, List } from "../Cast/styled";
 
@@ -10,7 +10,7 @@ const Crew = () => {
         <Wrapper>
             {crew.map((people) =>
                 <List key={people}>
-                    { <MovieTile /> }
+                    {/* { <MovieTile /> } */}
                 </List>
             )}
         </Wrapper>
