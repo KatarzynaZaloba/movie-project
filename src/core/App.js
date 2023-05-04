@@ -15,7 +15,8 @@ function App() {
         <Route path={toMovie({ movieId: id })}>
           <MovieDetails />
         </Route>
-        <Route path="/person/:personId" component={PersonDetails} />
+ 
+      <Route path="/person/:personId" component={PersonDetails} />
         <Route path={toMovies()}>
           <MoviesList />
         </Route>
