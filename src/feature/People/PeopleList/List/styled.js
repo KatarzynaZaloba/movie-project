@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     max-width: 1368px;
+    margin: 56px auto 0;
+    margin: 0 auto;
+    padding: 0 16px;
+    margin-bottom: 100px;
 `;
 
 export const PeopleList = styled.ul`
@@ -61,4 +66,13 @@ export const Title = styled.h2`
 `;
 
 export const Button = styled.button`
-    justify-content: center;`
+    justify-content: center;
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.black};
+    &:hover {
+        text-decoration: none;
+    }
+`;
