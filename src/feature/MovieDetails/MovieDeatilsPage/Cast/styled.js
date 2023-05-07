@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   width: 1368px;
@@ -22,13 +23,19 @@ export const Wrapper = styled.div`
 
 export const List = styled.div`
     list-style: none;
+    
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Tile = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 16px;
   width: 208px;
-  height: auto;
+  height: 100%;
   box-shadow: ${({ theme }) => theme.hoverShadow};
   border-radius: 5px;
   font-size: 22px;
