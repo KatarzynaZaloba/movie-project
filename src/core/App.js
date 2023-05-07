@@ -4,37 +4,23 @@ import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import MoviesList from "../feature/MovieBrowser/Movies";
 import MovieDetails from "../feature/MovieDetails";
 import PeopleList from "../feature/People";
-
-
+import PersonDetails from "../feature/PersonDetails";
 
 function App() {
-  const id = "movieId";
   return (
-    <>
-      <HashRouter>
 
-        <Header />
-
-        <Switch>
-          <Route path={toMovie({ movieId: id })}>
-            <MovieDetails />
-          </Route>
-          <Route path={toMovies()}>
-            <MoviesList />
-          </Route>
-          <Route path={toPerson({ personId: "personId" })}>
-
-          </Route>
-          <Route path={toPeople()}>
-            <PeopleList />
-          </Route>
-          <Route>
-            <Redirect to={toMovies()} />
-          </Route>
-        </Switch>
-      </HashRouter>
-    </>
-
+    <HashRouter>
+      <Header />
+      <Switch>
+        <Route path={toMovie({ movieId: ":movieId" })} name="movie" component={MovieDetails} />
+        <Route exact path={toMovies()} name="movies" component={MoviesList} />
+        <Route path={toPerson({ personId: ":personId" })} name="person" component={PersonDetails} />
+        <Route path={toPeople()} name="people">
+          <PeopleList />
+        </Route>
+        <Route path="/" component={MoviesList} />
+      </Switch>
+    </HashRouter>
   );
 }
 
