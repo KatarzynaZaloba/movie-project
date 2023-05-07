@@ -4,11 +4,13 @@ import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
 import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
 import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
-import Loading from "../../common/States/Loading/LoadingSpinner"; 
+import Loading from "../../common/States/Loading/LoadingSpinner";
+import ErrorBox from "../MovieBrowser/Movies/List/PopularMovies/ErrorBox";
 
 const PersonDetails = () => {
   const { personId } = useParams();
   const [personDetails, setPersonDetails] = useState(null);
+  const [error, setError] = useState(null); // new state
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,11 +20,16 @@ const PersonDetails = () => {
         setPersonDetails(result);
       } catch (error) {
         console.error(error);
+        setError(error); // error setting
       }
     };
 
     fetchData();
   }, [personId]);
+
+  if (error) { // if there is an error, show ErrorBox component
+    return <ErrorBox error={error} />;
+  }
 
   if (!personDetails) {
     return (

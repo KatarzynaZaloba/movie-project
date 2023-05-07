@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledLink } from './styled';
 import { Pagination } from "../../../../common/Pagination";
-import Loading from '../../../../common/States/Loading/LoadingSpinner'; 
+import Loading from '../../../../common/States/Loading/LoadingSpinner';
 import noPicture from '../../../../common/Images/noPicture.svg';
+import ErrorBox from '../../../MovieBrowser/Movies/List/PopularMovies/ErrorBox';
 
 const PeopleListPage = () => {
   const [people, setPeople] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [hasError, setHasError] = useState(false); // new state
 
   useEffect(() => {
     const fetchPopularPeople = async () => {
@@ -24,6 +26,7 @@ const PeopleListPage = () => {
         }, 2000);
       } catch (error) {
         console.error(error);
+        setHasError(true); // set hasError to true in case of an error
       }
     };
     fetchPopularPeople();
@@ -37,6 +40,9 @@ const PeopleListPage = () => {
     window.history.pushState({ path: url }, '', url);
   };
 
+  if (hasError) { // if an error occurred, display ErrorBox component
+    return <ErrorBox />;
+  }
 
   return (
     <Wrapper>
