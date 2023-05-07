@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { searchMovies, searchPeople } from "./searchApi";
 import { SearchWrapper, SearchBar, StyledSearchIcon, SearchBarInput } from "./styled";
-import { toMovie, toPerson } from "../../../core/routes";
 import { useQueryParameter, useReplaceQueryParameter } from "../../../core/QueryBox/useQueryParameter";
 import { searchQueryParamName } from "../../../core/QueryBox/queryParamName";
 
@@ -22,63 +21,34 @@ export const Search = () => {
         inputRef.current.select();
     };
 
-    const searchEndpoint = location.pathname.includes("/people")
-        ? searchPeople
-        : searchMovies;
+    const onInputChange = (event) => {
+        const inputValue = event.target.value.trim() !== "" ? event.target.value : undefined;
 
-    const performSearch = (value) => {
-        if (value) {
-            if (timerRef.current) {
-                clearTimeout(timerRef.current);
-            }
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
 
-            timerRef.current = setTimeout(() => {
-                searchEndpoint(value).then((results) => {
-                    setSearchQuery(value);
-                    setSearchResults(results);
-                    setSearchLoading(false);
+        timerRef.current = setTimeout(() => {
+            const searchEndpoint = location.pathname.includes("/people")
+                ? searchPeople
+                : searchMovies;
 
-                    const path = location.pathname;
+            searchEndpoint(inputValue).then((results) => {
+                replaceQueryParameter(searchQueryParamName, inputValue);
+
+                if (results.length > 0) {
                     history.push({
-                        pathname: path,
-                        search: `?${searchQueryParamName}=${value}`,
+                        pathname: location.pathname,
+                        search: `?${searchQueryParamName}=${inputValue}`
                     });
-
-                    if (results.length > 0) {
-                        const movieId = results[0].id;
-                        if (location.pathname.includes("/people")) {
-                            history.push(toPerson({ personId: movieId }));
-                        } else {
-                            history.push(toMovie({ movieId }));
-                        }
-                    }
-                }).catch((error) => {
-                    setSearchError(error);
-                    setSearchLoading(false);
-                });
-                setSearchLoading(true);
-            }, 1000);
-        } else {
-            setSearchQuery('');
-            setSearchResults([]);
-        }
-    };
-    const onInputChange = () => {
-        const inputValue = inputRef.current.value.trim() !== "" ? inputRef.current.value : undefined;
-
-        replaceQueryParameter(searchQueryParamName, inputValue);
-
-        performSearch(inputValue);
-    };
-
-    const onKeyPress = (event) => {
-        if (event.key === 'Enter') {
-            const inputValue = inputRef.current.value.trim() !== "" ? inputRef.current.value : undefined;
-
-            replaceQueryParameter(searchQueryParamName, inputValue);
-
-            performSearch(inputValue);
-        }
+                } else {
+                    history.push({
+                        pathname: location.pathname,
+                        search: ""
+                    });
+                }
+            });
+        }, 1000);
     };
 
     return (
@@ -96,7 +66,6 @@ export const Search = () => {
                 ref={inputRef}
                 onFocus={selectInputText}
                 onChange={onInputChange}
-                onKeyPress={onKeyPress}
             />
         </SearchWrapper>
     );
