@@ -1,16 +1,23 @@
 import axios from 'axios';
 
-const API_KEY = 'd3f19b5007aaab7cb579f83b9a664dec';
-const API_URL = 'https://api.themoviedb.org/3';
+const ApiKey = "d3f19b5007aaab7cb579f83b9a664dec";
+const ApiUrl = "https://api.themoviedb.org/3/";
+export const language = "&language=en-US";
+export const imgBaseUrl = "https://image.tmdb.org/t/p";
+export const imgBaseBackdrop = "https://image.tmdb.org/t/p/original";
 
-export const getMovieDetails = movieId => {
-    return axios.get(`${API_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`);
+export const getMovieDetails = async (movieId) => {
+    const response = await axios.get(
+        `${ApiUrl}/movie/${movieId}?api_key=${ApiKey}${language}`
+    );
+
+    return await response.data;
 };
 
-export const getMovieCast = movieId => {
-    return axios.get(`${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`);
-};
+export const getMovieDetailsCredits = async (movieId) => {
+    const response = await axios.get(
+        `${ApiUrl}/movie/${movieId}/credits?api_key=${ApiKey}${language}`
+    );
 
-export const getMovieCrew = movieId => {
-    return axios.get(`${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US&append_to_response=crew`);
+    return await response.data;
 };

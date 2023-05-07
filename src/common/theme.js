@@ -23,4 +23,7 @@ export const theme = {
         mobileMin: 470,
         small: 360,
     },
+    
+    hoverShadow: "0px 4px 12px rgba(11, 106, 194, 0.6);",
+    activeShadow: "0px 4px 12px rgba(11, 106, 194, 0.7);",
 };

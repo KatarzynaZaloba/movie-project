@@ -6,64 +6,53 @@ const movieDetailsSlice = createSlice({
         movieDetails: null,
         cast: [],
         crew: [],
-        status: "waiting",
+        status: "idle",
         error: null,
     },
     reducers: {
-        setMovieDetails(state, action) {
+        fetchMovieDetails: (state, action) => {
+            state.movieDetails = null;
+            state.cast = [];
+            state.crew = [];
+            state.status = "loading";
+            state.error = null;
+            state.movieId = action.payload.movieId;
+        },
+        fetchMovieDetailsSuccess: (state, action) => {
             state.movieDetails = action.payload;
             state.status = "succeeded";
+            state.error = null;
         },
-        setCast(state, action) {
+        setCast: (state, action) => {
             state.cast = action.payload;
-            state.status = "succeeded";
         },
-        setCrew(state, action) {
+        setCrew: (state, action) => {
             state.crew = action.payload;
-            state.status = "succeeded";
         },
-        setError(state, action) {
+        setError: (state, action) => {
             state.error = action.payload;
             state.status = "failed";
         },
-        fetchMovieDetails(state) {
-            state.status = "loading";
-        },
-        setMovieId(state, action) {
-            state.movieId = action.payload;
-        },
-        setStatus(state, action) {
-            state.status = action.payload;
-        },
-        setNoResult(state) {
+        setNoResult: (state) => {
             state.status = "NoResult";
+            state.error = null;
         },
     },
 });
 
 export const {
-    setMovieDetails,
+    fetchMovieDetails,
+    fetchMovieDetailsSuccess,
     setCast,
     setCrew,
     setError,
-    fetchMovieDetails,
-    setMovieId,
-    setStatus,
     setNoResult,
 } = movieDetailsSlice.actions;
 
-const selectMovieDetails = (state) => state.movieDetails.movieDetails;
-const selectCast = (state) => state.movieDetails.cast;
-const selectCrew = (state) => state.movieDetails.crew;
-const selectStatus = (state) => state.movieDetails.status;
-const selectError = (state) => state.movieDetails.error;
-
-export {
-    selectMovieDetails,
-    selectCast,
-    selectCrew,
-    selectStatus,
-    selectError,
-};
+export const selectMovieDetails = (state) => state.movieDetails.movieDetails;
+export const selectCast = (state) => state.movieDetails.cast;
+export const selectCrew = (state) => state.movieDetails.crew;
+export const selectStatus = (state) => state.movieDetails.status;
+export const selectError = (state) => state.movieDetails.error;
 
 export default movieDetailsSlice.reducer;

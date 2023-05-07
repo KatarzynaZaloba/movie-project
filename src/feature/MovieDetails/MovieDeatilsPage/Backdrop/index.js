@@ -1,4 +1,6 @@
-import { imgBackdrop } from "../../../../core/APIBox/apiSource";
+import { useSelector } from "react-redux";
+import { selectMovieDetails } from "../../movieDetailsSlice";
+import { imgBaseBackdrop } from "../../apiMovieDetails"
 import {
     BackdropContainer,
     Pleksa,
@@ -14,26 +16,32 @@ import {
 } from "./styled";
 import star from "../image/star.svg";
 
-const Backdrop = ({ backdrop_path, title, vote_count, vote_average }) => {
+
+const Backdrop = () => {
+    const movieDetails = useSelector(selectMovieDetails);
+
     return (
         <>
-            <BackdropContainer>
-                <BackdropWrapper >
-                    <Pleksa />
-                    <BackdropImage
-                        src={`${imgBackdrop}${backdrop_path}`}
-                        alt="" />
-                    <BackdropInfoContainer>
-                        <LongTitle>{title}</LongTitle>
-                        <Rating>
-                            <StarIcon src={star} />
-                            <RateBig>{vote_average.toFixed(1)}</RateBig>
-                            <RateSmall>/ 10</RateSmall>
-                            <Votes>{vote_count} votes</Votes>
-                        </Rating>
-                    </BackdropInfoContainer>
-                </BackdropWrapper>
-            </BackdropContainer>
+            {movieDetails.backdrop_path && (
+                <BackdropContainer>
+                    <BackdropWrapper>
+                        <Pleksa />
+                        <BackdropImage
+                            src={`${imgBaseBackdrop}${movieDetails.backdrop_path}`}
+                            alt={`poster of ${movieDetails.original_title}`}
+                        />
+                        <BackdropInfoContainer>
+                            <LongTitle>{movieDetails.original_title}</LongTitle>
+                            <Rating>
+                                <StarIcon src={star} />
+                                <RateBig>{movieDetails.vote_average.toFixed(1)}</RateBig>
+                                <RateSmall>/ 10</RateSmall>
+                                <Votes>{movieDetails.vote_count} votes</Votes>
+                            </Rating>
+                        </BackdropInfoContainer>
+                    </BackdropWrapper>
+                </BackdropContainer>
+            )}
         </>
     );
 };

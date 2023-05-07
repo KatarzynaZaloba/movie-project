@@ -1,10 +1,9 @@
 import React from 'react'
 import { Details, Genre, GenresList, Poster, PosterWrapper, Tile, Title, Year } from './styled'
-import Rating from '../Rating'
-import noPoster from '../../../../../../../common/Images/noPoster.svg'
+import Rating from '../../MovieBrowser/Movies/List/PopularMovies/Data/Rating';
+import noPoster from '../../../common/Images/noPoster.svg';
 
 const MovieTile = ({ movie, genres }) => {
-
     return (
         <Tile>
             <PosterWrapper>
@@ -14,7 +13,7 @@ const MovieTile = ({ movie, genres }) => {
                         alt={movie.title}
                     />
                 ) : (
-                    {noPoster}
+                    <Poster src={noPoster} alt="no poster available" />
                 )}
             </PosterWrapper>
             <Details>
@@ -37,7 +36,7 @@ const MovieTile = ({ movie, genres }) => {
                 />
             </Details>
         </Tile>
-    )
-}
+    );
+};
 
 export default MovieTile;
