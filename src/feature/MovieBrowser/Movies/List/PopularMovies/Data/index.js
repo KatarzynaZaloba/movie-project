@@ -10,11 +10,11 @@ import { useQueryParameter } from "../../../../../../core/QueryBox/useQueryParam
 import { searchQueryParamName } from "../../../../../../core/QueryBox/queryParamName";
 import { toMovie } from "../../../../../../core/routes";
 
-const Data = () => {
+const Data = ({ movies }) => {
     const history = useHistory();
     const query = useQueryParameter(searchQueryParamName);
     const [filteredMovies, setFilteredMovies] = useState([]);
-    const movies = useSelector(selectMovies);
+    // const movies = useSelector(selectMovies);
     const genres = useSelector(selectGenres);
 
     useEffect(() => {
