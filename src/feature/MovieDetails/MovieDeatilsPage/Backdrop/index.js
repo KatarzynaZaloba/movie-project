@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectMovieDetails } from "../../movieDetailsSlice";
+import { imgBaseBackdrop } from "../../apiMovieDetails"
 import {
     BackdropContainer,
     Pleksa,
@@ -15,26 +16,27 @@ import {
 } from "./styled";
 import star from "../image/star.svg";
 
+
 const Backdrop = () => {
     const movieDetails = useSelector(selectMovieDetails);
 
     return (
         <>
-            {backdrop_path && (
+            {movieDetails.backdrop_path && (
                 <BackdropContainer>
                     <BackdropWrapper>
                         <Pleksa />
                         <BackdropImage
-                            src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-                            alt=""
+                            src={`${imgBaseBackdrop}${movieDetails.backdrop_path}`}
+                            alt={`poster of ${movieDetails.original_title}`}
                         />
                         <BackdropInfoContainer>
-                            <LongTitle>{original_title}</LongTitle>
+                            <LongTitle>{movieDetails.original_title}</LongTitle>
                             <Rating>
                                 <StarIcon src={star} />
-                                <RateBig>{vote_average.toFixed(1)}</RateBig>
+                                <RateBig>{movieDetails.vote_average.toFixed(1)}</RateBig>
                                 <RateSmall>/ 10</RateSmall>
-                                <Votes>{vote_count} votes</Votes>
+                                <Votes>{movieDetails.vote_count} votes</Votes>
                             </Rating>
                         </BackdropInfoContainer>
                     </BackdropWrapper>
