@@ -1,7 +1,9 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Header from "../common/Header";
 import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import MoviesList from "../feature/MovieBrowser/Movies";
+import PeopleList from "../feature/People";
+import PersonDetails from "../feature/PersonDetails"
 import MovieDetails from "../feature/MovieDetails";
 import { Pagination } from "../common/Pagination";
 
@@ -9,24 +11,17 @@ import { Pagination } from "../common/Pagination";
 function App() {
   return (
     <>
-      <Header />
-      <Switch>
-        <Route path={toMovies()}>
-          <MoviesList />
-        </Route>
-        <Route path={toMovie({ movieId: "movieId" })}>
-          <MovieDetails />
-        </Route>
-        <Route path={toPeople()}>
-        </Route>
-        <Route path={toPerson({ personId: "personId" })}>
-
-        </Route>
-        <Route>
-          <Redirect to={toMovies()} />
-        </Route>
-      </Switch>
-      <Pagination />
+      <HashRouter>
+        <Header />
+        <Switch>
+          <Route path={toMovie()} name="movie" component={MovieDetails} />
+          <Route exact path={toMovies()} name="movies" component={MoviesList} />
+          <Route path={toPerson()} name="person" component={PersonDetails} />
+          <Route path={toPeople()} name="people" component={PeopleList} />
+          <Route path="/" component={MoviesList} />
+        </Switch>
+        <Pagination />
+      </HashRouter>
     </>
   );
 }
