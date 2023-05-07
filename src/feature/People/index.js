@@ -1,12 +1,12 @@
 import React from 'react';
 import { Header, Wrapper } from './styled';
-import PopularPeopleList from './PeopleList/List';
+import PeopleListPage from './PeopleList/List';
 
 const PeopleList = () => {
     return (
         <Wrapper>
             <Header>Popular people</Header>
-            <PopularPeopleList />
+            <PeopleListPage />
         </Wrapper>
     );
 };

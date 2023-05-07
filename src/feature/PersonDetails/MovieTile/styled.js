@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import noPoster from "../../../../../../../common/Images/noPoster.svg"
+import noPoster from "../../../common/Images/noPoster.svg";
 
 export const Tile = styled.div`
     width: 100%;

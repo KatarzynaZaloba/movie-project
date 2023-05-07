@@ -1,20 +1,17 @@
-import { data } from "./data";
-import  MovieTile from "../../../MovieBrowser/Movies/List/PopularMovies/Data/MovieTile";
+import  MovieTile from "../../MovieTile";
 import { Wrapper, List } from "./styled";
 
 
-const Cast = () => {
+const Cast = ({ cast }) => {
+  return (
+    <Wrapper>
+      {cast.map((movie) => (
+        <List key={movie.id}>
+          <MovieTile movie={movie} />
+        </List>
+      ))}
+    </Wrapper>
+  );
+};
 
-    const cast = data.movies
-
-    return (
-        <Wrapper>
-            {cast.map((movies) =>
-                <List key={movies}>
-                    <MovieTile />
-                </List>
-            )}
-        </Wrapper>
-    );
-}
 export default Cast;
