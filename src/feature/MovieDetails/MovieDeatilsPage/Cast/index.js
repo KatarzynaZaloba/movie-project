@@ -1,34 +1,39 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { Wrapper, List, Tile, Poster, ActorName, ActorRole, NoPoster } from "./styled";
+import { Wrapper, List, Tile, Poster, ActorName, ActorRole, StyledLink } from "./styled";
 import { selectCast } from "../../movieDetailsSlice";
-import { imgBaseUrl } from "../../../../core/APIBox/apiSource";
-import noPosterImg from '../image/noPoster.png';
-//import { toPerson } from "../../../../feature/PersonDetails"; 
-//jak będę znała nazwę komponentu który przygotowuje Kasia dodam odpowiednią nazwę
+import noPicture from '../../../../common/Images/noPicture.svg';
+import { toPerson } from "../../../../core/routes";
 
-const Cast = () => {
-    const cast = useSelector(selectCast);
+
+export const Cast = () => {
+    const cast = useSelector((state) => selectCast(state));
 
     return (
-        <Wrapper>
-            {cast.map(({ poster_path, name, cast_id, character, id }) => (
-                <List key={cast_id}>
-                    <Tile>
-                        <Link /*</Tile>to={toPerson({ personId: id })}*/>
-                            {poster_path ? (
-                                <Poster src={`${imgBaseUrl}/original/${poster_path}`} alt={name} />
-                            ) : (
-                                <NoPoster src={noPosterImg} alt="No poster available" />
-                            )}
-                            <ActorName>{name}</ActorName>
-                            <ActorRole>{character}</ActorRole>
-                        </Link>
-                    </Tile>
-                </List>
-            ))}
-        </Wrapper>
+        <>
+            {cast && cast.length > 0 && (
+                <Wrapper>
+                    {cast.map(({ profile_path, id, name, character }) => (
+                        <List key={id}>
+                            <StyledLink to={toPerson(":personId")}>
+                                <Tile>
+                                    <Poster
+                                        src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                                        alt={name}
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = noPicture;
+                                        }}
+                                    />
+                                    <ActorName>{name}</ActorName>
+                                    <ActorRole>{character}</ActorRole>
+                                </Tile>
+                            </StyledLink>
+                        </List>
+                    ))}
+                </Wrapper>
+            )}
+        </>
     );
-}
+};
 
 export default Cast;

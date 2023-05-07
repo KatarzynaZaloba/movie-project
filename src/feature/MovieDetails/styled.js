@@ -21,7 +21,7 @@ export const DetailsWrapper = styled.div`
      }
 `;
 
-export const SectionTitle = styled.header`
+export const SectionTitle = styled.h2`
     margin-top: 64px;
     margin-bottom: 32px;
     font-weight: 600;

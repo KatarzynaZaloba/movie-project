@@ -1,26 +1,21 @@
 import { takeLatest, put, call } from "redux-saga/effects";
 import {
-    setMovieDetails,
     setCast,
     setCrew,
     setError,
     fetchMovieDetails,
-    setNoResult,
+    fetchMovieDetailsSuccess,
 } from "./movieDetailsSlice";
-import { getMovieDetails, getMovieCast, getMovieCrew } from "./apiMovieDetails";
+import { getMovieDetails, getMovieDetailsCredits } from "./apiMovieDetails";
 
-function* fetchMovieDetailsHandler() {
+function* fetchMovieDetailsHandler(action) {
+    const { id } = action.payload;
     try {
-        const movieDetails = yield call(getMovieDetails);
-        if (!movieDetails) {
-            yield put(setNoResult());
-            return;
-        }
-        const cast = yield call(getMovieCast, movieDetails.id);
-        const crew = yield call(getMovieCrew, movieDetails.id);
-        yield put(setMovieDetails(movieDetails));
-        yield put(setCast(cast));
-        yield put(setCrew(crew));
+        const movieDetails = yield call(getMovieDetails, id);
+        const credits = yield call(getMovieDetailsCredits, id);
+        yield put(fetchMovieDetailsSuccess(movieDetails));
+        yield put(setCast(credits.cast));
+        yield put(setCrew(credits.crew));
     } catch (error) {
         yield put(setError(error.message));
     }
