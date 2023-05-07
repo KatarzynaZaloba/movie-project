@@ -1,38 +1,39 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { Wrapper, List, Tile, Poster, ActorName, ActorRole, NoPoster } from "./styled";
+import { Wrapper, List, Tile, Poster, ActorName, ActorRole, StyledLink } from "./styled";
 import { selectCast } from "../../movieDetailsSlice";
-import posterImg from '../image/poster.svg';
+import noPicture from '../../../../common/Images/noPicture.svg';
 import { toPerson } from "../../../../core/routes";
-import { SectionTitle } from "../../styled";
+
 
 export const Cast = () => {
-    const cast = useSelector(selectCast);
+    const cast = useSelector((state) => selectCast(state));
 
     return (
         <>
-            <SectionTitle >Cast</SectionTitle>
             {cast && cast.length > 0 && (
                 <Wrapper>
-                    {cast.map(({ profile_path, id, name, cast_id, character }) => (
-                        <List key={cast_id}>
-
-                            <Link to={toPerson({ personId: id })}>
-                                {profile_path ? (
-                                    <Poster src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={name} />
-                                ) : (
-                                    <NoPoster src={posterImg} alt="No poster available" />
-                                )}
-                                <ActorName>{name}</ActorName>
-                                <ActorRole>{character}</ActorRole>
-
-                            </Link>
+                    {cast.map(({ profile_path, id, name, character }) => (
+                        <List key={id}>
+                            <StyledLink to={toPerson(":personId")}>
+                                <Tile>
+                                    <Poster
+                                        src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                                        alt={name}
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = noPicture;
+                                        }}
+                                    />
+                                    <ActorName>{name}</ActorName>
+                                    <ActorRole>{character}</ActorRole>
+                                </Tile>
+                            </StyledLink>
                         </List>
                     ))}
                 </Wrapper>
             )}
         </>
     );
-}
+};
 
 export default Cast;
