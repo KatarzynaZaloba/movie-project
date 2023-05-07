@@ -4,8 +4,8 @@ import { Wrapper, List, Tile, Poster, ActorName, ActorRole, NoPoster } from "../
 import { selectCrew } from "../../movieDetailsSlice";
 import { imgBaseUrl } from "../../../../core/APIBox/apiSource";
 import noPosterImg from '../image/noPoster.png';
-//import { toPerson } from "../../../../feature/PersonDetails";
-//jak w Cast :)
+import { toPerson } from "../../../../core/routes";
+
 
 const Crew = () => {
     const crew = useSelector(selectCrew);

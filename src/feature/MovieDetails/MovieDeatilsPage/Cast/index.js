@@ -4,8 +4,8 @@ import { Wrapper, List, Tile, Poster, ActorName, ActorRole, NoPoster } from "./s
 import { selectCast } from "../../movieDetailsSlice";
 import { imgBaseUrl } from "../../../../core/APIBox/apiSource";
 import noPosterImg from '../image/noPoster.png';
-//import { toPerson } from "../../../../feature/PersonDetails"; 
-//jak będę znała nazwę komponentu który przygotowuje Kasia dodam odpowiednią nazwę
+import { toPerson } from "../../../../core/routes";
+
 
 const Cast = () => {
     const cast = useSelector(selectCast);
