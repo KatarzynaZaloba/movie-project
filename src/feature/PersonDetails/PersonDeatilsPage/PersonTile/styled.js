@@ -21,18 +21,15 @@ export const WrapperTile = styled.article`
     "poster description"
     "poster area";
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    margin-top: -20px;
-    margin-right: -16px;
     grid-gap: 20px;
     grid-template-areas:
       "poster content"
       "poster content"
       "description description";
     grid-template-columns: 188px auto;
+    padding: 16px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    margin-top: -20px;
-    margin-right: -98px;
     margin-left: 10px;
     grid-gap: 38px;
     grid-template-areas:
@@ -56,21 +53,8 @@ flex-direction: column;
 gap: 24px;
 justify-self: left;
 margin-bottom: 24px;
-margin-top: 48px;
 margin-left: 0px; 
 grid-area: content;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    margin-bottom: -22px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    margin-bottom: -12px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-    margin-bottom: -10px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    margin-bottom: -8px;
-  }
 `;
 
 export const DetailsMovie = styled.div`
@@ -90,7 +74,6 @@ gap: 8px;
      }
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     gap: 0px;
-    margin-left: -6px;
     margin-right: 0px;
   }
 `;
@@ -193,17 +176,13 @@ export const Description = styled.p`
  color: ${({ theme }) => theme.colors.black};
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 18px;
-    margin-top: -24px;
-    margin-bottom: -12px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     font-size: 16px;
-    margin-top: -20px;
     margin-bottom: 12px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
     font-size: 16px;
-    margin-top: -20px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
       font-size: 14px;
