@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
+
 import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
 import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
@@ -7,6 +8,7 @@ import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
 import Loading from "../../common/States/Loading/LoadingSpinner"; 
 
 const PersonDetails = () => {
+
   const { personId } = useParams();
   const [personDetails, setPersonDetails] = useState(null);
 
