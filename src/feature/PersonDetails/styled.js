@@ -25,6 +25,8 @@ export const SectionTitle = styled.header`
     line-height: 1.2;
     color: ${({ theme }) => theme.colors.woodSmoke};
     margin-left: 10px;
+    margin-bottom: 24px;
+    margin-top: 24px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         font-size: 20px;
