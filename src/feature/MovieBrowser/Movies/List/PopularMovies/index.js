@@ -1,4 +1,4 @@
-import Loading from "../../../../../common/States/Loading";
+import Loading from "../../../../../common/States/Loading/LoadingSpinner";
 import Data from "./Data";
 import ErrorBox from "./ErrorBox";
 

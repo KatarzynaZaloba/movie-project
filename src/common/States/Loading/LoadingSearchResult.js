@@ -2,7 +2,7 @@ import { useQueryParameter } from "../../../core/QueryBox/useQueryParameter";
 import { searchQueryParamName } from "../../../core/QueryBox/queryParamName"
 import { LoadingContainer, LoadingWrapper, LoadingText, LoadingSpinner } from "./styled";
 
-export const Loading = () => {
+const LoadingSearchResults = () => {
     const query = useQueryParameter(searchQueryParamName);
 
     return (
@@ -12,8 +12,7 @@ export const Loading = () => {
                 <LoadingSpinner />
             </LoadingWrapper>
         </LoadingContainer>
-    )
+    );
 };
 
-export default Loading;
-
+export default LoadingSearchResults;
