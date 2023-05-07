@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
+
 import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
 import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
@@ -8,6 +9,7 @@ import Loading from "../../common/States/Loading/LoadingSpinner";
 import ErrorBox from "../MovieBrowser/Movies/List/PopularMovies/ErrorBox";
 
 const PersonDetails = () => {
+
   const { personId } = useParams();
   const [personDetails, setPersonDetails] = useState(null);
   const [error, setError] = useState(null); // new state
