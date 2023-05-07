@@ -22,8 +22,7 @@ export const Item = styled.div`
 export const StyledLink = styled(Link)`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black};
-`;
-    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
+@media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
         width: 100%;
     }
 `;

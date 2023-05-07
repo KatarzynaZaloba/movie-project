@@ -1,11 +1,10 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
-import Header from "../common/Header";
+import { Header } from "../common/Header";
 import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import MoviesList from "../feature/MovieBrowser/Movies";
 import PeopleList from "../feature/PeopleList";
-import PersonDetails from "../feature/PersonDetails"
+import PersonDetails from "../feature/PersonDetails";
 import MovieDetails from "../feature/MovieDetails";
-
 
 function App() {
   return (
