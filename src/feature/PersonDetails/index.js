@@ -6,7 +6,7 @@ import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
 import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
 import Loading from "../../common/States/Loading/LoadingSpinner";
-import ErrorBox from "../MovieBrowser/Movies/List/PopularMovies/ErrorBox";
+import ErrorBox from "../../common/ErrorBox";
 
 const PersonDetails = () => {
 

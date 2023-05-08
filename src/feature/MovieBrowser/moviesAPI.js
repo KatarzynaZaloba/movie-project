@@ -1,4 +1,4 @@
-import { baseURL, APIkey } from "../dataAPI";
+import { baseURL, APIkey } from "./dataAPI";
 
 export const getPopularMovies = async () => {
     const response = await fetch(

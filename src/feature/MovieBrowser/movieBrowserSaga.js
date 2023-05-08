@@ -1,6 +1,6 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
-import { getGenres, getPopularMovies } from "../moviesAPI";
-import { fetchGenres, fetchGenresError, fetchGenresSuccess, fetchMovie, fetchMovieError, fetchMovieSuccess } from "./movieListSlice";
+import { getGenres, getPopularMovies } from "./moviesAPI";
+import { fetchGenres, fetchGenresError, fetchGenresSuccess, fetchMovie, fetchMovieError, fetchMovieSuccess } from "./movieBrowserSlice";
 
 const loadingDelay = 1000;
 
@@ -34,7 +34,7 @@ function* fetchGenresHandler() {
     }
 }
 
-export function* movieListSaga() {
+export function* movieBrowserSaga() {
     yield takeLatest(fetchMovie.type, fetchMovieHandler);
     yield takeLatest(fetchGenres.type, fetchGenresHandler);
 }

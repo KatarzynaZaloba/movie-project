@@ -14,9 +14,9 @@ export const DetailsWrapper = styled.div`
     }
   @media (max-width: ${({ theme }) => theme.breakpoints.small}) {
     margin-top: 16px;
-   margin-bottom: 16px;
+    margin-bottom: 16px;
     grid-gap: 16px;
-     }
+    }
 `;
 
 export const SectionTitle = styled.header`
