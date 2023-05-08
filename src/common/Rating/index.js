@@ -5,7 +5,7 @@ const Rating = ({ rating, votes }) => {
     return (
         <Wrapper>
             <Star />
-            <Score>{rating}</Score>
+            <Score>{rating.toFixed(1)}</Score>
             <Votes>{votes} votes</Votes>
         </Wrapper>
     )
