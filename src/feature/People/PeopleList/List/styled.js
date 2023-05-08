@@ -9,16 +9,28 @@ export const Wrapper = styled.div`
     margin-bottom: 100px;
 `;
 
+export const Header = styled.h1`
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.2;
+    color: ${({ theme }) => theme.colors.woodSmoke};
+    margin-left: 10px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 20px;
+    }
+`;
+
 export const PeopleList = styled.ul`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
     gap: 24px;
     padding: 12px;
     
-    @media (max-width: ${({theme})=>theme.breakpoints.mobileMin}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
     }
-    @media (max-width: ${({theme})=>theme.breakpoints.small}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
         grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
         height: 100%;
     }
@@ -60,7 +72,7 @@ export const Title = styled.h2`
     font-weight: 500;
     font-size: 22px;
     margin: 0;
-    @media (max-width: ${({theme})=>theme.breakpoints.mobileMin}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         font-size: 16px;
     }
 `;
