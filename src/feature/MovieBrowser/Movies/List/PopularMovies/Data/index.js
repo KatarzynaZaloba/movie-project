@@ -33,7 +33,7 @@ const Data = ({ movies }) => {
 
     return (
         <>
-            {!movies.length ? (
+            {!filteredMovies.length ? (
                 <NoResults />
             ) : (
                 <>
