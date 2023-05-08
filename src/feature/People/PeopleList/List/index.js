@@ -65,8 +65,8 @@ const PopularPeopleList = ({ people, loading }) => {
   return (
     <PeopleList>
       {people.map((person) => (
-        <StyledLink to={`/person/${person.id}`}>
-          <Item key={person.id}>
+        <Item key={person.id}>
+          <StyledLink to={`/person/${person.id}`}>
             <Tile>
               <Poster
                 src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
@@ -78,8 +78,8 @@ const PopularPeopleList = ({ people, loading }) => {
               />
               <Title>{person.name}</Title>
             </Tile>
-          </Item>
-        </StyledLink>
+          </StyledLink>
+        </Item>
       ))}
     </PeopleList>
   );
