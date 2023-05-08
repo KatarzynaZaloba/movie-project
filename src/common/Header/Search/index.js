@@ -8,8 +8,8 @@ import { searchQueryParamName } from "../../../core/QueryBox/queryParamName";
 export const Search = () => {
     const location = useLocation();
     const history = useHistory();
-    const query = useQueryParameter(searchQueryParamName);
-    const replaceQueryParameter = useReplaceQueryParameter();
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get(searchQueryParamName);
     const inputRef = useRef(null);
     const timerRef = useRef(null);
 
@@ -34,17 +34,22 @@ export const Search = () => {
                 : searchMovies;
 
             searchEndpoint(inputValue).then((results) => {
-                replaceQueryParameter(searchQueryParamName, inputValue);
+                searchParams.set(searchQueryParamName, inputValue);
 
                 if (results.length > 0) {
+                    const firstResult = results[0];
+                    const pathname = location.pathname.includes("/people")
+                        ? `/person/${firstResult.id}`
+                        : location.pathname;
+
                     history.push({
-                        pathname: location.pathname,
-                        search: `?${searchQueryParamName}=${inputValue}`
+                        pathname,
+                        search: searchParams.toString(),
                     });
                 } else {
                     history.push({
                         pathname: location.pathname,
-                        search: ""
+                        search: "",
                     });
                 }
             });
