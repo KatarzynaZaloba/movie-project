@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledLink } from './styled';
+import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledLink, Header } from './styled';
 import { Pagination } from "../../../../common/Pagination";
 import Loading from '../../../../common/States/Loading/LoadingSpinner';
 import noPicture from '../../../../common/Images/noPicture.svg';
@@ -49,14 +49,18 @@ const PeopleListPage = () => {
       {loading ? (
         <Loading />
       ) : (
-        <PopularPeopleList people={people} loading={loading} />
+        <>
+          <Header>Popular people</Header>
+          <PopularPeopleList people={people} loading={loading} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            loading={loading}
+          />
+        </>
       )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        loading={loading}
-      />
+
     </Wrapper>
   );
 };
