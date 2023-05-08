@@ -3,7 +3,7 @@ import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledLink } from './st
 import { Pagination } from "../../../../common/Pagination";
 import Loading from '../../../../common/States/Loading/LoadingSpinner';
 import noPicture from '../../../../common/Images/noPicture.svg';
-import ErrorBox from '../../../MovieBrowser/Movies/List/PopularMovies/ErrorBox';
+import ErrorBox from '../../../../common/ErrorBox';
 
 const PeopleListPage = () => {
   const [people, setPeople] = useState([]);
@@ -46,7 +46,7 @@ const PeopleListPage = () => {
 
   return (
     <Wrapper>
-       {loading ? (
+      {loading ? (
         <Loading />
       ) : (
         <PopularPeopleList people={people} loading={loading} />
@@ -63,25 +63,25 @@ const PeopleListPage = () => {
 
 const PopularPeopleList = ({ people, loading }) => {
   return (
-      <PeopleList>
-        {people.map((person) => (
-          <StyledLink to={`/person/${person.id}`}>
-            <Item key={person.id}>
-              <Tile>
-                <Poster
-                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                  alt={person.name}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = noPicture;
-                  }}
-                />
-                <Title>{person.name}</Title>
-              </Tile>
-            </Item>
-          </StyledLink>
-        ))}
-      </PeopleList>
+    <PeopleList>
+      {people.map((person) => (
+        <StyledLink to={`/person/${person.id}`}>
+          <Item key={person.id}>
+            <Tile>
+              <Poster
+                src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                alt={person.name}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = noPicture;
+                }}
+              />
+              <Title>{person.name}</Title>
+            </Tile>
+          </Item>
+        </StyledLink>
+      ))}
+    </PeopleList>
   );
 };
 
