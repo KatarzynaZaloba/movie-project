@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import MovieTile from '../../../common/MovieTile';
 import { Wrapper, Item, TileWrapper, StyledLink, Header } from "./styled";
-import { selectGenres, selectMovies } from '../movieBrowserSlice'
+import { selectGenres } from '../movieBrowserSlice'
 import NoResults from '../../../common/NoResults';
 import { useQueryParameter } from "../../../core/QueryBox/useQueryParameter";
 import { searchQueryParamName } from "../../../core/QueryBox/queryParamName";
@@ -24,7 +24,7 @@ const Movies = () => {
                     `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage}`
                 );
                 const data = await response.json();
-                const lastPage = data.total_pages > 500  ? 500 : data.total_pages;
+                const lastPage = data.total_pages > 500 ? 500 : data.total_pages;
                 setMovies(data.results);
                 setTotalPages(lastPage);
             } catch (error) {
@@ -38,8 +38,8 @@ const Movies = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
         //adding function which can show the number of page in the URL:
-    const url = `${window.location.origin}${window.location.pathname}?page=${pageNumber}`;
-    window.history.pushState({ path: url }, '', url);
+        const url = `${window.location.origin}${window.location.pathname}?page=${pageNumber}`;
+        window.history.pushState({ path: url }, '', url);
     };
 
     const history = useHistory();
