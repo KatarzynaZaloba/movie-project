@@ -1,8 +1,11 @@
-import React from 'react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchGenres, fetchMovie, selectMovies, selectMovieStatus } from '../../movieBrowserSlice'
+import { fetchGenres, fetchMovie, selectMovieStatus } from './movieBrowserSlice'
+import Movies from './Movies';
+import LoadingSpinnerOnly from '../../common/States/Loading/LoadingSpinner';
+import ErrorBox from '../../common/ErrorBox';
 
+const MovieBrowser = () => {
 
     const dispatch = useDispatch();
 
@@ -13,20 +16,19 @@ import { fetchGenres, fetchMovie, selectMovies, selectMovieStatus } from '../../
         dispatch(fetchMovie());
         dispatch(fetchGenres());
     }, [dispatch]);
-    
-const MovieBrowser = () => {
+
     switch (movieStatus) {
         case "initial":
             return null;
 
         case "loading":
-            return <Loading />;
+            return <LoadingSpinnerOnly />;
 
         case "error":
             return <ErrorBox />;
 
         case "success":
-            return <Data movies={movies} />;
+            return <Movies />;
 
         default:
             throw new Error(`incorrect status: ${movieStatus}`);
