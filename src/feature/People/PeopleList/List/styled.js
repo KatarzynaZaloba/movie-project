@@ -59,10 +59,10 @@ export const Tile = styled.div`
 `;
 
 export const Poster = styled.img`
-    max-width: 100%;
+    width: 100%;
+    height: auto;
     border-radius: 5px;
-    margin-bottom: 16px;
-    z-index: -1;
+    aspect-ratio: 2/3;
 `;
 
 export const Title = styled.h2`
