@@ -1,6 +1,6 @@
 import React from 'react'
 import { Details, Genre, GenresList, Poster, PosterWrapper, Tile, Title, Year } from './styled'
-import Rating from '../../MovieBrowser/Movies/List/PopularMovies/Data/Rating';
+import Rating from '../../../common/Rating';
 import noPoster from '../../../common/Images/noPoster.svg';
 
 const MovieTile = ({ movie, genres }) => {

@@ -62,7 +62,7 @@ const MovieTile = () => {
                             ))}
                         </Tags>
                         <Rating>
-                            <StyledStarIcon /> <Rate>{movieDetails.vote_average}</Rate>
+                            <StyledStarIcon /> <Rate>{movieDetails.vote_average.toFixed(1)}</Rate>
                             <Votes>/ 10</Votes> <Votes>{movieDetails.vote_count} votes</Votes>
                         </Rating>
                     </DetailsMovie>
