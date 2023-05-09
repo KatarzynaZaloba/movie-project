@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     max-width: 1368px;
-    margin: 56px auto 0;
-    margin: 0 auto;
+    margin: 52px auto 40px;
     padding: 0 16px;
-    margin-bottom: 100px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        padding: 0 12px;
+        margin: 0;
+    }
 `;
 
 export const Header = styled.h1`
@@ -30,10 +33,6 @@ export const PeopleList = styled.ul`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
     }
-    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-        grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
-        height: 100%;
-    }
 `;
 
 export const Item = styled.li`
@@ -42,19 +41,24 @@ export const Item = styled.li`
 `;
 
 export const Tile = styled.div`
-    background-color: ${({ theme }) => theme.colors.white};
-    padding: 16px;
     width: 100%;
     height: 100%;
+    background-color: ${({ theme }) => theme.colors.white};
+    transition: 0.5s;
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
     border-radius: 5px;
-    transition: 0.5s;
+    padding: 16px;
+    
     &:hover{
         transform: scale(1.05);
         box-shadow: ${({ theme }) => theme.hoverShadow};
     }
     &:active{
         box-shadow: ${({ theme }) => theme.activeShadow};
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        padding: 8px;
     }
 `;
 
@@ -74,6 +78,7 @@ export const Title = styled.h2`
     margin: 0;
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         font-size: 16px;
+        padding-bottom: 10px;
     }
 `;
 
@@ -86,5 +91,9 @@ export const StyledLink = styled(Link)`
     color: ${({ theme }) => theme.colors.black};
     &:hover {
         text-decoration: none;
+    }
+
+    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
+        width: 100%;
     }
 `;
