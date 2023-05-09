@@ -2,75 +2,93 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
-  width: 1368px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
-  grid-gap: 24px;
-@media(max-width: ${({ theme }) => theme.breakpoints.large}px) {
-    grid-template-columns: repeat(4, 1fr);
-}
-@media(max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    grid-template-columns: repeat(3, 1fr);
-}
-@media(max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-    grid-template-columns: repeat(2, 1fr);
-    margin: 12px auto 0;
-}
+    margin: 52px auto 40px;
+    padding: 0 16px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        padding: 0 12px;
+        margin: 0;
+    }
 `;
 
-export const List = styled.div`
-    list-style: none;
+export const List = styled.ul`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+    gap: 24px;
+    padding: 12px;
     
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
+    }
 `;
 
 export const StyledLink = styled(Link)`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black};
+    &:hover {
+        text-decoration: none;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        width: 100%;
+    }
 `;
 
 export const Tile = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 16px;
-  width: 208px;
-  height: 100%;
-  box-shadow: ${({ theme }) => theme.hoverShadow};
-  border-radius: 5px;
-  font-size: 22px;
-  transition: all 0.2s ease-in-out;
+    width: 200px;
+    height: 100%;
+    background-color: ${({ theme }) => theme.colors.white};
+    transition: 0.5s;
+    box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
+    border-radius: 5px;
+    padding: 16px;
+    margin-right: 24px;
+    margin-bottom: 24px;
+    
+    &:hover{
+        transform: scale(1.05);
+        box-shadow: ${({ theme }) => theme.hoverShadow};
+    }
+    &:active{
+        box-shadow: ${({ theme }) => theme.activeShadow};
+    }
 
-  &:hover {
-    box-shadow: ${({ theme }) => theme.activeShadow};
-    transform: scale(1.05);
-  }
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        padding: 8px;
+    }
 `;
 
 export const Poster = styled.img`
-    max-width: 177px;
-    height: 264px;
+    width: 100%;
+    height: auto;
     border-radius: 5px;
+    aspect-ratio: 2/3;
     margin-bottom: 16px;
-    `;
+`;
 
 export const NoPoster = styled.img`
-    max-width: 177px;
-    height: 264px;
+    width: 100%;
+    height: auto;
     border-radius: 5px;
+    aspect-ratio: 2/3;
     margin-bottom: 16px;
-    `;
+`;
 
-export const ActorName = styled.p`
+export const ActorName = styled.h2`
     text-align: center;
     word-wrap: wrap;
     line-height: 1.3;
     font-weight: 500;
     font-size: 22px;
     margin: 0;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        font-size: 16px;
+        padding-bottom: 10px;
+    }
 `;
+
 export const ActorRole = styled.p`
-text-align: center;
+    text-align: center;
     word-wrap: wrap;
     font-weight: 400;
     font-size: 18px;

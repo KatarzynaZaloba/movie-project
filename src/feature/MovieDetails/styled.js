@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div` 
   max-width: 1368px;
-  margin: 52 auto 40px;
+  margin: 52px auto 40px;
   padding: 0 16px;
 `;
 
@@ -31,6 +31,12 @@ export const SectionTitle = styled.h2`
     margin-top: 24px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 24px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         font-size: 20px;
+        margin-top: 21px;
+        margin-bottom: 12px;
     }
 `;

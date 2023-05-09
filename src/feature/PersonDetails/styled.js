@@ -31,6 +31,12 @@ export const SectionTitle = styled.header`
     margin-top: 24px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 24px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         font-size: 20px;
+        margin-top: 21px;
+        margin-bottom: 12px;
     }
 `;
