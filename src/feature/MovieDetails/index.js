@@ -8,8 +8,8 @@ import Cast from './MovieDeatilsPage/Cast';
 import Crew from './MovieDeatilsPage/Crew';
 import MovieTile from './MovieDeatilsPage/MovieTile';
 import LoadingSearchResults from '../../common/States/Loading/LoadingSearchResult';
-import ErrorBox from '../../common/ErrorBox';
-import NoResult from '../../common/NoResults';
+import ErrorBox from '../MovieBrowser/Movies/List/PopularMovies/ErrorBox';
+import NoResults from "../../common/NoResults";
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const MovieDetails = () => {
     }
 
     if (status === "noresult") {
-        return <NoResult />;
+        return <NoResults />;
     }
 
     return (
