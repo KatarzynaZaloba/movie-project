@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 export const Wrapper = styled.div` 
@@ -10,9 +9,11 @@ export const Wrapper = styled.div`
 export const DetailsWrapper = styled.div`
   margin-top: 64px;
   margin-bottom: 40px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-template-columns: auto 1fr;
     }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.small}) {
     margin-top: 16px;
     margin-bottom: 16px;
@@ -32,4 +33,4 @@ export const SectionTitle = styled.header`
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         font-size: 20px;
     }
-    `;
+`;
