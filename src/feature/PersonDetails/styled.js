@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div` 
   max-width: 1368px;
-  margin: 0 auto;
+  margin: 52px auto 40px;
+  padding: 0 16px;
 `;
 
 export const DetailsWrapper = styled.div`
