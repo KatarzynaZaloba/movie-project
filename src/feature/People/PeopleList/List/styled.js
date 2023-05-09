@@ -63,6 +63,7 @@ export const Poster = styled.img`
     height: auto;
     border-radius: 5px;
     aspect-ratio: 2/3;
+    margin-bottom: 16px;
 `;
 
 export const Title = styled.h2`
