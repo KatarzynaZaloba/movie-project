@@ -45,10 +45,19 @@ const PersonDetails = () => {
     <Wrapper>
       <DetailsWrapper>
         <PersonTile person={personDetails} />
-        <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
-        <Cast cast={personDetails.movie_credits.cast} />
-        <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
-        <Crew crew={personDetails.movie_credits.crew} />
+        {personDetails.movie_credits.cast.length > 0 && (
+  <>
+    <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
+    <Cast cast={personDetails.movie_credits.cast} />
+  </>
+)}
+
+{personDetails.movie_credits.crew.length > 0 && (
+  <>
+    <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
+    <Crew crew={personDetails.movie_credits.crew} />
+  </>
+)}
       </DetailsWrapper>
     </Wrapper>
   );
