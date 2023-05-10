@@ -1,17 +1,18 @@
-
 import styled from "styled-components";
 
 export const Wrapper = styled.div` 
   max-width: 1368px;
-  margin: 0 auto;
+  margin: 52px auto 40px;
 `;
 
 export const DetailsWrapper = styled.div`
   margin-top: 64px;
   margin-bottom: 40px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     grid-template-columns: auto 1fr;
     }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.small}) {
     margin-top: 16px;
     margin-bottom: 16px;
@@ -29,6 +30,12 @@ export const SectionTitle = styled.header`
     margin-top: 24px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-        font-size: 20px;
+        font-size: 24px;
     }
-    `;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        font-size: 20px;
+        margin-top: 21px;
+        margin-bottom: 12px;
+    }
+`;
