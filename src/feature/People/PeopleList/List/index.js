@@ -73,6 +73,7 @@ const PopularPeopleList = ({ people, loading }) => {
           <StyledLink to={`/person/${person.id}`}>
             <Tile>
               <Poster
+                className="no-picture"
                 src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
                 alt={person.name}
                 onError={(e) => {
