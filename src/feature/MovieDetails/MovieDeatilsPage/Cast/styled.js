@@ -48,7 +48,7 @@ export const Tile = styled.div`
         box-shadow: ${({ theme }) => theme.activeShadow};
     }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         padding: 8px;
     }
 `;
@@ -58,7 +58,8 @@ export const Poster = styled.img`
     height: auto;
     border-radius: 5px;
     aspect-ratio: 2/3;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+    object-fit: cover;
 `;
 
 export const NoPoster = styled.img`
@@ -67,6 +68,7 @@ export const NoPoster = styled.img`
     border-radius: 5px;
     aspect-ratio: 2/3;
     margin-bottom: 16px;
+    object-fit: cover;
 `;
 
 export const ActorName = styled.h2`
@@ -76,9 +78,12 @@ export const ActorName = styled.h2`
     font-weight: 500;
     font-size: 22px;
     margin: 0;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 14px;
+        padding-bottom: 0px;
+    }
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-        font-size: 16px;
-        padding-bottom: 10px;
+        font-size: 14px;
     }
 `;
 
@@ -88,7 +93,15 @@ export const ActorRole = styled.p`
     font-weight: 400;
     font-size: 18px;
     color: ${({ theme }) => theme.colors.stormGrey};
-    margin: 0px 10px 0px 0px;
     line-height: 1.5;    
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 13px;
+        padding-bottom: 0px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        font-size: 13px;
+    }
 
 `;
