@@ -26,7 +26,7 @@ export const Header = styled.h1`
 
 export const PeopleList = styled.ul`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 24px;
     padding: 12px;
     
