@@ -25,12 +25,13 @@ export const SectionTitle = styled.h2`
     font-size: 36px;
     line-height: 1.2;
     color: ${({ theme }) => theme.colors.woodSmoke};
-    margin-left: 10px;
+    margin-left: 15px;
     margin-bottom: 24px;
     margin-top: 24px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         font-size: 24px;
+        margin-left: 12px;
     }
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
