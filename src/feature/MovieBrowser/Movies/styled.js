@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export const Wrapper = styled.div` 
     max-width: 1368px;
     margin: 52px auto 40px;
-    padding: 0 16px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         padding: 0 12px;
@@ -28,6 +27,8 @@ export const TileWrapper = styled.section`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
     gap: 24px;
+    padding: 12px;
+
     @media (max-width: ${({theme})=>theme.breakpoints.small}px) {
         grid-template-columns: minmax(200px, 1fr);
     }
@@ -45,6 +46,7 @@ export const Item = styled.div`
 export const StyledLink = styled(Link)`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black};
+    
 @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
         width: 100%;
     }

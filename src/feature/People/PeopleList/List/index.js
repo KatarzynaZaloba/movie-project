@@ -16,18 +16,15 @@ const PeopleListPage = () => {
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [filterLoading, setFilterLoading] = useState(false);
-  const [numResults, setNumResults] = useState('');
+  const [numResults, setNumResults] = useState(0);
 
   const location = useLocation();
 
   let headerText = "Popular People";
   if (location.search.includes("?search=")) {
     const searchQuery = location.search.slice(8);
-    if (loading) {
-      headerText = `Search results for "${searchQuery}"`;
-    } else {
-      headerText = `Search results for "${searchQuery}" ${numResults}`;
-    }
+    headerText = loading ? `Search results for "${searchQuery}"` : `Search results for "${searchQuery}" (${numResults})`;
+
   }
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const PeopleListPage = () => {
           setTotalPages(data.total_pages);
           setLoading(false);
           setFilterLoading(false);
-          setNumResults(`(${data.results.length})`);
+          setNumResults(data.results.length);
         }, 2000);
       } catch (error) {
         console.error(error);
