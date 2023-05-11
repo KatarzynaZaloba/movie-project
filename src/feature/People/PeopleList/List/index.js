@@ -18,7 +18,6 @@ const PeopleListPage = () => {
   const [hasError, setHasError] = useState(false);
   const [filterLoading, setFilterLoading] = useState(false);
   const [numResults, setNumResults] = useState(0);
-  const [numResults, setNumResults] = useState(0);
 
   const location = useLocation();
 
