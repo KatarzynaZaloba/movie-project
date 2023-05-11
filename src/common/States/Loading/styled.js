@@ -17,7 +17,7 @@ flex-direction: column;
   }
 `;
 
-export const LoadingText = styled.p`
+export const LoadingText = styled.h2`
   font-weight: 600;
   font-size: 36px;
   line-height: 1.2;
@@ -42,7 +42,7 @@ export const LoadingText = styled.p`
   }
 `;
 
-export const LoadingSpinner = styled.div`
+export const StyledLoadingSpinner = styled.div`
   border: 12px solid ${({ theme }) => theme.colors.snuff};
   border-top: 12px solid ${({ theme }) => theme.colors.black};
   width: 91px;

@@ -1,10 +1,10 @@
-import { LoadingContainer, LoadingWrapper, LoadingSpinner } from "./styled";
+import { LoadingContainer, LoadingWrapper, StyledLoadingSpinner } from "./styled";
 
 const LoadingSpinnerOnly = () => {
     return (
         <LoadingContainer>
             <LoadingWrapper>
-                <LoadingSpinner />
+                <StyledLoadingSpinner />
             </LoadingWrapper>
         </LoadingContainer>
     );
