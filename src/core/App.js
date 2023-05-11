@@ -1,4 +1,4 @@
-import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { Header } from "../common/Header";
 import { toMovie, toMovies, toPeople, toPerson } from "./routes";
 import MovieDetails from "../feature/MovieDetails";
@@ -9,7 +9,7 @@ import MovieBrowser from "../feature/MovieBrowser";
 function App() {
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Header />
         <Switch>
           <Route exact path={toMovies()}>
@@ -28,7 +28,7 @@ function App() {
             <Redirect to={toMovies()} />
           </Route>
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }
