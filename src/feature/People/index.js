@@ -1,11 +1,10 @@
 import React from 'react';
-import { Header, Wrapper } from './styled';
+import { Wrapper } from './styled';
 import PeopleListPage from './PeopleList/List';
 
-const PeopleList = () => {
+const PeopleList = ({ }) => {
     return (
         <Wrapper>
-            <Header>Popular people</Header>
             <PeopleListPage />
         </Wrapper>
     );
