@@ -132,6 +132,10 @@ export const Production = styled.div`
   margin: 0px;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    flex-direction: column;
+  }
 `;
 
 export const GreyText = styled.p`
@@ -251,7 +255,7 @@ export const Votes = styled.p`
       font-size: 13px;
     }
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
-      font-size: 13px;
+      font-size: 10px;
     }
 `;
 
