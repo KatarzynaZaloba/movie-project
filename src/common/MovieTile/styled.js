@@ -25,14 +25,15 @@ export const Tile = styled.div`
 `;
 
 export const PosterWrapper = styled.div`
+    height: auto;
+    border-radius: 5px;
+    aspect-ratio: 2 / 3;
     display: flex;
     justify-content: center;
     width: 100%;
     border-radius: 5px;
     flex-basis: auto; 
     background-image: url(${noPoster});
-    background-repeat: no-repeat;
-    background-position: center;
     background-size: 80%;
     background-color: ${({ theme }) => theme.colors.silver};
     color: ${({ theme }) => theme.colors.white};
