@@ -18,6 +18,7 @@ const PeopleListPage = () => {
   const [hasError, setHasError] = useState(false);
   const [filterLoading, setFilterLoading] = useState(false);
   const [numResults, setNumResults] = useState(0);
+  const [numResults, setNumResults] = useState(0);
 
   const location = useLocation();
 
@@ -43,6 +44,7 @@ const PeopleListPage = () => {
           setTotalPages(data.total_pages);
           setLoading(false);
           setFilterLoading(false);
+          setNumResults(data.results.length);
           setNumResults(data.results.length);
         }, 2000);
       } catch (error) {

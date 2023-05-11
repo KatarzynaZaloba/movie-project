@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { ReactComponent as warning } from "../Images/warning.svg"
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
     text-align: center;
@@ -7,6 +8,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    margin-top: 195px;
 `;
 
 export const Warning = styled(warning)`
@@ -26,12 +28,16 @@ export const Info = styled.span`
     font-style: normal;
 `;
 
+export const ButtonLink = styled(Link)`
+`;
+
 export const Button = styled.button`
     padding: 16px 24px;
     background-color: ${({ theme }) => theme.colors.scienceBlue};
     border-radius: 5px;
     border-color: none;
     border: none;
+    cursor: pointer;
 `;
 
 export const ButtonText = styled.p`
