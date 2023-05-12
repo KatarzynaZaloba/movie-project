@@ -8,6 +8,7 @@ import LoadingSearchResults from "../../../../common/States/Loading/LoadingSearc
 import LoadingSpinnerOnly from "../../../../common/States/Loading/LoadingSpinnerOnly";
 import { useHistory, useLocation } from "react-router-dom";
 import { pageQueryParamName, searchQueryParamName } from '../../../../core/QueryBox/queryParamName';
+import NoResults from '../../../../common/NoResults';
 
 
 const PeopleListPage = () => {
