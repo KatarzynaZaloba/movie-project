@@ -15,7 +15,7 @@ import LoadingSearchResults from '../../../common/States/Loading/LoadingSearchRe
 const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState();
+    const [totalPages, setTotalPages] = useState(1);
     const [searchResults, setSearchResults] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const genres = useSelector(selectGenres);
@@ -24,21 +24,15 @@ const Movies = () => {
 
     let searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
 
-    const pageQuery = new URLSearchParams(location.search).get(
-        pageQueryParamName
-    );
+    const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
         
     useEffect(() => {
         const fetchMovies = async () => {
             setIsLoading(true);
             try {
-                const searchQuery = new URLSearchParams(location.search).get(
-                    searchQueryParamName
-                );
+                const searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
 
-                const pageQuery = new URLSearchParams(location.search).get(
-                    pageQueryParamName
-                );
+                const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
 
                 let endpoint;
                 if (searchQuery) {
