@@ -45,7 +45,7 @@ const PeopleListPage = () => {
           setFilterLoading(false);
           setNumResults(data.results.length);
           setNumResults(data.results.length);
-        }, 2000);
+        }, 1000);
       } catch (error) {
         console.error(error);
         setHasError(true);
