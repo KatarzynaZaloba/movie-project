@@ -68,7 +68,7 @@ const MovieTile = () => {
                     </DetailsMovie>
                 </ContentTile>
                 <Description>
-                    <div>{movieDetails.overview}</div>
+                    {movieDetails.overview}
                 </Description>
             </WrapperTile>
         </ContainerTile>
