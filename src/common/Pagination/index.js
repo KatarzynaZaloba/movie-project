@@ -13,8 +13,10 @@ import {
 export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const [isLoading, /*setIsLoading*/] = useState(false);
 
+  const lastPage = totalPages > 500 ? 500 : totalPages;
+
   const handleNextPageClick = () => {
-    onPageChange(currentPage + 1);
+    onPageChange(currentPage < 500 ? currentPage +++ 1 : currentPage );
   };
 
   const handlePrevPageClick = () => {
@@ -22,7 +24,7 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   };
 
   const handleLastPageClick = () => {
-    onPageChange(totalPages);
+    onPageChange(currentPage != 500 ? lastPage : currentPage );
   };
 
   const handleFirstPageClick = () => {
@@ -31,28 +33,28 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   return (
     <Wrapper>
-      <Button disabled={currentPage === 1} onClick={handleFirstPageClick}>
+      <Button disabled={currentPage == 1} onClick={handleFirstPageClick}>
         <PrevVectorIcon />
         <PrevVectorIcon mobile="true" />
         <ButtonText>First</ButtonText>
       </Button>
-      <Button disabled={currentPage === 1} onClick={handlePrevPageClick}>
+      <Button disabled={currentPage == 1} onClick={handlePrevPageClick}>
         <PrevVectorIcon />
         <ButtonText>Previous</ButtonText>
       </Button>
       <PageCounter>
         Page <PageNumbers>{currentPage}</PageNumbers> of{" "}
-        <PageNumbers>{totalPages}</PageNumbers>
+        <PageNumbers>{lastPage}</PageNumbers>
       </PageCounter>
       <Button
-        disabled={currentPage === totalPages || isLoading}
+        disabled={currentPage == lastPage}
         onClick={handleNextPageClick}
       >
         <ButtonText>Next</ButtonText>
         <NextVectorIcon />
       </Button>
       <Button
-        disabled={currentPage === totalPages || isLoading}
+        disabled={currentPage == lastPage}
         onClick={handleLastPageClick}
       >
         <ButtonText>Last</ButtonText>
