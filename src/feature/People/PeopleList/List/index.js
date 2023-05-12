@@ -7,6 +7,7 @@ import ErrorBox from '../../../../common/ErrorBox';
 import LoadingSearchResults from "../../../../common/States/Loading/LoadingSearchResult";
 import LoadingSpinnerOnly from "../../../../common/States/Loading/LoadingSpinnerOnly";
 import { useLocation } from "react-router-dom";
+import NoResults from '../../../../common/NoResults';
 
 
 const PeopleListPage = () => {
@@ -24,7 +25,6 @@ const PeopleListPage = () => {
   if (location.search.includes("?search=")) {
     const searchQuery = location.search.slice(8);
     headerText = loading ? `Search results for "${searchQuery}"` : `Search results for "${searchQuery}" (${numResults})`;
-
   }
 
   useEffect(() => {
@@ -44,6 +44,7 @@ const PeopleListPage = () => {
           setLoading(false);
           setFilterLoading(false);
           setNumResults(data.results.length);
+          setNumResults(data.results.length);
         }, 2000);
       } catch (error) {
         console.error(error);
@@ -62,6 +63,10 @@ const PeopleListPage = () => {
 
   if (hasError) {
     return <ErrorBox />;
+  }
+
+  if (!loading && numResults === 0) {
+    return <NoResults />;
   }
 
   return (
