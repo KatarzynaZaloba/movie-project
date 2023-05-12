@@ -65,9 +65,12 @@ const Movies = () => {
     const renderHeader = () => {
         if (searchResults) {
             return (
-                <Header>
-                    Search results for "{searchResults.query}" ({searchResults.count})
-                </Header>
+                searchResults.count > 1 ?
+                    <Header>
+                        Search results for "{searchResults.query}" ({searchResults.count})
+                    </Header>
+                    :
+                    <NoResults />
             );
         } else {
             return <Header>Browse Movies</Header>;
@@ -102,16 +105,20 @@ const Movies = () => {
                             </Item>
                         ))
                     ) : (
-                        searchQuery && <NoResults />
+                        <></>
                     )}
                 </TileWrapper>
             )}
-            {searchQuery && movies.length === 0 && !isLoading && <NoResults />}
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-            />
+            {movies.length < 0 ?
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
+                :
+                <></>
+            }
+
         </Wrapper>
     );
 };
