@@ -25,7 +25,7 @@ const Movies = () => {
     let searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
 
     const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
-        
+
     useEffect(() => {
         const fetchMovies = async () => {
             setIsLoading(true);
@@ -36,9 +36,10 @@ const Movies = () => {
 
                 let endpoint;
                 if (searchQuery) {
-                    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${pageQuery? pageQuery : currentPage}`;
+                    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${pageQuery ? pageQuery : currentPage}`;
                 } else {
-                    endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;}
+                    endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;
+                }
                 // } else {
                 //     endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage}`;
                 // }
@@ -94,37 +95,34 @@ const Movies = () => {
 
     return (
         <Wrapper>
-            {renderHeader()}
             {isLoading && !searchQuery && <LoadingSpinnerOnly />}
             {isLoading && searchQuery && <LoadingSearchResults />}
             {!isLoading && (
-                <TileWrapper> 
-                    {movies.length > 0 ? (
-                        movies.map((movie) => (
-                            <Item key={movie.id}>
-                                <StyledLink to={toMovie({ movieId: movie.id })}>
-                                    <MovieTile
-                                        movie={movie}
-                                        genres={genres}
-                                    />
-                                </StyledLink>
-                            </Item>
-                        ))
-                    ) : (
-                        <></>
-                    )}
-                </TileWrapper>
+                <>
+                    {renderHeader()}
+                    <TileWrapper>
+                        {movies.length > 0 ? (
+                            movies.map((movie) => (
+                                <Item key={movie.id}>
+                                    <StyledLink to={toMovie({ movieId: movie.id })}>
+                                        <MovieTile
+                                            movie={movie}
+                                            genres={genres}
+                                        />
+                                    </StyledLink>
+                                </Item>
+                            ))
+                        ) : (
+                            <></>
+                        )}
+                    </TileWrapper>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                    />
+                </>
             )}
-            {movies.length > 0 ?
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                />
-                :
-                <></>
-            }
-
         </Wrapper>
     );
 };
