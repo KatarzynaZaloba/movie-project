@@ -6,7 +6,8 @@ import noPicture from '../../../../common/Images/noPicture.svg';
 import ErrorBox from '../../../../common/ErrorBox';
 import LoadingSearchResults from "../../../../common/States/Loading/LoadingSearchResult";
 import LoadingSpinnerOnly from "../../../../common/States/Loading/LoadingSpinnerOnly";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { pageQueryParamName, searchQueryParamName } from '../../../../core/QueryBox/queryParamName';
 
 
 const PeopleListPage = () => {
@@ -17,7 +18,7 @@ const PeopleListPage = () => {
   const [hasError, setHasError] = useState(false);
   const [filterLoading, setFilterLoading] = useState(false);
   const [numResults, setNumResults] = useState(0);
-
+  const history = useHistory();
   const location = useLocation();
 
   let headerText = "Popular People";
@@ -27,13 +28,22 @@ const PeopleListPage = () => {
 
   }
 
+
+
+  const searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
+
+  const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
+
   useEffect(() => {
     const fetchPopularPeople = async () => {
       try {
-        let endpoint = `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage}`;
+
+        const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
+
+        let endpoint = `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;
         if (location.search.includes("?search=")) {
           const searchQuery = location.search.slice(8);
-          endpoint = `https://api.themoviedb.org/3/search/person?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${currentPage}`;
+          endpoint = `https://api.themoviedb.org/3/search/person?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${pageQuery}`;
           setFilterLoading(true);
         }
         const response = await fetch(endpoint);
@@ -44,6 +54,7 @@ const PeopleListPage = () => {
           setLoading(false);
           setFilterLoading(false);
           setNumResults(data.results.length);
+          (pageQuery) ? setCurrentPage(pageQuery) : setCurrentPage(1);
         }, 2000);
       } catch (error) {
         console.error(error);
@@ -51,13 +62,16 @@ const PeopleListPage = () => {
       }
     };
     fetchPopularPeople();
-  }, [currentPage, location.search]);
+  }, [currentPage, location.search, pageQuery]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     setLoading(true);
-    const url = `${window.location.origin}${window.location.pathname}?page=${pageNumber}`;
-    window.history.pushState({ path: url }, '', url);
+    if (searchQuery) {
+      history.push(`/people?${searchQueryParamName}=${searchQuery}&page=${pageNumber}`);
+    } else {
+      history.push(`/people?page=${pageNumber}`);
+    }
   };
 
   if (hasError) {
