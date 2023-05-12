@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, ButtonLink, ButtonText, Header, Info, Warning, Wrapper } from './styled'
+import { toMovies } from '../../core/routes'
 
 const ErrorBox = () => {
     return (
@@ -9,7 +10,7 @@ const ErrorBox = () => {
             <Info>
                 Please check your network connection and try again
             </Info>
-            <ButtonLink to="/movies">
+            <ButtonLink to={toMovies()}>
                 <Button>
                     <ButtonText>Back to home page</ButtonText>
                 </Button>
