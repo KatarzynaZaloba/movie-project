@@ -9,6 +9,7 @@ import LoadingSpinnerOnly from "../../../../common/States/Loading/LoadingSpinner
 import { useHistory, useLocation } from "react-router-dom";
 import { pageQueryParamName, searchQueryParamName } from '../../../../core/QueryBox/queryParamName';
 import NoResults from '../../../../common/NoResults';
+import { toPerson } from '../../../../core/routes';
 
 
 const PeopleListPage = () => {
@@ -114,7 +115,7 @@ const PopularPeopleList = ({ people }) => {
       <PeopleList>
         {people.map((person) => (
           <Item key={person.id}>
-            <StyledNavLink to={`/person/${person.id}`}>
+            <StyledNavLink to={toPerson({ personId: person.id })}>
               <Tile>
                 <Poster
                   src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
