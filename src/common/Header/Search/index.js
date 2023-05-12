@@ -44,9 +44,19 @@ export const Search = () => {
                             search: `?${searchQueryParamName}=${inputValue}`
                         });
                     } else {
-                        history.push({
-                            pathname: location.pathname,
-                            search: ""
+
+                        searchEndpoint(inputValue.substring(0, 3)).then((results) => {
+                            if (results.length > 0) {
+                                history.push({
+                                    pathname: location.pathname,
+                                    search: `?${searchQueryParamName}=${inputValue.substring(0, 5)}`
+                                });
+                            } else {
+                                history.push({
+                                    pathname: location.pathname,
+                                    search: ""
+                                });
+                            }
                         });
                     }
                 });

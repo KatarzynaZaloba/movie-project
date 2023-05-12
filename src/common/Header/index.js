@@ -1,6 +1,6 @@
 import {
     StyledHeader,
-    TitleLink,
+    StyledTitleLink,
     PositionHeader,
     Wrapper,
     StyledVideoIcon,
@@ -17,10 +17,10 @@ export const Header = () => {
         <StyledHeader>
             <PositionHeader>
                 <Wrapper>
-                    <TitleLink to={toMovies()}>
+                    <StyledTitleLink to={toMovies()}>
                         <StyledVideoIcon />
                         <TittleText>Movies Browser</TittleText>
-                    </TitleLink>
+                    </StyledTitleLink>
                     <nav>
                         <NavigationList>
                             <li>

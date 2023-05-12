@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ReactComponent as VideoIcon } from "./images/cameraIcon.svg";
 
 
@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const TitleLink = styled(Link)`
+export const StyledTitleLink = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
   display: flex;
