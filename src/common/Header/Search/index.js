@@ -15,7 +15,8 @@ export const Search = () => {
 
     useEffect(() => {
         inputRef.current.value = query || '';
-    }, [query]);
+        inputRef.current.focus();
+    }, [query, inputRef]);
 
     const selectInputText = () => {
         inputRef.current.select();
