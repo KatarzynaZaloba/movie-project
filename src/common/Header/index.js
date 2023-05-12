@@ -9,6 +9,7 @@ import {
     StyledNavLink,
 } from "./styled";
 import { Search } from "./Search";
+import { toMovies, toPeople } from "../../core/routes";
 
 export const Header = () => {
 
@@ -16,17 +17,17 @@ export const Header = () => {
         <StyledHeader>
             <PositionHeader>
                 <Wrapper>
-                    <TitleLink to="/movies">
+                    <TitleLink to={toMovies()}>
                         <StyledVideoIcon />
                         <TittleText>Movies Browser</TittleText>
                     </TitleLink>
                     <nav>
                         <NavigationList>
                             <li>
-                                <StyledNavLink to="/movies">MOVIES</StyledNavLink>
+                                <StyledNavLink to={toMovies()}>MOVIES</StyledNavLink>
                             </li>
                             <li>
-                                <StyledNavLink to="/people">PEOPLE</StyledNavLink>
+                                <StyledNavLink to={toPeople()}>PEOPLE</StyledNavLink>
                             </li>
                         </NavigationList>
                     </nav>

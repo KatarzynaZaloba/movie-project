@@ -9,8 +9,8 @@ const Crew = () => {
 
     return (
         <Wrapper>
-            {crew.map(({ profile_path, name, crew_id, department, id }) => (
-                <List key={crew_id}>
+            {crew.map(({ profile_path, name, department, id }) => (
+                <List key={id}>
                     <StyledLink to={toPerson({ personId: id })}>
                         <Tile>
                             <Poster
