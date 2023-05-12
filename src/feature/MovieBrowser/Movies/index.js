@@ -115,7 +115,7 @@ const Movies = () => {
                     )}
                 </TileWrapper>
             )}
-            {movies.length < 0 ?
+            {movies.length > 0 ?
                 <Pagination
                     currentPage={currentPage}
                     totalPages={totalPages}
