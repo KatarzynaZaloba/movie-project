@@ -8,7 +8,7 @@ const LoadingSearchResults = () => {
     return (
         <LoadingContainer>
             <LoadingWrapper>
-                <LoadingText title={!query ? "" : `Search results for "${query}"`} />
+                <LoadingText>{!query ? "" : `Search results for "${query}"`}</LoadingText>
                 <StyledLoadingSpinner />
             </LoadingWrapper>
         </LoadingContainer>
