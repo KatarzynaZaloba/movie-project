@@ -16,58 +16,73 @@ const PeopleListPage = () => {
   const [people, setPeople] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-  const [filterLoading, setFilterLoading] = useState(false);
-  const [numResults, setNumResults] = useState(0);
+  const [searchResults, setSearchResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
   const location = useLocation();
 
-  let headerText = "Popular People";
-  if (location.search.includes("?search=")) {
-    const searchQuery = location.search.slice(8);
-    headerText = loading ? `Search results for "${searchQuery}"` : `Search results for "${searchQuery}" (${numResults})`;
-  }
-
-
-
   const searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
-
   const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
 
   useEffect(() => {
     const fetchPopularPeople = async () => {
+      setLoading(true);
       try {
+        const searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
 
         const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
 
-        let endpoint = `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;
-        if (location.search.includes("?search=")) {
-          const searchQuery = location.search.slice(8);
-          endpoint = `https://api.themoviedb.org/3/search/person?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${pageQuery}`;
-          setFilterLoading(true);
+        let endpoint;
+        if (searchQuery) {
+          endpoint = `https://api.themoviedb.org/3/search/person?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${pageQuery ? pageQuery : currentPage}`;
+        } else {
+          endpoint = `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;
         }
+
         const response = await fetch(endpoint);
         const data = await response.json();
-        setTimeout(() => {
-          setPeople(data.results);
-          setTotalPages(data.total_pages);
-          setLoading(false);
-          setFilterLoading(false);
-          setNumResults(data.results.length);
-          (pageQuery) ? setCurrentPage(pageQuery) : setCurrentPage(1);
-        }, 2000);
+        if (searchQuery) {
+          setSearchResults({ query: searchQuery, count: data.total_results });
+          if (data.total_results === 0) {
+            setPeople([]);
+          } else {
+            setPeople(data.results)
+          }
+        } else {
+          setSearchResults(null);
+          setPeople(data.results)
+        }
+        setTotalPages(data.total_pages);
       } catch (error) {
+        setError(error);
         console.error(error);
-        setHasError(true);
       }
+      (pageQuery) ? setCurrentPage(pageQuery) : setCurrentPage(1);
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000);
     };
     fetchPopularPeople();
-  }, [currentPage, location.search, pageQuery]);
+  }, [currentPage, location.search, searchQuery, pageQuery]);
+
+  const renderHeader = () => {
+    if (searchResults) {
+      return (
+        searchResults.count > 1 ?
+          <Header>
+            Search results for "{searchResults.query}" ({searchResults.count})
+          </Header>
+          :
+          <NoResults />
+      );
+    } else {
+      return <Header>Popular people</Header>;
+    }
+  };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setLoading(true);
     if (searchQuery) {
       history.push(`/people?${searchQueryParamName}=${searchQuery}&page=${pageNumber}`);
     } else {
@@ -75,62 +90,43 @@ const PeopleListPage = () => {
     }
   };
 
-  if (hasError) {
-    return <ErrorBox />;
-  }
-
-  if (!loading && numResults === 0) {
-    return <NoResults />;
-  }
-
   return (
     <Wrapper>
-      <Header>{headerText}</Header>
-      {filterLoading ? (
-        <LoadingSearchResults />
-      ) : (
+      {loading && !searchQuery && <LoadingSpinnerOnly />}
+      {loading && searchQuery && <LoadingSearchResults />}
+      {!loading && (
         <>
-          {loading ? (
-            <LoadingSpinnerOnly />
-          ) : (
-            <PopularPeopleList people={people} />
-          )}
+          {renderHeader()}
+          <PeopleList>
+            {people.length > 0 ? (
+              people.map((person) => (
+                <Item key={person.id}>
+                  <StyledNavLink to={toPerson({ personId: person.id })}>
+                    <Tile>
+                      <Poster
+                        src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                        alt={person.name}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = noPicture;
+                        }}
+                      />
+                      <Title>{person.name}</Title>
+                    </Tile>
+                  </StyledNavLink>
+                </Item>
+              ))
+            ) : (
+              <></>
+            )}
+          </PeopleList>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        loading={loading}
-      />
-    </Wrapper>
-  );
-};
-
-
-
-const PopularPeopleList = ({ people }) => {
-  return (
-    <Wrapper>
-      <PeopleList>
-        {people.map((person) => (
-          <Item key={person.id}>
-            <StyledNavLink to={toPerson({ personId: person.id })}>
-              <Tile>
-                <Poster
-                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                  alt={person.name}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = noPicture;
-                  }}
-                />
-                <Title>{person.name}</Title>
-              </Tile>
-            </StyledNavLink>
-          </Item>
-        ))}
-      </PeopleList>
     </Wrapper>
   );
 };
