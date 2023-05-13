@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { ReactComponent as warning } from "../Images/warning.svg"
+import { ReactComponent as warning } from "../../Images/warning.svg"
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`

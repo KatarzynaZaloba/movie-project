@@ -1,5 +1,5 @@
-import { searchQueryParamName } from "../../core/QueryBox/queryParamName";
-import { useQueryParameter } from "../../core/QueryBox/useQueryParameter";
+import { searchQueryParamName } from "../../../core/QueryBox/queryParamName";
+import { useQueryParameter } from "../../../core/QueryBox/useQueryParameter";
 import { ReactComponent as Picture } from "../NoResults/noResultsIcon.svg";
 import { Disclaimer, PictureWrapper, Wrapper } from "./styled";
 
