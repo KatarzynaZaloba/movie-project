@@ -1,12 +1,9 @@
-import { useSelector } from "react-redux";
 import { Wrapper, List, Tile, Poster, ActorName, ActorRole, StyledLink } from "./styled";
-import { selectCast } from "../../movieDetailsSlice";
 import noPicture from '../../../../common/Images/noPicture.svg';
 import { toPerson } from "../../../../core/routes";
 
 
-export const Cast = () => {
-    const cast = useSelector((state) => selectCast(state));
+export const Cast = ({ cast }) => {
 
     return (
         <>
