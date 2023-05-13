@@ -10,6 +10,7 @@ import { searchQueryParamName, pageQueryParamName } from '../../../core/QueryBox
 import { toMovie } from '../../../core/routes';
 import LoadingSpinnerOnly from '../../../common/States/Loading/LoadingSpinnerOnly';
 import LoadingSearchResults from '../../../common/States/Loading/LoadingSearchResult';
+import ErrorBox from '../../../common/States/ErrorBox';
 
 
 const Movies = () => {
@@ -18,6 +19,7 @@ const Movies = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [searchResults, setSearchResults] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState();
     const genres = useSelector(selectGenres);
     const location = useLocation();
     const history = useHistory();
@@ -40,9 +42,7 @@ const Movies = () => {
                 } else {
                     endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;
                 }
-                // } else {
-                //     endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage}`;
-                // }
+
                 const response = await fetch(endpoint);
                 const data = await response.json();
                 if (searchQuery) {
@@ -58,6 +58,7 @@ const Movies = () => {
                 }
                 setTotalPages(data.total_pages);
             } catch (error) {
+                setError(error)
                 console.error(error);
             }
             (pageQuery) ? setCurrentPage(pageQuery) : setCurrentPage(1);
@@ -95,6 +96,7 @@ const Movies = () => {
 
     return (
         <Wrapper>
+            {error && <ErrorBox />}
             {isLoading && !searchQuery && <LoadingSpinnerOnly />}
             {isLoading && searchQuery && <LoadingSearchResults />}
             {!isLoading && (
