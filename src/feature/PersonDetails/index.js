@@ -1,12 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
-
 import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
 import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
 import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
 import Loading from "../../common/States/Loading/LoadingSpinnerOnly";
-import ErrorBox from "../../common/ErrorBox";
+import ErrorBox from "../../common/States/ErrorBox";
 import { getNonDuplicatedItems } from '../../common/RemoveDuplicates';
 
 const PersonDetails = () => {
@@ -47,18 +46,18 @@ const PersonDetails = () => {
       <DetailsWrapper>
         <PersonTile person={personDetails} />
         {personDetails.movie_credits.cast.length > 0 && (
-  <>
-    <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
-    <Cast cast={getNonDuplicatedItems(personDetails.movie_credits.cast)} />
-  </>
-)}
+          <>
+            <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
+            <Cast cast={getNonDuplicatedItems(personDetails.movie_credits.cast)} />
+          </>
+        )}
 
-{personDetails.movie_credits.crew.length > 0 && (
-  <>
-    <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
-    <Crew crew={getNonDuplicatedItems(personDetails.movie_credits.crew)} />
-  </>
-)}
+        {personDetails.movie_credits.crew.length > 0 && (
+          <>
+            <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
+            <Crew crew={getNonDuplicatedItems(personDetails.movie_credits.crew)} />
+          </>
+        )}
       </DetailsWrapper>
     </Wrapper>
   );

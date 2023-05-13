@@ -3,12 +3,12 @@ import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledNavLink } from '.
 import { Header } from "../List/styled"
 import { Pagination } from "../../../../common/Pagination";
 import noPicture from '../../../../common/Images/noPicture.svg';
-import ErrorBox from '../../../../common/ErrorBox';
+import ErrorBox from '../../../../common/States/ErrorBox';
 import LoadingSearchResults from "../../../../common/States/Loading/LoadingSearchResult";
 import LoadingSpinnerOnly from "../../../../common/States/Loading/LoadingSpinnerOnly";
 import { useHistory, useLocation } from "react-router-dom";
 import { pageQueryParamName, searchQueryParamName } from '../../../../core/QueryBox/queryParamName';
-import NoResults from '../../../../common/NoResults';
+import NoResults from '../../../../common/States/NoResults';
 import { toPerson } from '../../../../core/routes';
 
 

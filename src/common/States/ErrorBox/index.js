@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, ButtonLink, ButtonText, Header, Info, Warning, Wrapper } from './styled'
-import { toMovies } from '../../core/routes'
+import { toMovies } from '../../../core/routes'
 
 const ErrorBox = () => {
     return (

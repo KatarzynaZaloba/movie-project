@@ -30,4 +30,5 @@ export const PictureWrapper = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 1920px;
+  margin-top: 188px;
 `;

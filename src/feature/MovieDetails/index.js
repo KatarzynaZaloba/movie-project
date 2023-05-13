@@ -8,8 +8,8 @@ import Cast from './MovieDeatilsPage/Cast';
 import Crew from './MovieDeatilsPage/Crew';
 import MovieTile from './MovieDeatilsPage/MovieTile';
 import LoadingSearchResults from '../../common/States/Loading/LoadingSearchResult';
-import ErrorBox from '../../common/ErrorBox';
-import NoResults from "../../common/NoResults";
+import ErrorBox from '../../common/States/ErrorBox';
+import NoResults from "../../common/States/NoResults";
 import { getNonDuplicatedItems } from "../../common/RemoveDuplicates";
 
 const MovieDetails = () => {

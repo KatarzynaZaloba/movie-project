@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Pagination } from '../../../common/Pagination';
 import MovieTile from '../../../common/MovieTile';
-import NoResults from '../../../common/NoResults';
+import NoResults from '../../../common/States/NoResults';
 import { Wrapper, Item, TileWrapper, StyledLink, Header } from './styled';
 import { selectGenres } from '../movieBrowserSlice';
 import { searchQueryParamName, pageQueryParamName } from '../../../core/QueryBox/queryParamName';
