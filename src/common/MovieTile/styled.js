@@ -95,10 +95,11 @@ export const Year = styled.p`
     font-weight: 400;
     font-size: 18px;
     line-height: 1.5;
-    margin: 8px 0 0 0 ;
+    margin: 8px 0 0 0px;
     color: ${({ theme }) => theme.colors.waterloo};
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         font-size: 14px;
+        margin: 8px 0 0 8px;
     }
     @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
         font-size: 12px;
@@ -109,6 +110,11 @@ export const GenresList = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    margin: 8px 0 0 0;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 14px;
+        margin: 8px 0 0 8px;
+    }
 `;
 
 export const Genre = styled.div`
