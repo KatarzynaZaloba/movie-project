@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGenres, fetchMovie, selectMovieStatus } from './movieBrowserSlice'
 import Movies from './Movies';
-import LoadingSpinnerOnly from '../../common/States/Loading/LoadingSpinnerOnly';
 import ErrorBox from '../../common/ErrorBox';
 
 const MovieBrowser = () => {
@@ -22,7 +21,7 @@ const MovieBrowser = () => {
             return null;
 
         case "loading":
-            return <LoadingSpinnerOnly />;
+            return <></>;
 
         case "error":
             return <ErrorBox />;
