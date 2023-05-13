@@ -1,5 +1,4 @@
-import MovieTile from "../../MovieTile";
-//import { data } from "../Cast/data";
+import MovieTile from "../../../../common/MovieTile"
 import { Wrapper, List } from "../Cast/styled";
 import { StyledLink } from "../../../MovieBrowser/Movies/styled";
 import { toMovie } from "../../../../core/routes";
