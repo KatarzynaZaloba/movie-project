@@ -5,8 +5,6 @@
 > Description 
 >> It's time to present our group project - a website, where you can see the list of popular movies and popular actors in one place. If you would like to find the movie by its title or actor by his/her name - you can find them by entering data into our search.
 >>![image](/public/gif1.gif) 
->>![image](/public/gif2.gif)
->>![image](/public/gif3.gif)
 
 > [To see the demo, please click >>here<<](https://adrianjar.github.io/movie-project/)
 
