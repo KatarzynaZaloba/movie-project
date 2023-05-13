@@ -16,10 +16,23 @@ export const Header = styled.h1`
     font-size: 36px;
     line-height: 1.2;
     color: ${({ theme }) => theme.colors.woodSmoke};
-    margin-left: 10px;
+    margin: 14px 0 12px 10px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         font-size: 20px;
+        margin-bottom: 10px;
+    }
+    @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    font-size: 18px;
+    word-break: break-word;
+    margin-bottom: 6px;
+    }
+    @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3;
+    word-break: break-word;
+    margin-bottom: 0;
     }
 `;
 
