@@ -7,6 +7,7 @@ import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
 import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
 import Loading from "../../common/States/Loading/LoadingSpinnerOnly";
 import ErrorBox from "../../common/ErrorBox";
+import { getNonDuplicatedItems } from '../../common/RemoveDuplicates';
 
 const PersonDetails = () => {
 
@@ -48,14 +49,14 @@ const PersonDetails = () => {
         {personDetails.movie_credits.cast.length > 0 && (
   <>
     <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
-    <Cast cast={personDetails.movie_credits.cast} />
+    <Cast cast={getNonDuplicatedItems(personDetails.movie_credits.cast)} />
   </>
 )}
 
 {personDetails.movie_credits.crew.length > 0 && (
   <>
     <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
-    <Crew crew={personDetails.movie_credits.crew} />
+    <Crew crew={getNonDuplicatedItems(personDetails.movie_credits.crew)} />
   </>
 )}
       </DetailsWrapper>
