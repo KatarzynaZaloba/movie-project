@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import {
     ContainerTile,
     WrapperTile,
@@ -19,11 +18,8 @@ import {
     Description,
 } from "./styled";
 
-import { selectMovieDetails } from "../../movieDetailsSlice";
 
-
-const MovieTile = () => {
-    const movieDetails = useSelector(selectMovieDetails);
+const MovieTile = ({movie}) => {
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString("en-US", {
@@ -36,39 +32,39 @@ const MovieTile = () => {
     return (
         <ContainerTile>
             <WrapperTile>
-                {movieDetails.poster_path && (
-                    <ImageTile src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-                        alt={movieDetails.title} />
+                {movie.poster_path && (
+                    <ImageTile src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title} />
                 )}
                 <ContentTile>
                     <DetailsMovie>
-                        <MovieTitle>{movieDetails.original_title}</MovieTitle>
-                        <Year>{movieDetails.release_date.slice(0, 4)}</Year>
-                        {movieDetails.production_countries.length !== 0 && (
+                        <MovieTitle>{movie.original_title}</MovieTitle>
+                        <Year>{movie.release_date.slice(0, 4)}</Year>
+                        {movie.production_countries.length !== 0 && (
                             <Production>
                                 <GreyText>Production:</GreyText>
-                                <BlackText>{movieDetails.production_countries.map((country) => country.name).join(", ")}</BlackText>
+                                <BlackText>{movie.production_countries.map((country) => country.name).join(", ")}</BlackText>
                             </Production>
                         )}
-                        {movieDetails.release_date && (
+                        {movie.release_date && (
                             <Production>
                                 <GreyText>Release date: </GreyText>
-                                <BlackText>{formatDate(movieDetails.release_date)}</BlackText>
+                                <BlackText>{formatDate(movie.release_date)}</BlackText>
                             </Production>
                         )}
                         <Tags>
-                            {movieDetails.genres.map((genre) => (
+                            {movie.genres.map((genre) => (
                                 <Tag key={genre.id}>{genre.name}</Tag>
                             ))}
                         </Tags>
                         <Rating>
-                            <StyledStarIcon /> <Rate>{movieDetails.vote_average.toFixed(1)}</Rate>
-                            <Votes>/ 10</Votes> <Votes>{movieDetails.vote_count} votes</Votes>
+                            <StyledStarIcon /> <Rate>{movie.vote_average.toFixed(1)}</Rate>
+                            <Votes>/ 10</Votes> <Votes>{movie.vote_count} votes</Votes>
                         </Rating>
                     </DetailsMovie>
                 </ContentTile>
                 <Description>
-                    {movieDetails.overview}
+                    {movie.overview}
                 </Description>
             </WrapperTile>
         </ContainerTile>

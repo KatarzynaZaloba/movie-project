@@ -17,26 +17,25 @@ import {
 import star from "../image/star.svg";
 
 
-const Backdrop = () => {
-    const movieDetails = useSelector(selectMovieDetails);
+const Backdrop = ({ backdrop_path, original_title, vote_average, vote_count }) => {
 
     return (
         <>
-            {movieDetails.backdrop_path && (
+            {backdrop_path && (
                 <BackdropContainer>
                     <BackdropWrapper>
                         <Pleksa />
                         <BackdropImage
-                            src={`${imgBaseBackdrop}${movieDetails.backdrop_path}`}
-                            alt={`poster of ${movieDetails.original_title}`}
+                            src={`${imgBaseBackdrop}${backdrop_path}`}
+                            alt={`poster of ${original_title}`}
                         />
                         <BackdropInfoContainer>
-                            <LongTitle>{movieDetails.original_title}</LongTitle>
+                            <LongTitle>{original_title}</LongTitle>
                             <Rating>
                                 <StarIcon src={star} />
-                                <RateBig>{movieDetails.vote_average.toFixed(1)}</RateBig>
+                                <RateBig>{vote_average.toFixed(1)}</RateBig>
                                 <RateSmall>/ 10</RateSmall>
-                                <Votes>{movieDetails.vote_count} votes</Votes>
+                                <Votes>{vote_count} votes</Votes>
                             </Rating>
                         </BackdropInfoContainer>
                     </BackdropWrapper>
