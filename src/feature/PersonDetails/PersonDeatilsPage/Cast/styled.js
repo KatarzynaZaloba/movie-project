@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 1368px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
-  grid-gap: 24px;
+    width: 1368px;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-gap: 24px;
 @media(max-width: ${({ theme }) => theme.breakpoints.large}px) {
     grid-template-columns: repeat(auto, 1fr);
 }
@@ -24,7 +24,7 @@ export const List = styled.div`
 export const Tile = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     padding: 16px;
-    width: 324px;
+    max-width: 324px;
     height: auto;
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
     border-radius: 5px;
