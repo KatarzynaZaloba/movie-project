@@ -54,6 +54,9 @@ export const Poster = styled.img`
         width: 140px;
         height: fit-content;
     }
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        width: 120px;
+    }
 `;
 
 export const Details = styled.div`
@@ -66,6 +69,10 @@ export const Details = styled.div`
         margin-left: 8px;
         gap: 4px;
     }
+`;
+
+export const DetailsGrid = styled.div`
+
 `;
 
 export const Title = styled.h2`
@@ -88,10 +95,9 @@ export const Year = styled.p`
     font-weight: 400;
     font-size: 18px;
     line-height: 1.5;
-    margin: 0;
+    margin: 8px 0 0 0 ;
     color: ${({ theme }) => theme.colors.waterloo};
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-        margin: 0 0 0 8px;
         font-size: 14px;
     }
     @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
@@ -107,6 +113,7 @@ export const GenresList = styled.div`
 
 export const Genre = styled.div`
     padding: 4px 8px;
+    margin-top: 8px;
     font-size: 12px;
     border-radius: 5px;
     line-height: 1.4;
@@ -115,7 +122,7 @@ export const Genre = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.colors.woodSmoke};
     @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-        margin: 0 0 0 8px;
+        margin: 8px 0 0 8px;
         font-size: 8px;
     }
 `;
