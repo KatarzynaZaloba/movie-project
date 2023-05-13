@@ -8,8 +8,7 @@ const movieListSlice = createSlice({
         genres: null,
     },
     reducers: {
-        fetchMovie: (state) => {
-            state.status = "loading";
+        fetchMovie: () => {
         },
         fetchMovieSuccess: (state, { payload }) => {
             state.status = "success";
