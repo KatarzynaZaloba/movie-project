@@ -15,7 +15,6 @@ const ErrorBox = () => {
                     <ButtonText>Back to home page</ButtonText>
                 </Button>
             </ButtonLink>
-
         </Wrapper>
     )
 }

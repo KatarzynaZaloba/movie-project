@@ -4,7 +4,10 @@ import { ReactComponent as star } from "./vector.svg"
 export const Wrapper = styled.div`
     display: flex;
     align-items: center;
-    margin-top: 8px;
+    margin: 8px 0 0 0;
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        margin: 8px 0 0 8px;
+    }
 `;
 
 export const Star = styled(star)`

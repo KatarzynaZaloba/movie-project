@@ -18,7 +18,7 @@ const PeopleListPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState()
   const history = useHistory();
   const location = useLocation();
 
@@ -92,6 +92,7 @@ const PeopleListPage = () => {
 
   return (
     <Wrapper>
+      {error && <ErrorBox />}
       {loading && !searchQuery && <LoadingSpinnerOnly />}
       {loading && searchQuery && <LoadingSearchResults />}
       {!loading && (
