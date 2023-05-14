@@ -6,12 +6,14 @@ const LoadingSearchResults = () => {
     const query = useQueryParameter(searchQueryParamName);
 
     return (
-        <LoadingContainer>
-            <LoadingWrapper>
-                <LoadingText>{!query ? "" : `Search results for "${query}"`}</LoadingText>
-                <StyledLoadingSpinner />
-            </LoadingWrapper>
-        </LoadingContainer>
+        <>
+            <LoadingText>{!query ? "" : `Search results for "${query}"`}</LoadingText>
+            <LoadingContainer>
+                <LoadingWrapper>
+                    <StyledLoadingSpinner />
+                </LoadingWrapper>
+            </LoadingContainer>
+        </>
     );
 };
 
