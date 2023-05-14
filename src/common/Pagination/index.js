@@ -17,7 +17,7 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   };
 
   const handlePrevPageClick = () => {
-    onPageChange(currentPage - 1);
+    onPageChange(currentPage > 1 ? currentPage -1 : currentPage);
   };
 
   const handleLastPageClick = () => {
@@ -30,12 +30,12 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   return (
     <Wrapper>
-      <Button disabled={currentPage === 1} onClick={handleFirstPageClick}>
+      <Button disabled={currentPage === "1"} onClick={handleFirstPageClick}>
         <PrevVectorIcon />
         <PrevVectorIcon mobile="true" />
         <ButtonText>First</ButtonText>
       </Button>
-      <Button disabled={currentPage === 1} onClick={handlePrevPageClick}>
+      <Button disabled={currentPage === "1"} onClick={handlePrevPageClick}>
         <PrevVectorIcon />
         <ButtonText>Previous</ButtonText>
       </Button>
