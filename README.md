@@ -1,34 +1,40 @@
 ## 🎬 Movies Browser - group project
 
-
-
-> Description 
->> It's time to present our group project - a website, where you can see the list of popular movies and popular actors in one place. If you would like to find the movie by its title or actor by his/her name - you can find them by entering data into our search.
->>![image](/public/gif1.gif) 
+> Description
+>
+> > It's time to present our group project - a website, where you can see the list of popular movies and popular actors in one place. If you would like to find the movie by its title or actor by his/her name - you can find them by entering data into our search.
+> >
+> > ![gif](/public/MoviesBrowser.gif)
 
 > [To see the demo, please click >>here<<](https://adrianjar.github.io/movie-project/)
 
 > Contributors
->> The project was created by group of enthustiastic students from [Youcode](https://youcode.pl/):
->>- [Adrian Jaroszuk](https://github.com/AdrianJar)
->>- [Marianna Weychan](https://github.com/Marianna-Weychan)
->>- [Katarzyna Żałoba](https://github.com/KatarzynaZaloba)
+>
+> > The project was created by group of enthustiastic students from [Youcode](https://youcode.pl/):
+> >
+> > - [Adrian Jaroszuk](https://github.com/AdrianJar)
+> > - [Marianna Weychan](https://github.com/Marianna-Weychan)
+> > - [Katarzyna Żałoba](https://github.com/KatarzynaZaloba)
+
+> > ![image](/public/gif1.gif)
 
 > Tech stack
->>[![My Skills](https://skillicons.dev/icons?i=js,html,css,react,redux,git,github)](https://skillicons.dev)
+>
+> > [![My Skills](https://skillicons.dev/icons?i=js,html,css,react,redux,git,github)](https://skillicons.dev)
 
 > More details about tech:
->> - React.js 
->> - hooks: useState, useEffect, useRef, useHistory, useLocation, custom hooks
->>   - styled components
->>   - router 5.3.3
->> - Redux | Redux Saga | Redux Toolkit
->> - ES6+ features
->> - JS axios async/await
->> - localStorage
->> - BEM convention
->>- Layout: flex | grid
->> - [themoviedb's](https://developers.themoviedb.org/3) API
+>
+> > - React.js
+> > - hooks: useState, useEffect, useRef, useHistory, useLocation, custom hooks
+> >   - styled components
+> >   - router 5.3.3
+> > - Redux | Redux Saga | Redux Toolkit
+> > - ES6+ features
+> > - JS axios async/await
+> > - localStorage
+> > - BEM convention
+> > - Layout: flex | grid
+> > - [themoviedb's](https://developers.themoviedb.org/3) API
 
 ### Available Scripts
 
