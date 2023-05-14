@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const LoadingContainer = styled.div`
+  padding: 56px 16px 40px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    
+    padding: 26px 16px 28px;
   }
 `;
 
