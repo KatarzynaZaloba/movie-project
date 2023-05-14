@@ -6,7 +6,7 @@
 > >
 > > ![gif](/public/MoviesBrowser.gif)
 
-> [To see the demo, please click >>here<<](https://adrianjar.github.io/movie-project/)
+> To see the demo, please click [>>here<<](https://adrianjar.github.io/movie-project/)
 
 > Contributors
 >
