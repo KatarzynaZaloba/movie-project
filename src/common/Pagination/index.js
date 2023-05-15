@@ -11,7 +11,6 @@ import {
 export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   const lastPage = totalPages > 500 ? 500 : totalPages;
-  const firstPage = 1
 
   const handleNextPageClick = () => {
     onPageChange(currentPage < 500 ? currentPage++ + 1 : currentPage);
