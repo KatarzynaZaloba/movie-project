@@ -82,6 +82,30 @@ const PeopleListPage = () => {
     }
   };
 
+  const renderPagination = () => {
+    if (searchResults) {
+      return (
+        searchResults.count > 0 ?
+          (<Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+          ) : (
+            <></>
+          )
+      )
+    } else {
+      return (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )
+    }
+  }
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     if (searchQuery) {
@@ -122,11 +146,7 @@ const PeopleListPage = () => {
               <></>
             )}
           </PeopleList>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
+          {renderPagination()}
         </>
       )}
     </Wrapper>
