@@ -37,8 +37,8 @@ export const Search = () => {
                 setHasNoResults(true);
             }
 
-            history.push({
-                pathname: location.pathname,
+            history.replace({
+                pathname: location.pathname.includes("/people") ? "/people" : "/movies",
                 search: `?${searchQueryParamName}=${searchValue}`
             });
         });
