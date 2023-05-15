@@ -18,7 +18,7 @@ const Movies = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [searchResults, setSearchResults] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const genres = useSelector(selectGenres);
     const location = useLocation();
