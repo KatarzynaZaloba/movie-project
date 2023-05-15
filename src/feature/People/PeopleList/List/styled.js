@@ -1,12 +1,15 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     max-width: 1368px;
-    margin: 56px auto 0;
-    margin: 0 auto;
-    padding: 0 16px;
     margin-bottom: 100px;
+    margin: 56px auto 40px;
+    
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        padding: 0 12px;
+        margin: 0;
+    }
 `;
 
 export const Header = styled.h1`
@@ -42,13 +45,14 @@ export const Item = styled.li`
 `;
 
 export const Tile = styled.div`
-    background-color: ${({ theme }) => theme.colors.white};
-    padding: 16px;
     width: 100%;
     height: 100%;
+    background-color: ${({ theme }) => theme.colors.white};
+    transition: 0.5s;
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
     border-radius: 5px;
-    transition: 0.5s;
+    padding: 16px;
+    
     &:hover{
         transform: scale(1.05);
         box-shadow: ${({ theme }) => theme.hoverShadow};
@@ -56,17 +60,27 @@ export const Tile = styled.div`
     &:active{
         box-shadow: ${({ theme }) => theme.activeShadow};
     }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
+        padding: 8px;
+    }
 `;
 
 export const Poster = styled.img`
-    max-width: 100%;
+    width: 100%;
+    height: auto;
     border-radius: 5px;
-    margin-bottom: 16px;
-    z-index: -1;
+    aspect-ratio: 2 / 3;
+    margin-bottom: 8px;
+    object-fit: cover;
+
+    &.no-picture {
+        object-fit: cover;
+    } 
 `;
 
 export const Title = styled.h2`
-    text-align: center;
+ text-align: center;
     word-wrap: wrap;
     line-height: 1.3;
     font-weight: 500;
@@ -74,17 +88,21 @@ export const Title = styled.h2`
     margin: 0;
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMin}px) {
         font-size: 16px;
+        padding-bottom: 10px;
     }
 `;
 
-export const Button = styled.button`
-    justify-content: center;
-`;
-
-export const StyledLink = styled(Link)`
+export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.black};
+    &.active {
+        border: 1px solid ${({ theme }) => theme.colors.white} !important;
+}
     &:hover {
-        text-decoration: none;
+        cursor: pointer;
+
+    @media (max-width: ${({theme})=>theme.breakpoints.mobileMax}px) {
+        width: 100%;
     }
+  }
 `;

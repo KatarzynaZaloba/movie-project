@@ -18,7 +18,7 @@ function App() {
           <Route path={toMovie({ movieId: ":movieId" })}>
             <MovieDetails />
           </Route>
-          <Route path={toPeople()}>
+          <Route exact path={toPeople()}>
             <PeopleList />
           </Route>
           <Route path={toPerson({ personId: ":personId" })}>

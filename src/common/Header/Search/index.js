@@ -16,7 +16,8 @@ export const Search = () => {
 
     useEffect(() => {
         inputRef.current.value = query || '';
-    }, [query]);
+        inputRef.current.focus();
+    }, [query, inputRef]);
 
     const selectInputText = () => {
         inputRef.current.select();
@@ -30,10 +31,10 @@ export const Search = () => {
         searchEndpoint(searchValue).then((results) => {
             if (results.length > 0) {
                 replaceQueryParameter(searchQueryParamName, searchValue);
-                setHasNoResults(false); // Zresetuj flagę braku wyników
+                setHasNoResults(false);
             } else {
                 replaceQueryParameter(searchQueryParamName, '');
-                setHasNoResults(true); // Ustaw flagę braku wyników
+                setHasNoResults(true);
             }
 
             history.push({

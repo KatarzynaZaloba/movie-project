@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ReactComponent as VideoIcon } from "./images/cameraIcon.svg";
 
 
@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const TitleLink = styled(Link)`
+export const StyledTitleLink = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
   display: flex;
@@ -83,7 +83,7 @@ export const TittleText = styled.div`
   }
 `;
 
-export const NavigationList = styled.div`
+export const NavigationList = styled.ul`
   display: flex;
   gap: 16px;
   padding: 0;
@@ -108,7 +108,7 @@ export const StyledNavLink = styled(NavLink)`
   &.active {
     border: 1px solid ${({ theme }) => theme.colors.white};
   }
-  &.hover {
+  &:hover {
     cursor: pointer;
   }
    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {

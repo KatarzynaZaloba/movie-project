@@ -1,4 +1,4 @@
-import MovieTile from "../../MovieTile";
+import MovieTile from "../../../../common/MovieTile";
 import { Wrapper, List } from "./styled";
 import { StyledLink } from "../../../MovieBrowser/Movies/styled";
 import { toMovie } from "../../../../core/routes";

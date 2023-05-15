@@ -8,8 +8,9 @@ import Cast from './MovieDeatilsPage/Cast';
 import Crew from './MovieDeatilsPage/Crew';
 import MovieTile from './MovieDeatilsPage/MovieTile';
 import LoadingSearchResults from '../../common/States/Loading/LoadingSearchResult';
-import NoResults from "../../common/NoResults";
-import ErrorBox from "../../common/ErrorBox";
+import ErrorBox from '../../common/States/ErrorBox';
+import NoResults from "../../common/States/NoResults";
+import { getNonDuplicatedItems } from "../../common/RemoveDuplicates";
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -52,13 +53,13 @@ const MovieDetails = () => {
                     {cast && cast.length > 0 && (
                         <>
                             <SectionTitle >Cast</SectionTitle>
-                            <Cast cast={cast} />
+                            <Cast cast={getNonDuplicatedItems(cast)} />
                         </>
                     )}
                     {crew && crew.length > 0 && (
                         <>
                             <SectionTitle>Crew</SectionTitle>
-                            <Crew crew={crew} />
+                            <Crew crew={getNonDuplicatedItems(crew)} />
                         </>
                     )}
                 </DetailsWrapper>

@@ -38,9 +38,7 @@ const PersonTile = ({ person }) => {
                         </DetailsMovie>
                     </ContentTile>
                     <Description>
-                        <div>
                             {biography}
-                        </div>
                     </Description>
                 </WrapperTile>
             </ContainerTile>

@@ -1,91 +1,134 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledLink, Header } from './styled';
+import { Wrapper, PeopleList, Item, Tile, Poster, Title, StyledNavLink } from './styled';
+import { Header } from "../List/styled"
 import { Pagination } from "../../../../common/Pagination";
-import Loading from '../../../../common/States/Loading/LoadingSpinner';
 import noPicture from '../../../../common/Images/noPicture.svg';
-import ErrorBox from '../../../../common/ErrorBox';
+import ErrorBox from '../../../../common/States/ErrorBox';
+import LoadingSearchResults from "../../../../common/States/Loading/LoadingSearchResult";
+import LoadingSpinnerOnly from "../../../../common/States/Loading/LoadingSpinnerOnly";
+import { useHistory, useLocation } from "react-router-dom";
+import { pageQueryParamName, searchQueryParamName } from '../../../../core/QueryBox/queryParamName';
+import NoResults from '../../../../common/States/NoResults';
+import { toPerson } from '../../../../core/routes';
+
 
 const PeopleListPage = () => {
   const [people, setPeople] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [hasError, setHasError] = useState(false); // new state
+  const [searchResults, setSearchResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState()
+  const history = useHistory();
+  const location = useLocation();
+
+  const searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
+  const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
 
   useEffect(() => {
     const fetchPopularPeople = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${currentPage}`
-        );
+        const searchQuery = new URLSearchParams(location.search).get(searchQueryParamName);
+
+        const pageQuery = new URLSearchParams(location.search).get(pageQueryParamName);
+
+        let endpoint;
+        if (searchQuery) {
+          endpoint = `https://api.themoviedb.org/3/search/person?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&query=${searchQuery}&page=${pageQuery ? pageQuery : currentPage}`;
+        } else {
+          endpoint = `https://api.themoviedb.org/3/person/popular?api_key=d3f19b5007aaab7cb579f83b9a664dec&language=en-US&page=${pageQuery}`;
+        }
+
+        const response = await fetch(endpoint);
         const data = await response.json();
-        setTimeout(() => {
-          setPeople(data.results);
-          setTotalPages(data.total_pages);
-          setLoading(false);
-        }, 2000);
+        if (searchQuery) {
+          setSearchResults({ query: searchQuery, count: data.total_results });
+          if (data.total_results === 0) {
+            setPeople([]);
+          } else {
+            setPeople(data.results)
+          }
+        } else {
+          setSearchResults(null);
+          setPeople(data.results)
+        }
+        setTotalPages(data.total_pages);
       } catch (error) {
+        setError(error);
         console.error(error);
-        setHasError(true); // set hasError to true in case of an error
       }
+      (pageQuery) ? setCurrentPage(pageQuery) : setCurrentPage(1);
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000);
     };
     fetchPopularPeople();
-  }, [currentPage]);
+  }, [currentPage, location.search, searchQuery, pageQuery]);
+
+  const renderHeader = () => {
+    if (searchResults) {
+      return (
+        searchResults.count > 1 ?
+          <Header>
+            Search results for "{searchResults.query}" ({searchResults.count})
+          </Header>
+          :
+          <NoResults />
+      );
+    } else {
+      return <Header>Popular people</Header>;
+    }
+  };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setLoading(true);
-    //adding function which can show the number of page in the URL:
-    const url = `${window.location.origin}${window.location.pathname}?page=${pageNumber}`;
-    window.history.pushState({ path: url }, '', url);
+    if (searchQuery) {
+      history.push(`/people?${searchQueryParamName}=${searchQuery}&page=${pageNumber}`);
+    } else {
+      history.push(`/people?page=${pageNumber}`);
+    }
   };
-
-  if (hasError) { // if an error occurred, display ErrorBox component
-    return <ErrorBox />;
-  }
 
   return (
     <Wrapper>
-      {loading ? (
-        <Loading />
-      ) : (
+      {error && <ErrorBox />}
+      {loading && !searchQuery && <LoadingSpinnerOnly />}
+      {loading && searchQuery && <LoadingSearchResults />}
+      {!loading && (
         <>
-          <Header>Popular people</Header>
-          <PopularPeopleList people={people} loading={loading} />
+          {renderHeader()}
+          <PeopleList>
+            {people.length > 0 ? (
+              people.map((person) => (
+                <Item key={person.id}>
+                  <StyledNavLink to={toPerson({ personId: person.id })}>
+                    <Tile>
+                      <Poster
+                        src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                        alt={person.name}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = noPicture;
+                        }}
+                      />
+                      <Title>{person.name}</Title>
+                    </Tile>
+                  </StyledNavLink>
+                </Item>
+              ))
+            ) : (
+              <></>
+            )}
+          </PeopleList>
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={handlePageChange}
-            loading={loading}
           />
         </>
       )}
-
     </Wrapper>
-  );
-};
-
-const PopularPeopleList = ({ people, loading }) => {
-  return (
-    <PeopleList>
-      {people.map((person) => (
-        <Item key={person.id}>
-          <StyledLink to={`/person/${person.id}`}>
-            <Tile>
-              <Poster
-                src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                alt={person.name}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = noPicture;
-                }}
-              />
-              <Title>{person.name}</Title>
-            </Tile>
-          </StyledLink>
-        </Item>
-      ))}
-    </PeopleList>
   );
 };
 
