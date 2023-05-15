@@ -11,17 +11,18 @@ import {
 export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   const lastPage = totalPages > 500 ? 500 : totalPages;
+  const firstPage = 1
 
   const handleNextPageClick = () => {
-    onPageChange(currentPage < 500 ? currentPage +++ 1 : currentPage );
+    onPageChange(currentPage < 500 ? currentPage++ + 1 : currentPage);
   };
 
   const handlePrevPageClick = () => {
-    onPageChange(currentPage > 1 ? currentPage -1 : currentPage);
+    onPageChange(currentPage > 1 ? currentPage - 1 : currentPage);
   };
 
   const handleLastPageClick = () => {
-    onPageChange(currentPage !== 500 ? lastPage : currentPage );
+    onPageChange(currentPage !== 500 ? lastPage : currentPage);
   };
 
   const handleFirstPageClick = () => {
@@ -30,12 +31,12 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
 
   return (
     <Wrapper>
-      <Button disabled={currentPage === "1"} onClick={handleFirstPageClick}>
+      <Button disabled={currentPage < 2} onClick={handleFirstPageClick}>
         <PrevVectorIcon />
         <PrevVectorIcon mobile="true" />
         <ButtonText>First</ButtonText>
       </Button>
-      <Button disabled={currentPage === "1"} onClick={handlePrevPageClick}>
+      <Button disabled={currentPage < 2} onClick={handlePrevPageClick}>
         <PrevVectorIcon />
         <ButtonText>Previous</ButtonText>
       </Button>
