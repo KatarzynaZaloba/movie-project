@@ -69,12 +69,13 @@ const PeopleListPage = () => {
   const renderHeader = () => {
     if (searchResults) {
       return (
-        searchResults.count > 1 ?
+        searchResults.count > 0 ? (
           <Header>
             Search results for "{searchResults.query}" ({searchResults.count})
           </Header>
-          :
+        ) : (
           <NoResults />
+        )
       );
     } else {
       return <Header>Popular people</Header>;
