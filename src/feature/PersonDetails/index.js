@@ -4,9 +4,9 @@ import { Wrapper, SectionTitle, DetailsWrapper } from './styled';
 import PersonTile from './PersonDeatilsPage/PersonTile';
 import Cast from '../../feature/PersonDetails/PersonDeatilsPage/Cast';
 import Crew from '../../feature/PersonDetails/PersonDeatilsPage/Crew';
-import Loading from "../../common/States/Loading/LoadingSpinnerOnly";
 import ErrorBox from "../../common/States/ErrorBox";
 import { getNonDuplicatedItems } from '../../common/RemoveDuplicates';
+import LoadingSpinnerOnly from '../../common/States/Loading/LoadingSpinnerOnly';
 
 const PersonDetails = () => {
 
@@ -32,7 +32,7 @@ const PersonDetails = () => {
   if (!personDetails) {
     return (
       <>
-        <Loading />
+        <LoadingSpinnerOnly />
       </>
     );
   }
