@@ -29,10 +29,6 @@ const PersonDetails = () => {
     fetchData();
   }, [personId]);
 
-  if (error) { // if there is an error, show ErrorBox component
-    return <ErrorBox error={error} />;
-  }
-
   if (!personDetails) {
     return (
       <>
@@ -40,22 +36,33 @@ const PersonDetails = () => {
       </>
     );
   }
-
+  if (error || !personDetails || !personDetails.movie_credits) {
+    return <ErrorBox error={error} />;
+  }
+  
   return (
     <Wrapper>
       <DetailsWrapper>
         <PersonTile person={personDetails} />
         {personDetails.movie_credits.cast.length > 0 && (
           <>
-            <SectionTitle>Movies - cast ({personDetails.movie_credits.cast.length})</SectionTitle>
-            <Cast cast={getNonDuplicatedItems(personDetails.movie_credits.cast)} />
+            <SectionTitle>
+              Movies - cast ({personDetails.movie_credits.cast.length})
+            </SectionTitle>
+            <Cast
+              cast={getNonDuplicatedItems(personDetails.movie_credits.cast)}
+            />
           </>
         )}
-
+  
         {personDetails.movie_credits.crew.length > 0 && (
           <>
-            <SectionTitle>Movies - crew ({personDetails.movie_credits.crew.length})</SectionTitle>
-            <Crew crew={getNonDuplicatedItems(personDetails.movie_credits.crew)} />
+            <SectionTitle>
+              Movies - crew ({personDetails.movie_credits.crew.length})
+            </SectionTitle>
+            <Crew
+              crew={getNonDuplicatedItems(personDetails.movie_credits.crew)}
+            />
           </>
         )}
       </DetailsWrapper>
