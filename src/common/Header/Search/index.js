@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { searchMovies, searchPeople } from "./searchApi";
 import { SearchWrapper, SearchBar, StyledSearchIcon, SearchBarInput } from "./styled";
@@ -8,10 +8,11 @@ import { searchQueryParamName } from "../../../core/QueryBox/queryParamName";
 export const Search = () => {
     const location = useLocation();
     const history = useHistory();
-    const searchParams = new URLSearchParams(location.search);
-    const query = searchParams.get(searchQueryParamName);
+    const query = useQueryParameter(searchQueryParamName);
+    const replaceQueryParameter = useReplaceQueryParameter();
     const inputRef = useRef(null);
     const timerRef = useRef(null);
+    const [hasNoResults, setHasNoResults] = useState(false);
 
     useEffect(() => {
         inputRef.current.value = query || '';
@@ -21,39 +22,41 @@ export const Search = () => {
         inputRef.current.select();
     };
 
+    const executeSearch = (searchValue) => {
+        const searchEndpoint = location.pathname.includes("/people")
+            ? searchPeople
+            : searchMovies;
+
+        searchEndpoint(searchValue).then((results) => {
+            if (results.length > 0) {
+                replaceQueryParameter(searchQueryParamName, searchValue);
+                setHasNoResults(false); // Zresetuj flagę braku wyników
+            } else {
+                replaceQueryParameter(searchQueryParamName, '');
+                setHasNoResults(true); // Ustaw flagę braku wyników
+            }
+
+            history.push({
+                pathname: location.pathname,
+                search: `?${searchQueryParamName}=${searchValue}`
+            });
+        });
+    };
+
     const onInputChange = (event) => {
-        const inputValue = event.target.value.trim() !== "" ? event.target.value : undefined;
+        const inputValue = event.target.value.trim();
 
         if (timerRef.current) {
             clearTimeout(timerRef.current);
         }
 
-        timerRef.current = setTimeout(() => {
-            const searchEndpoint = location.pathname.includes("/people")
-                ? searchPeople
-                : searchMovies;
-
-            searchEndpoint(inputValue).then((results) => {
-                searchParams.set(searchQueryParamName, inputValue);
-
-                if (results.length > 0) {
-                    const firstResult = results[0];
-                    const pathname = location.pathname.includes("/people")
-                        ? `/person/${firstResult.id}`
-                        : location.pathname;
-
-                    history.push({
-                        pathname,
-                        search: searchParams.toString(),
-                    });
-                } else {
-                    history.push({
-                        pathname: location.pathname,
-                        search: "",
-                    });
-                }
-            });
-        }, 1000);
+        if (inputValue) {
+            timerRef.current = setTimeout(() => {
+                executeSearch(inputValue);
+            }, 1000);
+        } else {
+            executeSearch('');
+        }
     };
 
     return (
