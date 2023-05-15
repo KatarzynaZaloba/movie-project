@@ -13,7 +13,7 @@ export const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const lastPage = totalPages > 500 ? 500 : totalPages;
 
   const handleNextPageClick = () => {
-    onPageChange(currentPage < 500 ? currentPage++ + 1 : currentPage);
+    onPageChange(currentPage < 500 ? currentPage +++ 1 : currentPage);
   };
 
   const handlePrevPageClick = () => {
