@@ -17,7 +17,7 @@ const PeopleListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchResults, setSearchResults] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState()
   const history = useHistory();
   const location = useLocation();
