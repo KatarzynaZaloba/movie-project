@@ -18,7 +18,7 @@ const Movies = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [searchResults, setSearchResults] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const genres = useSelector(selectGenres);
     const location = useLocation();
@@ -73,7 +73,7 @@ const Movies = () => {
     const renderHeader = () => {
         if (searchResults) {
             return (
-                searchResults.count > 1 ?
+                searchResults.count > 0 ?
                     <Header>
                         Search results for "{searchResults.query}" ({searchResults.count})
                     </Header>
@@ -84,6 +84,30 @@ const Movies = () => {
             return <Header>Browse Movies</Header>;
         }
     };
+
+    const renderPagination = () => {
+        if (searchResults) {
+            return (
+                searchResults.count > 0 ?
+                    (<Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                    />
+                    ) : (
+                        <></>
+                    )
+            )
+        } else {
+            return (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
+            )
+        }
+    }
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -118,11 +142,7 @@ const Movies = () => {
                             <></>
                         )}
                     </TileWrapper>
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange={handlePageChange}
-                    />
+                    {renderPagination()}
                 </>
             )}
         </Wrapper>

@@ -22,53 +22,39 @@ export const Search = () => {
         inputRef.current.select();
     };
 
+    const executeSearch = (searchValue) => {
+        const searchEndpoint = location.pathname.includes("/people")
+            ? searchPeople
+            : searchMovies;
+
+        searchEndpoint(searchValue).then((results) => {
+            if (results.length > 0) {
+                replaceQueryParameter(searchQueryParamName, searchValue);
+            } else {
+                replaceQueryParameter(searchQueryParamName, '');
+            }
+
+            history.replace({
+                pathname: location.pathname.includes("/people") ? "/people" : "/movies",
+                search: `?${searchQueryParamName}=${searchValue}`
+            });
+        });
+    };
+
     const onInputChange = (event) => {
-        const inputValue = event.target.value.trim() !== "" ? event.target.value : undefined;
+        const inputValue = event.target.value.trim();
 
         if (timerRef.current) {
             clearTimeout(timerRef.current);
         }
 
-        timerRef.current = setTimeout(() => {
-            const searchEndpoint = location.pathname.includes("/people")
-                ? searchPeople
-                : searchMovies;
-
-            if (inputValue !== undefined) {
-                searchEndpoint(inputValue).then((results) => {
-                    replaceQueryParameter(searchQueryParamName, inputValue);
-
-                    if (results.length > 0) {
-                        history.push({
-                            pathname: location.pathname,
-                            search: `?${searchQueryParamName}=${inputValue}`
-                        });
-                    } else {
-
-                        searchEndpoint(inputValue.substring(0, 3)).then((results) => {
-                            if (results.length > 0) {
-                                history.push({
-                                    pathname: location.pathname,
-                                    search: `?${searchQueryParamName}=${inputValue.substring(0, 5)}`
-                                });
-                            } else {
-                                history.push({
-                                    pathname: location.pathname,
-                                    search: ""
-                                });
-                            }
-                        });
-                    }
-                });
-            } else {
-                replaceQueryParameter(searchQueryParamName, '');
-                history.push({
-                    pathname: location.pathname,
-                    search: ''
-                });
-            }
-        }, 1000);
-
+        if (inputValue) {
+            timerRef.current = setTimeout(() => {
+                executeSearch(inputValue);
+            }, 1000);
+        } else {
+            executeSearch('');
+        }
     };
 
     return (

@@ -17,7 +17,7 @@ const PeopleListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchResults, setSearchResults] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState()
   const history = useHistory();
   const location = useLocation();
@@ -69,17 +69,42 @@ const PeopleListPage = () => {
   const renderHeader = () => {
     if (searchResults) {
       return (
-        searchResults.count > 1 ?
+        searchResults.count > 0 ? (
           <Header>
             Search results for "{searchResults.query}" ({searchResults.count})
           </Header>
-          :
+        ) : (
           <NoResults />
+        )
       );
     } else {
       return <Header>Popular people</Header>;
     }
   };
+
+  const renderPagination = () => {
+    if (searchResults) {
+      return (
+        searchResults.count > 0 ?
+          (<Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+          ) : (
+            <></>
+          )
+      )
+    } else {
+      return (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )
+    }
+  }
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -121,11 +146,7 @@ const PeopleListPage = () => {
               <></>
             )}
           </PeopleList>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
+          {renderPagination()}
         </>
       )}
     </Wrapper>
