@@ -1,14 +1,15 @@
 import { searchQueryParamName } from "../../../core/QueryBox/queryParamName";
 import { useQueryParameter } from "../../../core/QueryBox/useQueryParameter";
-import { ReactComponent as Picture } from "../NoResults/noResultsIcon.svg";
-import { Disclaimer, PictureWrapper, Wrapper } from "./styled";
+import { Disclaimer, Picture, PictureWrapper, Wrapper } from "./styled";
 
 const NoResults = () => {
   const query = useQueryParameter(searchQueryParamName);
 
   return (
     <Wrapper>
-      <Disclaimer>{`Sorry, there are no results for "${query}"`}</Disclaimer>
+      <Disclaimer>
+        <p>{`Sorry, there are no results for "${query}"`}</p>
+      </Disclaimer>
       <PictureWrapper>
         <Picture />
       </PictureWrapper>
