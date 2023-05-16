@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { searchMovies, searchPeople } from "./searchApi";
 import { SearchWrapper, SearchBar, StyledSearchIcon, SearchBarInput } from "./styled";
@@ -12,7 +12,6 @@ export const Search = () => {
     const replaceQueryParameter = useReplaceQueryParameter();
     const inputRef = useRef(null);
     const timerRef = useRef(null);
-    const [hasNoResults, setHasNoResults] = useState(false);
 
     useEffect(() => {
         inputRef.current.value = query || '';
@@ -31,10 +30,8 @@ export const Search = () => {
         searchEndpoint(searchValue).then((results) => {
             if (results.length > 0) {
                 replaceQueryParameter(searchQueryParamName, searchValue);
-                setHasNoResults(false);
             } else {
                 replaceQueryParameter(searchQueryParamName, '');
-                setHasNoResults(true);
             }
 
             history.replace({
